@@ -1,0 +1,2 @@
+
+export const API_ENDPOINT_GITHUB_LIST = () => API_ENDPOINT('/GITHUB')
