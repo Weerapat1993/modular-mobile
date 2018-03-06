@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { FETCH_GITHUB_LIST } from './githubActionTypes'
-import { API_ENDPOINT_GITHUB_LIST } from './githubEndpoint'
+import { API_ENDPOINT_GITHUB_LIST } from './githubEndpoints'
 
 export const fetchGithubListRequest = () => ({ type: FETCH_GITHUB_LIST.REQUEST }) 
 export const fetchGithubListSuccess = (data) => ({ type: FETCH_GITHUB_LIST.SUCCESS, data }) 

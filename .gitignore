@@ -56,3 +56,5 @@ buck-out/
 ios/
 android/
 
+# environment
+.env

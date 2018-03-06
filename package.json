@@ -6,6 +6,7 @@
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "ios": "react-native run-ios",
     "android": "react-native run-android",
+    "link": "react-native link",
     "test": "jest"
   },
   "dependencies": {
@@ -17,6 +18,7 @@
     "prop-types": "^15.6.1",
     "react": "^16.3.0-alpha.1",
     "react-native": "0.54.0",
+    "react-native-config": "^0.11.5",
     "react-native-router-flux": "^4.0.0-beta.28",
     "react-redux": "^5.0.7",
     "redux": "^3.7.2",
