@@ -1,100 +1,51 @@
-import _ from 'lodash'
-
-// Config
-const GET_REQUEST = {
-  isFetching: true,
-  error: '',
-  isReload: false
-}
-
-const GET_SUCCESS = {
-  isFetching: false,
-  error: '',
-  isReload: false,
-}
-
-const GET_FAILURE = (action) => ({
-  isFetching: false,
-  error: _.get(action.error, 'response.data.message') || action.error.message,
-  isReload: false,
-})
+import { BaseReducer } from './BaseReducer'
 
 /**
- * Reducer Class
- * @example
- * ```js
- * const reducer = new Reducer(state, action)
- * ```
- * @typedef {Object} State
- * @property {boolean} isFetching
- * @property {boolean} isReload
- * @property {string} error
- * @property {*} data
- * 
- * @typedef {Object} Action
- * @property {string} type
- * @property {*} data
- * @property {Error} error
+ * @class Reducer
+ * @extends BaseReducer
  */
-export class Reducer {
-  /**
-   * Reducer Constructor
-   * @param {State} state 
-   * @param {Action} action 
-   */
-  constructor(state, action) {
-    this.state = state
-    this.action = action
-  }
+export class Reducer extends BaseReducer {
 
   /**
-   * Set state in Reducer
-   * @param {State} newState
+   * setState with Key case request
+   * @param {StateWithKey} newState 
    * @return {State}
    */
-  setState(newState) {
-    return {
-      ...this.state,
+  setStateWithKeyRequest(newState) {
+    return this.setStateWithKey({
+      isFetching: true, 
+      isReload: false, 
+      error: '', 
       ...newState,
-    }
-  }
-
-  /**
-   * get Request case in Reducer
-   * @param {State} data
-   * @return {State}
-   */
-  getRequest(data) {
-    return this.setState({
-      ...GET_REQUEST,
-      ...data,
     })
   }
 
   /**
-   * get Success case in Reducer
-   * @param {State} data
-   * @return {State} 
+   * setState with Key case success
+   * @param {StateWithKey} newState 
+   * @return {State}
    */
-  getSuccess(data) {
-    return this.setState({
-      ...GET_SUCCESS,
-      ...data,
+  setStateWithKeySuccess(newState) {
+    return this.setStateWithKey({ 
+      isFetching: false, 
+      isReload: false, 
+      error: '', 
+      ...newState,
     })
   }
 
   /**
-   * get Failure case in Reducer
-   * @param {State} data
+   * setState with Key case failure
+   * @param {StateWithKey} newState 
    * @return {State}
    */
-  getFailure(data) {
-    return this.setState({
-      ...GET_FAILURE(this.action),
-      ...data,
+  setStateWithKeyFailure(newState) {
+    return this.setStateWithKey({ 
+      isFetching: false, 
+      isReload: false, 
+      error: this.errorMessage(),
+      ...newState,
     })
   }
 }
-
-export default Reducer
 
