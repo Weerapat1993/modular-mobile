@@ -1,4 +1,4 @@
-import styles from '../Style'
+import styles from '../StyleExample'
 
 describe('Styles', () => {
   it('Styles', () => {
@@ -17,17 +17,6 @@ describe('Styles', () => {
   it('Styles 3', () => {
     const recieved = styles.marginLeft(20).marginRight(15).get()
     const expected = { marginLeft: 20, marginRight: 15 }
-    expect(recieved).toEqual(expected)
-  })
-
-  it('Styles Size', () => {
-    const recieved = styles.size(50).get()
-    const expected = { width: 50, height: 50 }
-    expect(recieved).toEqual(expected)
-  })
-  it('Styles Circle', () => {
-    const recieved = styles.circle(30).get()
-    const expected = { width: 30, height: 30, borderRadius: 15 }
     expect(recieved).toEqual(expected)
   })
 
