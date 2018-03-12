@@ -7,7 +7,7 @@ const Button = ({ onPress, children, type, color, rounded, style }) => {
   if(type === 'flat') {
     return (
       <TouchableHighlight
-        underlayColor={styles.colorOverlay('#FFFFFF', 0.3)}
+        underlayColor={styles.colorOpacity('#FFFFFF', 0.3)}
         onPress={onPress} 
         style={[styles.btnView(type, color, rounded).get(), style]}
       >
