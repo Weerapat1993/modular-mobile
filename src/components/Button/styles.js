@@ -1,9 +1,9 @@
-import { BaseStyle } from '../../styles/Style'
+import { BaseStyle, Colors } from '../../styles/Style'
 
 export const Theme = {
   Button: {
     Color: {
-      default: '#FFF',
+      default: Colors.WHITE,
       primary: '#09d',
       success: '#0A0',
       danger: '#C33',
@@ -35,7 +35,7 @@ class Style extends BaseStyle {
 
   btnText(type, color) {
     return this
-      .color(type !== 'primary' || color === 'default' ? Theme.Button.Text[color] : '#FFF')
+      .color(type !== 'primary' || color === 'default' ? Theme.Button.Text[color] : Colors.WHITE)
       .fontSize(16)
   }
 }
