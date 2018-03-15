@@ -7,11 +7,10 @@ class Style extends BaseStyle {
   })
 
   circle(value) {
-    return this.merge([
-      this.width(value),
-      this.height(value),
-      this.borderRadius(value / 2)
-    ])
+    return {
+      ...this.size(value),
+      borderRadius: value / 2,
+    }
   }
 }
 

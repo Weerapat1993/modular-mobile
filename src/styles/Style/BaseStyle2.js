@@ -104,39 +104,7 @@ class BaseStyle {
   }
 
   _setStyle(key) {
-    return value => this._getStyle(key, value)
-  }
-
-  _getStyle = (key, value) => {
-    if(value || value === 0) {
-      return {
-        [key]: value
-      }
-    }
-    return {}
-  }
-
-  /**
-   * Merge between 2 objects
-   * @param {Array.<Object>} array
-   * @return {Object}
-   */
-  merge = (array) => array.reduce((result, currentObject) => {
-    Object.keys(currentObject).forEach(key => {
-      result[key] = currentObject[key]
-    })
-    return result
-  }, {})
-
-  colorOpacity = (hex, alpha) => {
-    const r = parseInt(hex.slice(1, 3), 16),
-        g = parseInt(hex.slice(3, 5), 16),
-        b = parseInt(hex.slice(5, 7), 16)
-
-    if (alpha) {
-        return `rgba(${r}, ${g}, ${b}, ${alpha})`
-    }
-    return `rgb(${r}, ${g}, ${b})`
+    return value => (value || value === 0) ? { [key]: value } : {}
   }
 }
 

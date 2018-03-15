@@ -7,12 +7,6 @@ describe('Styles', () => {
     expect(recieved).toEqual(expected)
   })
 
-  it('Styles Merge Array', () => {
-    const recieved = styles.merge([styles.marginLeft(20), styles.marginRight(15)])
-    const expected = { marginLeft: 20, marginRight: 15 }
-    expect(recieved).toEqual(expected)
-  })
-
   it('Styles Merge Object', () => {
     const recieved = { ...styles.marginLeft(20), ...styles.marginRight(15) }
     const expected = { marginLeft: 20, marginRight: 15 }
