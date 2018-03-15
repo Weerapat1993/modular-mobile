@@ -1,4 +1,4 @@
-import BaseStyle from './Style/BaseStyle2'
+import BaseStyle from './Style/BaseStyle'
 
 class GlobalStyle extends BaseStyle {
   size = (value) => ({

@@ -104,9 +104,7 @@ class BaseStyle {
     this.writingDirection = this._setStyle('writingDirection')
   }
 
-  _setStyle(key) {
-    return value => (value || value === 0) ? { [key]: value } : {}
-  }
+  _setStyle = (key) => value => (value || value === 0) ? { [key]: value } : {}
 
   colorOpacity = (hex, alpha) => {
     const r = parseInt(hex.slice(1, 3), 16),

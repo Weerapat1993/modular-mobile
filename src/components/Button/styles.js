@@ -29,7 +29,7 @@ class Style extends GlobalStyle {
     paddingVertical: 10,
     borderColor: !flat && Theme.Button.Text[color],
     borderWidth: type === 'outline' ? 1 : 0,
-    borderRadius: rounded && 50
+    borderRadius: rounded ? 50 : 0
   })
 
   btnText = (type, color) => ({

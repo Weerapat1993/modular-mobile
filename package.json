@@ -7,7 +7,8 @@
     "ios": "react-native run-ios",
     "android": "react-native run-android",
     "link": "react-native link",
-    "test": "jest"
+    "test": "jest",
+    "storybook": "storybook start -p 7007"
   },
   "dependencies": {
     "antd-mobile": "^2.1.6",
@@ -38,7 +39,13 @@
     "eslint-plugin-react": "^7.7.0",
     "jest": "22.4.2",
     "react-test-renderer": "^16.3.0-alpha.1",
-    "redux-logger": "^3.0.6"
+    "redux-logger": "^3.0.6",
+    "@storybook/react-native": "^3.3.15",
+    "@storybook/addon-actions": "^3.3.15",
+    "@storybook/addon-links": "^3.3.15",
+    "@storybook/addons": "^3.3.15",
+    "babel-core": "^6.26.0",
+    "react-dom": "^16.2.0"
   },
   "jest": {
     "preset": "react-native"
@@ -51,5 +58,8 @@
       "jsx-a11y/anchor-is-valid": 0
     }
   },
-  "eslintIgnore": ["*.test.js", "*.spec.js"]
+  "eslintIgnore": [
+    "*.test.js",
+    "*.spec.js"
+  ]
 }
