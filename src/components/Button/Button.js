@@ -3,7 +3,7 @@ import { func, oneOf, string, bool, objectOf, any } from 'prop-types'
 import { TouchableOpacity, Text, TouchableHighlight } from 'react-native'
 import styles from './styles'
 
-const Button = ({ onPress, children, type, color, rounded, style }) => {
+const Button = ({ onPress, children, type, color, rounded, style, textColor }) => {
   if(type === 'flat') {
     return (
       <TouchableHighlight
@@ -20,7 +20,7 @@ const Button = ({ onPress, children, type, color, rounded, style }) => {
       onPress={onPress} 
       style={[styles.btnView(type, color, rounded), style]}
     >
-      <Text style={styles.btnText(type, color)}>{children}</Text>
+      <Text style={styles.btnText(type, color, textColor)}>{children}</Text>
     </TouchableOpacity>
   )
 }
@@ -31,7 +31,8 @@ Button.propTypes = {
   color: string,
   rounded: bool,
   style: objectOf(any),
-  children: string
+  children: string,
+  textColor: string,
 }
 
 Button.defaultProps = {
@@ -40,6 +41,7 @@ Button.defaultProps = {
   rounded: false,
   style: {},
   children: '',
+  textColor: '',
 }
 
 export default Button

@@ -33,8 +33,8 @@ class Style extends GlobalStyle {
     borderRadius: rounded ? 50 : 0
   })
 
-  btnText = (type, color) => ({
-    color: type !== 'primary' || color === 'default' ? _.get(Theme.Button.Text, color, color) : '#fff',
+  btnText = (type, color, textColor) => ({
+    color: type !== 'primary' || color === 'default' ? _.get(Theme.Button.Text, color, textColor || color) : textColor || '#fff',
     fontSize: 16
   })
 }
