@@ -1,4 +1,5 @@
 import { AppRegistry } from 'react-native';
 import App from './src';
+import appJson from './app.json' 
 
-AppRegistry.registerComponent('modularMobile', () => App);
+AppRegistry.registerComponent(appJson.name, () => App);
