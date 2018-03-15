@@ -9,18 +9,18 @@ const Button = ({ onPress, children, type, color, rounded, style }) => {
       <TouchableHighlight
         underlayColor={styles.colorOpacity('#FFFFFF', 0.3)}
         onPress={onPress} 
-        style={[styles.btnView(type, color, rounded).get(), style]}
+        style={[styles.btnView(type, color, rounded), style]}
       >
-        <Text style={styles.btnText(type, color).get()}>{children}</Text>
+        <Text style={styles.btnText(type, color)}>{children}</Text>
       </TouchableHighlight>
     )
   }
   return (
     <TouchableOpacity 
       onPress={onPress} 
-      style={[styles.btnView(type, color, rounded).get(), style]}
+      style={[styles.btnView(type, color, rounded), style]}
     >
-      <Text style={styles.btnText(type, color).get()}>{children}</Text>
+      <Text style={styles.btnText(type, color)}>{children}</Text>
     </TouchableOpacity>
   )
 }

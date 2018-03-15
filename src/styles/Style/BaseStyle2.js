@@ -22,12 +22,13 @@ class BaseStyle {
     this.paddingBottom = this._setStyle('paddingBottom')
     this.paddingLeft = this._setStyle('paddingLeft')
     this.paddingRight = this._setStyle('paddingRight')
-    this.verticalHorizontal = this._setStyle('verticalHorizontal')
-    this.verticalVertical = this._setStyle('verticalVertical')
+    this.paddingHorizontal = this._setStyle('paddingHorizontal')
+    this.paddingVertical = this._setStyle('paddingVertical')
     this.alignItems = this._setStyle('alignItems')
     this.alignSelf = this._setStyle('alignSelf')
     this.justifyContent = this._setStyle('justifyContent')
     this.flex = this._setStyle('flex')
+    this.flexDirection = this._setStyle('flexDirection')
     this.flexWrap = this._setStyle('flexWrap')
     this.position = this._setStyle('position')
     this.top = this._setStyle('top')
@@ -105,6 +106,17 @@ class BaseStyle {
 
   _setStyle(key) {
     return value => (value || value === 0) ? { [key]: value } : {}
+  }
+
+  colorOpacity = (hex, alpha) => {
+    const r = parseInt(hex.slice(1, 3), 16),
+        g = parseInt(hex.slice(3, 5), 16),
+        b = parseInt(hex.slice(5, 7), 16)
+
+    if (alpha) {
+        return `rgba(${r}, ${g}, ${b}, ${alpha})`
+    }
+    return `rgb(${r}, ${g}, ${b})`
   }
 }
 
