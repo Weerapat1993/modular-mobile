@@ -3,8 +3,7 @@ import { GlobalStyle } from '../../styles'
 import { Theme } from '../../config/theme'
 
 class Style extends GlobalStyle {
-
-  btnView = (type, color, rounded) => ({
+  btnView = (type, color, size) => ({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: type === 'outline' || type === 'flat' ? 'transparent' : _.get(Theme.Button.Color, color, color),
@@ -12,12 +11,9 @@ class Style extends GlobalStyle {
     paddingVertical: 10,
     borderColor: _.get(Theme.Button.Text, color, color),
     borderWidth: type === 'outline' ? 1 : 0,
-    borderRadius: rounded ? 50 : 0
-  })
-
-  btnText = (type, color, textColor) => ({
-    color: type !== 'primary' || color === 'default' ? _.get(Theme.Button.Text, color, textColor || color) : textColor || '#fff',
-    fontSize: 16
+    width: size,
+    height: size,
+    borderRadius: size / 2
   })
 }
 

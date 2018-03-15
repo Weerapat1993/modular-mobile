@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react-native'
 import { linkTo } from '@storybook/addon-links'
 import CenterView from './CenterView'
 import Welcome from './Welcome'
-import { ButtonScene } from '../scenes'
+import { ButtonScene, IconButtonScene } from '../scenes'
 import { Loading } from '../../src/components'
 
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />)
@@ -19,3 +19,9 @@ storiesOf('Button', module)
   .add('Primary Rounded', () => <ButtonScene type='primary' rounded />)
   .add('OutLine Rounded', () => <ButtonScene type='outline' rounded />)
   .add('Flat Rounded', () => <ButtonScene type='flat' rounded />)
+
+storiesOf('Icon Button', module)
+  .addDecorator(getStory => <CenterView>{getStory()}</CenterView>)
+  .add('Primary', () => <IconButtonScene type='primary' />)
+  .add('OutLine', () => <IconButtonScene type='outline' />)
+  .add('Flat', () => <IconButtonScene type='flat' />)
