@@ -28,7 +28,7 @@ const Button = ({ onPress, children, type, color, rounded, style }) => {
 Button.propTypes = {
   onPress: func.isRequired,
   type: oneOf(['primary', 'flat', 'outline']),
-  color: oneOf(['default', 'primary', 'warning', 'success', 'danger']),
+  color: string,
   rounded: bool,
   style: objectOf(any),
   children: string

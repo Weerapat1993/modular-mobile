@@ -1,3 +1,4 @@
+import _ from 'lodash'
 import { GlobalStyle } from '../../styles'
 
 export const Theme = {
@@ -24,7 +25,7 @@ class Style extends GlobalStyle {
   btnView = (type, color, rounded, flat) => ({
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: type === 'outline' || type === 'flat' ? 'transparent' : Theme.Button.Color[color],
+    backgroundColor: type === 'outline' || type === 'flat' ? 'transparent' : _.get(Theme.Button.Color, color, color),
     paddingHorizontal: 15,
     paddingVertical: 10,
     borderColor: !flat && Theme.Button.Text[color],
@@ -33,7 +34,7 @@ class Style extends GlobalStyle {
   })
 
   btnText = (type, color) => ({
-    color: type !== 'primary' || color === 'default' ? Theme.Button.Text[color] : '#fff',
+    color: type !== 'primary' || color === 'default' ? _.get(Theme.Button.Text, color, color) : '#fff',
     fontSize: 16
   })
 }

@@ -10,7 +10,8 @@ const ButtonScene = ({ type, rounded }) => (
     <Button type={type} color='primary' rounded={rounded} onPress={action('clicked-text')}>PRIMARY</Button>
     <Button type={type} color='warning' rounded={rounded} onPress={action('clicked-text')}>WARNING</Button>
     <Button type={type} color='success' rounded={rounded} onPress={action('clicked-text')}>SUCCESS</Button>
-    <Button type={type} color='danger' rounded={rounded} onPress={action('clicked-text')}>DANGER</Button>    
+    <Button type={type} color='danger' rounded={rounded} onPress={action('clicked-text')}>DANGER</Button> 
+    <Button type={type} color='#C6C' rounded={rounded} onPress={action('clicked-text')}>COLOR</Button>    
   </View>
 )
 
