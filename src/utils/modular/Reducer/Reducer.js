@@ -5,6 +5,30 @@ import { BaseReducer } from './BaseReducer'
  * @extends BaseReducer
  */
 export class Reducer extends BaseReducer {
+  /**
+   * Fillable Normalize Data
+   * @param {*} item
+   */
+  fillable = (item) => ({
+    isFetching: false,
+    isReload: true,
+    error: '',
+    data: item,
+  })
+
+  /**
+   * Convert Array To Object with key
+   * @param {Array.<Object>} array
+   * @param {string} primaryKey
+   * @return {Fillable}
+   */
+  normalizeData(array, primaryKey = 'id') {
+    const newData = {}
+    array.forEach((item) => {
+      newData[item[primaryKey]] = this.fillable(item)
+    })
+    return newData
+  }
 
   /**
    * setState with Key case request
