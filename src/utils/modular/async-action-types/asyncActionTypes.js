@@ -18,37 +18,3 @@ export const crudActionType = (name) => ({
   UPDATE: asyncActionType(`${name}_UPDATE`),
   DELETE: asyncActionType(`${name}_DELETE`),
 })
-
-export class AsyncActions {
-  /**
-   * Async Actions Creator
-   * @param {AsyncActionTypes} type 
-   * @param {string} key
-   */
-  constructor(type, key) {
-    this.type = type
-    this.key = key
-  }
-
-  request(key) {
-    return {
-      type: this.type.REQUEST,
-      key
-    }
-  }
-
-  success(data, key) {
-    return {
-      type: this.type.SUCCESS,
-      data,
-      key,
-    }
-  }
-  failure(error, key) {
-    return {
-      type: this.type.FAILURE,
-      error,
-      key,
-    }
-  }
-}

@@ -12,6 +12,17 @@ class GlobalStyle extends BaseStyle {
       borderRadius: value / 2,
     }
   }
+
+  fontBold = (size, color) => ({
+    fontSize: size,
+    color,
+    fontWeight: 'bold',
+  })
+
+  fontRegular = (size, color) => ({
+    fontSize: size,
+    color,
+  })
 }
 
 export default GlobalStyle

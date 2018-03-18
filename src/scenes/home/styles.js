@@ -1,12 +1,10 @@
-import { StyleSheet } from 'react-native'
+import { GlobalStyle } from '../../styles'
 
-const WHITE = '#fff'
-
-const styles = StyleSheet.create({
-  container: {
+class Style extends GlobalStyle {
+  container = {
     flex: 1,
-    backgroundColor: WHITE,
-  },
-});
+    backgroundColor: '#fff',
+  }
+}
 
-export default styles
+export default new Style()

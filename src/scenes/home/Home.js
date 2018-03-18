@@ -29,6 +29,16 @@ const Home = () => (
         About 
         <Brief>Go to About</Brief>
       </Item>
+      <Item
+        arrow="horizontal"
+        thumb="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png"
+        multipleLine
+        onClick={() => Actions.github()}
+        platform="android"
+      >
+        Github 
+        <Brief>Go to Github</Brief>
+      </Item>
     </List>
   </View>
 )
