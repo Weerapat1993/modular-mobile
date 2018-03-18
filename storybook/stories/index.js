@@ -4,12 +4,13 @@ import { linkTo } from '@storybook/addon-links'
 import CenterView from './CenterView'
 import Welcome from './Welcome'
 import { ButtonScene, IconButtonScene } from '../scenes'
-import { Loading } from '../../src/components'
+import { Loading, ErrorHandling } from '../../src/components'
 
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />)
 
-storiesOf('Loading', module)
-  .add('Default', () => <Loading />)
+storiesOf('Error Handling', module)
+  .add('Loading', () => <Loading />)
+  .add('Error Page', () => <ErrorHandling isFetching={false} error='Error' onReload={() => null} />)
 
 storiesOf('Button', module)
   .addDecorator(getStory => <CenterView>{getStory()}</CenterView>)
