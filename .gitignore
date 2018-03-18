@@ -58,3 +58,6 @@ android/
 
 # environment
 .env
+
+# yarn.lock
+yarn.lock
