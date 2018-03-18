@@ -18,6 +18,12 @@ class GithubContainer extends Component {
     }).isRequired,
   }
 
+  constructor() {
+    super()
+
+    this.renderItem = this.renderItem.bind(this)
+  }
+
   handleLinkUrl = (url) => {
     Modal.alert(
       <Text style={styles.textAlert}>Open Url</Text>,
@@ -27,18 +33,21 @@ class GithubContainer extends Component {
     ]) 
   }
 
-  renderItem = ({ item }) => (
-    <Item
-      arrow="horizontal"
-      thumb={item.owner.avatar_url}
-      multipleLine
-      platform="android"
-      onClick={() => this.handleLinkUrl(item.html_url)}
-    >
-      {item.name}
-      <Brief>{item.description}</Brief>
-    </Item>
-  )
+  renderItem({ item })  {
+    return (
+      <Item
+        arrow="horizontal"
+        thumb={item.owner.avatar_url}
+        multipleLine
+        platform="android"
+        onClick={() => this.handleLinkUrl(item.html_url)}
+      >
+        {item.name}
+        <Brief>{item.description}</Brief>
+      </Item>
+    )
+  }
+   
 
   render() {
     const { github } = this.props
