@@ -14,7 +14,7 @@ describe('Caluclator.js', () => {
     expect(recieved).toEqual(expected)
   })
 
-  it('numberFormat 1234 .toFixed(2)', () => {
+  it('numberFormat 1234 .toFixed(2) no comma', () => {
     const recieved = Calculator.numberFormat(1234, 2, '.', '')
     const expected = '1234.00'
     expect(recieved).toEqual(expected)
