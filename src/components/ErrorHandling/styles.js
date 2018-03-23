@@ -1,17 +1,16 @@
-import { GlobalStyle } from '../../styles'
-import { Theme } from '../../config/theme'
+import { GlobalStyle, Colors } from '../../styles'
 
 class Style extends GlobalStyle {
   container = {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: Colors.WHITE,
   }
   textAlert = {
     fontSize: 16,
     fontWeight: 'bold',
-    color: Theme.Button.Text.danger,
+    color: Colors.DANGER,
   }
 }
 

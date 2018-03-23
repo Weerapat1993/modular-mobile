@@ -15,3 +15,21 @@ export const Colors = {
   // Border
   BORDER_COLOR: '#e8e8e8',
 }
+
+// Button Theme
+export const Button = {
+  Background: {
+    DEFAULT: Colors.WHITE,
+    PRIMARY: Colors.PRIMARY,
+    SUCCESS: Colors.SUCCESS,
+    DANGER: Colors.DANGER,
+    WARNING: Colors.WARNING,
+  },
+  Text: {
+    DEFAULT: Colors.DEFAULT,
+    PRIMARY: Colors.PRIMARY,
+    SUCCESS: Colors.SUCCESS,
+    DANGER: Colors.DANGER,
+    WARNING: Colors.WARNING,
+  }
+}

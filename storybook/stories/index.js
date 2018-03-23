@@ -10,7 +10,7 @@ storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo(
 
 storiesOf('Error Handling', module)
   .add('Loading', () => <Loading />)
-  .add('Error Page', () => <ErrorHandling isFetching={false} error='Error' onReload={() => null} />)
+  .add('Error Page', () => <ErrorHandling isFetching={false} error='Error' onReload={() => null} >A</ErrorHandling>)
 
 storiesOf('Button', module)
   .addDecorator(getStory => <CenterView>{getStory()}</CenterView>)

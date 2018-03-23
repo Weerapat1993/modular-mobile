@@ -7,4 +7,4 @@ export const styles = new GlobalStyle()
 export { GlobalStyle }
 
 // Theme
-export { Colors } from './Theme'
+export { Colors, Button } from './Theme'
