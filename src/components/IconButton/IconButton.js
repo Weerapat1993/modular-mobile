@@ -12,7 +12,7 @@ const IconButton = ({ onPress, icon, type, color, style, size, iconSize }) => {
         onPress={onPress} 
         style={[styles.btnView(type, color, size), style]}
       >
-        <Text>A</Text>
+        <Text style={styles.btnTextIcon(color)}>A</Text>
         {/* <Icon type={icon} size={iconSize} /> */}
       </TouchableHighlight>
     )
@@ -22,7 +22,7 @@ const IconButton = ({ onPress, icon, type, color, style, size, iconSize }) => {
       onPress={onPress} 
       style={[styles.btnView(type, color, size), style]}
     >
-      <Text>A</Text>
+      <Text style={type === 'outline' ? styles.btnTextIcon(color) : {}}>A</Text>
       {/* <Icon type={icon} size={iconSize} /> */}
     </TouchableOpacity>
   )

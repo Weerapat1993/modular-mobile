@@ -48,9 +48,10 @@ class ErrorHandling extends Component {
                 error ? (
                   <View style={styles.container}>
                     <Image source={ErrorFlat} style={styles.size(256)} />
-                    <Text style={[styles.fontBold(24, '#C43'), styles.marginVertical(20)]}>Oh Snap!</Text>
-                    <Text style={styles.fontRegular(14, '#999')}>Something this wrong!</Text>
-                    <Text style={styles.fontRegular(14, '#999')}>Please try again!</Text>
+                    <Text style={[styles.textDangerBold(24), styles.marginVertical(20)]}>Oh Snap!</Text>
+                    <Text style={styles.textMute(16)}>Something this wrong!</Text>
+                    <View style={styles.marginTop(5)} />
+                    <Text style={styles.textMute(16)}>Please try again!</Text>
                     <Button 
                       type='outline' 
                       color='primary' 

@@ -2,12 +2,13 @@ import React from 'react'
 import { func, oneOf, string, bool, objectOf, any } from 'prop-types'
 import { TouchableOpacity, Text, TouchableHighlight } from 'react-native'
 import styles from './styles'
+import { Colors } from '../../styles'
 
 const Button = ({ onPress, children, type, color, rounded, style, textColor }) => {
   if(type === 'flat') {
     return (
       <TouchableHighlight
-        underlayColor={styles.colorOpacity('#FFFFFF', 0.3)}
+        underlayColor={styles.colorOpacity(Colors.WHITE, 0.3)}
         onPress={onPress} 
         style={[styles.btnView(type, color, rounded), style]}
       >

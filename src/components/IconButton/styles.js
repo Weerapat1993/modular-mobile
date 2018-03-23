@@ -15,6 +15,9 @@ class Style extends GlobalStyle {
       ...this.circle(size),
     }
   }
+  btnTextIcon = (color) => ({
+    color: _.get(Theme.Button.Text, color, color)
+  })
 }
 
 export default new Style()
