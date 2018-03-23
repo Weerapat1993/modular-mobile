@@ -10,7 +10,7 @@ class Style extends GlobalStyle {
     backgroundColor: type === 'outline' || type === 'flat' ? 'transparent' : _.get(Theme.Button.Color, color.toUpperCase(), color),
     paddingHorizontal: 15,
     paddingVertical: 10,
-    borderColor: _.get(Theme.Button.Text, color, color),
+    borderColor: _.get(Theme.Button.Text, color.toUpperCase(), color),
     borderWidth: type === 'outline' ? 1 : 0,
     borderRadius: rounded ? 50 : 0
   })
