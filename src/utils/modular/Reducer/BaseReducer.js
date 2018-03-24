@@ -2,31 +2,51 @@ import _ from 'lodash'
 
 export const classReducer = (ClassReducer) => (state, action) => new ClassReducer({ state, action })._setInitial().getState()
 
+/**
+ * @typedef {Object} State data in initalState
+ * @property {Object} [keys] data object with key
+ * @property {Array.<string>} [byID] data key list 
+ */
+
+/**
+ * @typedef {Object} StateWithKey data state in each key
+ * @property {boolean} [isFetching] check data when loading
+ * @property {boolean} [isReload] check data when reload again
+ * @property {string} [error] error message response
+ * @property {any} [data] data inforamtion
+ */
+
+/**
+ * @typedef {Object} Fillable
+ * @property {boolean} isFetching check data when loading
+ * @property {boolean} isReload check data when reload again
+ * @property {string} error error message response
+ * @property {any} data data inforamtion
+ */
+
+ /**
+  * @typedef {Object} Action
+  * @property {string} type action type name
+  * @property {*} [data] data response from API
+  * @property {string} [key] data key when find key object in reducer
+  * @property {Error} [error] error response from API
+  */
+
+/**
+ * @typedef {Object} PropReducer
+ * @property {State} state state in store from redux
+ * @property {Action} action action from action creator
+ */
+
  /**
  * @class BaseReducer
+ * @private
  */
 export class BaseReducer {
-  /** 
-   * @typedef {Object} State
-   * @property {Object} [keys]
-   * @property {Array.<string>} [byID]
-   * 
-   * @typedef {Object} StateWithKey
-   * @property {boolean} [isFetching]
-   * @property {boolean} [isReload]
-   * @property {string} [error]
-   * @property {*} [data]
-   * 
-   * @typedef {Object} Action
-   * @property {string} type
-   * @property {*} [data]
-   * @property {string} [key]
-   * @property {Error} [error]
-   */
-
   /**
    * Reducer Constructor
-   * @param {{ state: State, action: Action }} props
+   * @constructor
+   * @param {PropReducer} props Properties in Reducer
    */
   constructor(props) {
     this.initialState = {}
@@ -48,7 +68,7 @@ export class BaseReducer {
 
   /**
    * Get Error Message
-   * @return {String} 
+   * @return {String} response error message is string
    */
   errorMessage() {
     const { error } = this.action
@@ -57,8 +77,8 @@ export class BaseReducer {
 
   /**
    * Set State
-   * @param {StateWithKey} newState
-   * @return {State}
+   * @param {StateWithKey} newState create new state
+   * @return {State} get new state
    */
   setState(newState) {
     return {
@@ -69,8 +89,8 @@ export class BaseReducer {
 
   /**
    * Set state withKey in Reducer
-   * @param {StateWithKey} newState
-   * @return {State}
+   * @param {StateWithKey} newState create new state in key object
+   * @return {State} get new state in key object
    */
   setStateWithKey(newState) {
     return {
@@ -87,7 +107,7 @@ export class BaseReducer {
 
   /** 
    * Get state withKey in Reducer
-   * @return {StateWithKey} 
+   * @return {StateWithKey} getState in key object
    */
   getStateWithKey() {
     return this.state.keys[this.key]
@@ -95,23 +115,9 @@ export class BaseReducer {
 
   /**
    * Get state in Reducer
-   * @return {State}
+   * @return {State} get state in reducer
    */
   getState() {
     return this.state
-  }
-
-  /**
-   * Convert Array To Object with key
-   * @param {Array.<Object>} array
-   * @param {string} primaryKey
-   * @return {Object}
-   */
-  arrayToObject = (array, primaryKey = 'id') => {
-    const newData = {}
-    array.forEach((item) => {
-      newData[item[primaryKey]] = item
-    })
-    return newData
   }
 }
