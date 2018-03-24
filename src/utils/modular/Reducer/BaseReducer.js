@@ -48,10 +48,26 @@ export const classReducer = (ClassReducer) => (state, action) => new ClassReduce
   * @property {string} [key] data key when find key object in reducer
   * @property {Error} [error] error response from API
   * @example
-  * 
+  * // Type Request
   * const action = {
-  *   type: 'FETCH_PRODUCT_REQUEST',
+  *   type: FETCH_PRODUCT.REQUEST,
   *   key: 'product1',
+  * }
+  * 
+  * // Type Success
+  * const action = {
+  *   type: FETCH_PRODUCT.SUCCESS,
+  *   key: 'product1',
+  *   data: {
+  *     message: 'Data Response' 
+  *   }
+  * }
+  * 
+  * // Type FAILURE
+  * const action = {
+  *   type: FETCH_PRODUCT.FAILURE,
+  *   key: 'product1',
+  *   error: new Error('Error Response')
   * }
   */
 
