@@ -23,8 +23,11 @@
       "dictionaries": ["jsdoc","closure"]
   },
   "templates": {
-      "cleverLinks": false,
-      "monospaceLinks": true
+    "cleverLinks": false,
+    "monospaceLinks": true,
+    "systemName": "remoteFileExplorer",
+    "linenums": true,
+    "collapseSymbols": true
   },
   "opts": {
     "destination": "./docs/",

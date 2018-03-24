@@ -3,7 +3,7 @@ import _ from 'lodash'
 /**
  * @class Calculator
  */
-export class Calculator {
+class Calculator {
   /**
    * Random Number (min-max)
    * @param {number} min min Value
