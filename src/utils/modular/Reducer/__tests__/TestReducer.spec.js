@@ -1,7 +1,28 @@
 import { TestReducer, testReducer } from '../TestReducer'
 
 describe('Test', () => {
-  const classReducer = (action) => new TestReducer({ action })._setInitial()
+  const classReducer = (action, state) => new TestReducer({ action, state })._setInitial()
+  it('Test InitialState', () => {
+    const action = { type: 'ETC', key: 'ETC' }
+    const recieved = testReducer(undefined, action)
+    const expected = classReducer(action).initialState
+    expect(recieved).toEqual(expected)
+  })
+
+  it('Test SET_STATE', () => {
+    const action = { type: 'SET_STATE', key: 'SET_STATE' }
+    const recieved = testReducer(undefined, action)
+    const expected = classReducer(action).setState({ byID: ['HI'] })
+    expect(recieved).toEqual(expected)
+  })
+
+  it('Test SET_STATE_WITH_KEY', () => {
+    const action = { type: 'SET_STATE_WITH_KEY', key: 'SET_STATE_WITH_KEY' }
+    const recieved = testReducer(undefined, action)
+    const expected = classReducer(action).setStateWithKey({ error: '' })
+    expect(recieved).toEqual(expected)
+  })
+
   it('Test Request', () => {
     const action = { type: 'REQUEST', key: 'REQUEST' }
     const recieved = testReducer(undefined, action)
@@ -24,29 +45,20 @@ describe('Test', () => {
     expect(recieved).toEqual(expected)
   })
 
-  it('Test ConvertArray', () => {
-    const data = [
-      {
-        id: 'article:1',
-        name: 'John',
-      },
-      {
-        id: 'article:2',
-        name: 'Henry',
+  it('Test Update Key', () => {
+    // First Data
+    const action = { type: 'UPDATE_KEY', key: 'product1', data: { status: 'pending' } }
+    const state = classReducer(action).setStateWithKeySuccess({ data: action.data })
+
+    // Second Data
+    const action2 = { type: 'UPDATE_KEY', key: 'product1', data: { status: 'processing' } }
+    const recieved = testReducer(state, action2) 
+    const expected = classReducer(action2, state).setStateWithKey({ 
+      data: {
+        ...classReducer(action2, state).getStateWithKey().data,
+        ...action2.data
       }
-    ]
-    const action = { type: 'SUCCESS', key: 'SUCCESS', data }
-    const recieved = classReducer(action).arrayToObject(data, 'id')
-    const expected = {
-      'article:1': {
-        id: 'article:1',
-        name: 'John',
-      },
-      'article:2': {
-        id: 'article:2',
-        name: 'Henry',
-      }
-    }
+    })
     expect(recieved).toEqual(expected)
   })
 })

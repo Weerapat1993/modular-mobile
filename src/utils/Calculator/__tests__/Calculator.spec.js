@@ -7,7 +7,14 @@ describe('Caluclator.js', () => {
     const recieved = Calculator.random(min, max)
     expect(recieved).toBeLessThanOrEqual(max)
     expect(recieved).toBeGreaterThanOrEqual(min)
-  });
+  })
+
+  it('numberFormat 1234.56 toFixed(0)', () => {
+    const recieved = Calculator.numberFormat(1234.56)
+    const expected = '1,235'
+    expect(recieved).toEqual(expected)
+  })
+
   it('numberFormat 1234.56 .toFixed(2)', () => {
     const recieved = Calculator.numberFormat(1234.56, 2)
     const expected = '1,234.56'

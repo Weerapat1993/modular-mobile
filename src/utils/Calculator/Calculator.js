@@ -9,6 +9,8 @@ class Calculator {
    * @param {number} min min Value
    * @param {number} max max Value
    * @return {number}
+   * @example
+   * Calculator.random(1, 10) // Value Between 1 - 10
    */
   static random(min, max) {
     return _.random(min, max)
@@ -23,6 +25,10 @@ class Calculator {
    * @param {string} decPoint symbol of decimal number
    * @param {string} thousandsSep symbol of thousands separator
    * @return {string}
+   * @example
+   * Calculator.numberFormat(1234, 2) // '1,234.00'
+   * Calculator.numberFormat(1234.567, 3, '.', '') // '1234.567'
+   * Calculator.numberFormat(1234.567) // '1,234'
    */
   static numberFormat(number, decimals, decPoint, thousandsSep) {
     number = (number + '').replace(/[^0-9+\-Ee.]/g, '')
