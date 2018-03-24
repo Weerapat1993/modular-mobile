@@ -6,7 +6,6 @@
   "source": {
       "include": [
         "README.md",
-        "src/utils/ArrayCollection",
         "src/utils/Calculator",
         "src/utils/modular/Reducer"
       ],

@@ -81,7 +81,7 @@ export class Reducer extends BaseReducer {
 
   /**
    * setState with Key case success
-   * @param {StateWithKey} [newState] craete new state
+   * @param {StateWithKey} newState craete new state
    * @return {State} new state data
    * @example
    * class ProductReducer extends Reducer {
