@@ -9,7 +9,7 @@
     "link": "react-native link",
     "test": "jest",
     "storybook": "storybook start -p 7007",
-    "jsdoc": "jsdoc -c conf.json"
+    "jsdoc": "jsdoc -c jsdoc.json"
   },
   "dependencies": {
     "antd-mobile": "^2.1.6",
