@@ -14,7 +14,7 @@ import { BaseReducer } from './BaseReducer'
  * @property {any} [data] data inforamtion
  */
 
- /**
+/**
  * @typedef {Object} Fillable
  * @property {boolean} isFetching check data when loading
  * @property {boolean} isReload check data when reload again
@@ -29,7 +29,7 @@ import { BaseReducer } from './BaseReducer'
 export class Reducer extends BaseReducer {
   /**
    * Fillable Normalize Data
-   * @param {*} item data when you need normalize data
+   * @param {any} item data when you need normalize data
    * @return {Fillable} 
    */
   fillable = (item) => ({
@@ -55,8 +55,20 @@ export class Reducer extends BaseReducer {
 
   /**
    * setState with Key case request
-   * @param {StateWithKey} newState craete new state
+   * @param {StateWithKey} [newState] craete new state
    * @return {State}
+   * @example
+   * class ProductReducer extends Reducer {
+   *   ...
+   *   getState() {
+   *     const { type } = this.action
+   *     switch(type) {
+   *       ...
+   *       case FETCH_PRODUCT.REQUEST:
+   *         return this.setStateWithKeyRequest()
+   *     }
+   *   }
+   * }
    */
   setStateWithKeyRequest(newState) {
     return this.setStateWithKey({
@@ -69,8 +81,20 @@ export class Reducer extends BaseReducer {
 
   /**
    * setState with Key case success
-   * @param {StateWithKey} newState craete new state
+   * @param {StateWithKey} [newState] craete new state
    * @return {State} new state data
+   * @example
+   * class ProductReducer extends Reducer {
+   *   ...
+   *   getState() {
+   *     const { type, data } = this.action
+   *     switch(type) {
+   *       ...
+   *       case FETCH_PRODUCT.SUCCESS:
+   *         return this.setStateWithKeySuccess({ data })
+   *     }
+   *   }
+   * }
    */
   setStateWithKeySuccess(newState) {
     return this.setStateWithKey({ 
@@ -83,8 +107,20 @@ export class Reducer extends BaseReducer {
 
   /**
    * setState with Key case failure
-   * @param {StateWithKey} newState craete new state
+   * @param {StateWithKey} [newState] craete new state
    * @return {State} new state data
+   * @example
+   * class ProductReducer extends Reducer {
+   *   ...
+   *   getState() {
+   *     const { type } = this.action
+   *     switch(type) {
+   *       ...
+   *       case FETCH_PRODUCT.FAILURE:
+   *         return this.setStateWithKeyFailure()
+   *     }
+   *   }
+   * }
    */
   setStateWithKeyFailure(newState) {
     return this.setStateWithKey({ 

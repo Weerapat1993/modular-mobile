@@ -4,12 +4,12 @@
 class ArrayCollection {
   /**
    * Build Array Collection
-   * ```javascript
-   * const Collection = new ArrayCollection([], 'primaryKey')
-   * ```
    * @constructor
    * @param {Array.<Object>} data Array data
    * @param {string} primaryKey Primary Key in Array
+   * @example
+   * 
+   * const Collection = new ArrayCollection([], 'primaryKey')
    */
   constructor(data, primaryKey) {
     /** @type {string} */
@@ -62,11 +62,11 @@ class ArrayCollection {
 
   /**
    * Select Field Data in Array
-   * ```javascript
-   * Collection.select(['id','name'])
-   * ``` 
    * @param {Array.<Object>} fieldArray Array of field name
    * @return {this} Class Hooks
+   * @example
+   * 
+   * Collection.select(['id','name'])
    */
   select(fileldArray) {
     const oldArray = this.data
@@ -90,13 +90,13 @@ class ArrayCollection {
 
   /**
    * Find Data in Array
-   * ```javascript
-   * Collection.where('id','=','1')
-   * ```
    * @param {string} field field name in Array
    * @param {string} condition [ === , !== , < , > , <= , >= ]
    * @param {any} key key value
    * @return {this} Class Hooks
+   * @example
+   * 
+   * Collection.where('id','=','1')
    */
   where(field, condition, key) {
     switch(condition) {
@@ -128,11 +128,11 @@ class ArrayCollection {
 
   /**
    * Find data by Primary Key
-   * ```javascript
-   * Collection.find(1)
-   * ```
    * @param {stirng|number} key
    * @return {this} Class Hooks
+   * @example
+   * 
+   * Collection.find(1)
    */
   find(key) {
     this.data = this.where(this.primaryKey, '=', key).get()
@@ -141,13 +141,12 @@ class ArrayCollection {
 
   /**
    * Find Data in Array by `Array of value`
-   * ```javascript
-   * Collection.whereIn('id',[1, 2])
-   * ```
    * @param {string} field field name in Array
    * @param {Array.<string>} keyArray Array of key value
    * @return {this} Class Hooks
+   * @example
    * 
+   * Collection.whereIn('id',[1, 2])
    */
   whereIn(field, keyArray) {
     const collect = []
@@ -164,13 +163,12 @@ class ArrayCollection {
 
   /**
    * Find Not Data in Array by `Array of value`
-   * ```javascript
-   * Collection.whereNotIn('id',[1, 2])
-   * ```
    * @param {string} field field name in Array
    * @param {Array.<string>} keyArray Array of key value
    * @return {this} Class Hooks
+   * @example
    * 
+   * Collection.whereNotIn('id',[1, 2])
    */
   whereNotIn(field, keyArray) {
     let newArray = this.data
@@ -184,14 +182,14 @@ class ArrayCollection {
 
   /**
    * Find & Update Data in Array
-   * ```javascript
+   * @param {Object} update data is update
+   * @return {Array.<Object>} data update new Array
+   * @example
+   * 
    * Collection.update({
    *  id: 1,
    *  name: 'newString'
    * })
-   * ```
-   * @param {Object} update data is update
-   * @return {Array.<Object>} data update new Array
    */
   update(update) {
     const data = this.data
@@ -209,14 +207,14 @@ class ArrayCollection {
 
   /**
    * Push Data in Array
-   * ```javascript
+   * @param {Object} insert insert data in array
+   * @return {Array.<Object>} data update new Array
+   * @example
+   * 
    * Collection.insert({
    *  id: 1,
    *  name: 'String'
    * })
-   * ```
-   * @param {Object} insert insert data in array
-   * @return {Array.<Object>} data update new Array
    */
   insert(insert) {
     return [
@@ -229,6 +227,9 @@ class ArrayCollection {
    * Delete data by primaryKey
    * @param {string|number} key Primary key value
    * @return {Array.<Object>} newArray
+   * @example
+   * 
+   * Collection.delete(1)
    */
   delete(key) {
     return this.where(this.primaryKey,'!=', key).toArray()
@@ -236,10 +237,11 @@ class ArrayCollection {
 
   /**
    * Get Length of Array
-   * ```javascript
-   * Collection.count() // 2
-   * ```
    * @return {number} get count in array
+   * @example
+   * 
+   * // [1, 2]
+   * Collection.count() // 2
    */
   count() {
     return this.toArray().length
@@ -247,12 +249,12 @@ class ArrayCollection {
 
   /**
    * Order By field in Array
-   * ```javascript
-   * Collection.orderBy('name','asc')
-   * ```
    * @param {string} field field name in Array
    * @param {string} orderBy ['asc', 'desc']
    * @return {Array.<Object>} newArray
+   * @example
+   * 
+   * Collection.orderBy('name','asc')
    */
   orderBy(field, orderBy) {
     const data = this.data[0]
@@ -301,6 +303,10 @@ class ArrayCollection {
    * Sum Data in Array
    * @param {string} field field name in Array
    * @return {number} sum all value
+   * @example
+   * 
+   * // [{ price: 10 }, { price: 20 }}]
+   * Collection.sum('price') // 30
    */
   sum(field) {
     return this.get(field).reduce((a, b) => a + b , 0)
@@ -308,12 +314,12 @@ class ArrayCollection {
 
   /**
    * Min Data in Array
-   * ```javascript
-   * // [{ price: 10 },{ price: 20 },{ price: 30 }]
-   * Collection.min('price') // 10
-   * ```
    * @param {string} field field name in Array
    * @return {number} get min from all value
+   * @example
+   * 
+   * // [{ price: 10 },{ price: 20 },{ price: 30 }]
+   * Collection.min('price') // 10
    */
   min(field) {
     return this.orderBy(field,'asc').get(field)[0]
@@ -321,12 +327,12 @@ class ArrayCollection {
 
   /**
    * Max Data in Array
-   * ```javascript
-   * // [{ price: 10 },{ price: 20 },{ price: 30 }]
-   * Collection.max('price') // 30
-   * ```
    * @param {string} field field name in Array
    * @return {number} get max from all value
+   * @example
+   * 
+   * // [{ price: 10 },{ price: 20 },{ price: 30 }]
+   * Collection.max('price') // 30
    */
   max(field) {
     return this.orderBy(field,'desc').get(field)[0]
@@ -334,12 +340,12 @@ class ArrayCollection {
 
   /**
    * Average Data in Array
-   * ```javascript
-   * // [{ price: 10 },{ price: 30 }]
-   * Collection.avg('price') // 20
-   * ```
    * @param {string} field field name in Array
    * @return {number} get average from all value
+   * @example
+   * 
+   * // [{ price: 10 },{ price: 30 }]
+   * Collection.avg('price') // 20
    */
   avg(field) {
     const count = this.count()
@@ -348,11 +354,11 @@ class ArrayCollection {
 
   /**
    * Merge Array as Array
-   * ```javascript
-   * Collection.merge([{ id: 1 name: 'String' }])
-   * ```
    * @param {Array.<Object>} array array you want to merge
    * @return {this} Class Hooks
+   * @example
+   * 
+   * Collection.merge([{ id: 1 name: 'String' }])
    */
   merge(array) {
     const dataPrimaryKey = new ArrayCollection(array, this.primaryKey).get(this.primaryKey)

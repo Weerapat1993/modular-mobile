@@ -6,6 +6,12 @@ export const classReducer = (ClassReducer) => (state, action) => new ClassReduce
  * @typedef {Object} State data in initalState
  * @property {Object} [keys] data object with key
  * @property {Array.<string>} [byID] data key list 
+ * @example
+ * 
+ * const inititalState = {
+ *   keys: {},
+ *   byID: []
+ * }
  */
 
 /**
@@ -14,22 +20,39 @@ export const classReducer = (ClassReducer) => (state, action) => new ClassReduce
  * @property {boolean} [isReload] check data when reload again
  * @property {string} [error] error message response
  * @property {any} [data] data inforamtion
- */
-
-/**
- * @typedef {Object} Fillable
- * @property {boolean} isFetching check data when loading
- * @property {boolean} isReload check data when reload again
- * @property {string} error error message response
- * @property {any} data data inforamtion
+ * @example
+ * 
+ * const state = {
+ *   keys: {
+ *     product1: {
+ *       isFetching: false,
+ *       isReload: true,
+ *       error: '',
+ *       data: {}
+ *     }
+ *     product2: {
+ *       isFetching: false,
+ *       isReload: true,
+ *       error: '',
+ *       data: {}
+ *     }
+ *   },
+ *   byID: ['product1', 'product2']
+ * }
  */
 
  /**
   * @typedef {Object} Action
   * @property {string} type action type name
-  * @property {*} [data] data response from API
+  * @property {any} [data] data response from API
   * @property {string} [key] data key when find key object in reducer
   * @property {Error} [error] error response from API
+  * @example
+  * 
+  * const action = {
+  *   type: 'FETCH_PRODUCT_REQUEST',
+  *   key: 'product1',
+  * }
   */
 
 /**
@@ -90,6 +113,18 @@ export class BaseReducer {
    * Set state withKey in Reducer
    * @param {StateWithKey} newState create new state in key object
    * @return {State} get new state in key object
+   * @example
+   * class ProductReducer extends Reducer {
+   *   ...
+   *   getState() {
+   *     const { type } = this.action
+   *     switch(type) {
+   *       ...
+   *       case CLEAR_ERROR_PRODUCT:
+   *         return this.setStateWithKey({ error: '' })
+   *     }
+   *   }
+   * }
    */
   setStateWithKey(newState) {
     return {
@@ -107,6 +142,24 @@ export class BaseReducer {
   /** 
    * Get state withKey in Reducer
    * @return {StateWithKey} getState in key object
+   * @example
+   * class ProductReducer extends Reducer {
+   *   ...
+   *   getState() {
+   *     const { type, data } = this.action
+   *     switch(type) {
+   *       ...
+   *       case UPDATE_PRODUCT.SUCCESS:
+   *         return this.setStateWithKey({ 
+   *           data: {
+   *             ...this.getStateWithKey().data,
+   *             ...data,
+   *           } 
+   *         })
+   *     }
+   *   }
+   * }
+   * 
    */
   getStateWithKey() {
     return this.state.keys[this.key]
