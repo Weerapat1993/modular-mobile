@@ -1,13 +1,4 @@
-import { Calculator as ClassCalculator } from './Calculator'
+// import { Calculator as ClassCalculator } from './Calculator'
+import Calculator from './Calculator'
 
-// Destructuring
-const {
-  numberFormat,
-  random,
-} = ClassCalculator
-
-// Calculator function Exports
-export const Calculator = {
-  numberFormat,
-  random
-}
+export { Calculator }

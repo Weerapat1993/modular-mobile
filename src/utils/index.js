@@ -1,2 +1,2 @@
 export * from './modular'
-export * from './Calculator'
+export { Calculator } from './Calculator'

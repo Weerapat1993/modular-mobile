@@ -1,4 +1,4 @@
-import { random } from 'lodash'
+import _ from 'lodash'
 
 /**
  * @class Calculator
@@ -11,12 +11,12 @@ export class Calculator {
    * @return {number}
    */
   static random(min, max) {
-    return random(min, max)
+    return _.random(min, max)
   }
 
   /**
    * PHP `number_format` in JavaScript
-   * http://locutus.io/php/strings/number_format
+   * [Link Description]{@link http://locutus.io/php/strings/number_format }
    * 
    * @param {number|string} number value of number 
    * @param {number} decimals Count of decimal number
@@ -50,4 +50,14 @@ export class Calculator {
   
     return s.join(dec)
   }
+}
+
+const {
+  random,
+  numberFormat,
+} = Calculator
+
+export default {
+  random,
+  numberFormat,
 }
