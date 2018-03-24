@@ -8,7 +8,8 @@
     "android": "react-native run-android",
     "link": "react-native link",
     "test": "jest",
-    "storybook": "storybook start -p 7007"
+    "storybook": "storybook start -p 7007",
+    "jsdoc": "jsdoc -c conf.json"
   },
   "dependencies": {
     "antd-mobile": "^2.1.6",

@@ -4,7 +4,6 @@ export const classReducer = (ClassReducer) => (state, action) => new ClassReduce
 
  /**
  * @class BaseReducer
- * @extends {Function}
  */
 export class BaseReducer {
   /** 

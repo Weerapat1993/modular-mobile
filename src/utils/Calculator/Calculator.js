@@ -5,11 +5,10 @@ import { random } from 'lodash'
  */
 export class Calculator {
   /**
-   * Randon Number (min-max)
-   * @param {number} min 
-   * @param {number} max
+   * Random Number (min-max)
+   * @param {number} min min Value
+   * @param {number} max max Value
    * @return {number}
-   * @static
    */
   static random(min, max) {
     return random(min, max)
@@ -19,12 +18,11 @@ export class Calculator {
    * PHP `number_format` in JavaScript
    * http://locutus.io/php/strings/number_format
    * 
-   * @param {number} number
-   * @param {number} decimals 
-   * @param {string} decPoint 
-   * @param {string} thousandsSep 
+   * @param {number|string} number value of number 
+   * @param {number} decimals Count of decimal number
+   * @param {string} decPoint symbol of decimal number
+   * @param {string} thousandsSep symbol of thousands separator
    * @return {string}
-   * @static
    */
   static numberFormat(number, decimals, decPoint, thousandsSep) {
     number = (number + '').replace(/[^0-9+\-Ee.]/g, '')

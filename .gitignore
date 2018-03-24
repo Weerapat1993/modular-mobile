@@ -67,3 +67,6 @@ yarn.lock
 
 # coverage
 coverage/
+
+# jsdoc
+out/

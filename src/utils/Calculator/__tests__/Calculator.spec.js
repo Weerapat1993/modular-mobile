@@ -1,7 +1,7 @@
-import { Calculator } from '../Calculator'
+import { Calculator } from '../index'
 
 describe('Caluclator.js', () => {
-  it('random(1,1)', () => {
+  it('random 10 - 20', () => {
     const min = 10
     const max = 20
     const recieved = Calculator.random(min, max)
