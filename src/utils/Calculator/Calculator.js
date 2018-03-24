@@ -17,7 +17,7 @@ export class Calculator {
 
   /**
    * PHP `number_format` in JavaScript
-   * [Link]{@link http://locutus.io/php/strings/number_format }
+   * http://locutus.io/php/strings/number_format
    * 
    * @param {number} number
    * @param {number} decimals 
