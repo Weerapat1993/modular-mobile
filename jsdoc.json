@@ -6,13 +6,13 @@
   "source": {
       "include": [
         "README.md",
+        "src/utils/ArrayCollection",
         "src/utils/Calculator",
         "src/utils/modular/Reducer"
       ],
       "exclude": [
         "src/utils/modular/Reducer/Model.js",
-        "src/utils/modular/Reducer/TestReducer.js",
-        "src/utils/modular/Reducer/BaseReducer.js"
+        "src/utils/modular/Reducer/TestReducer.js"
       ],
       "includePattern": ".+\\.js(doc|x)?$",
       "excludePattern": "(^|\\/|\\\\)_"

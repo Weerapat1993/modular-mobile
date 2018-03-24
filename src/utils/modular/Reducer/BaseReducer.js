@@ -40,7 +40,6 @@ export const classReducer = (ClassReducer) => (state, action) => new ClassReduce
 
  /**
  * @class BaseReducer
- * @private
  */
 export class BaseReducer {
   /**
