@@ -77,8 +77,8 @@ export const classReducer = (ClassReducer) => (state, action) => new ClassReduce
  * @property {Action} action action from action creator
  */
 
- /**
- * @class BaseReducer
+/**
+ * @global
  */
 export class BaseReducer {
   /**
@@ -107,6 +107,8 @@ export class BaseReducer {
   /**
    * Get Error Message
    * @return {String} response error message is string
+   * @example
+   * return _.get(error, 'response.data.message') || error.message
    */
   errorMessage() {
     const { error } = this.action
@@ -136,7 +138,7 @@ export class BaseReducer {
    *     const { type } = this.action
    *     switch(type) {
    *       ...
-   *       case CLEAR_ERROR_PRODUCT:
+   *       case CLEAR_ERROR_PRODUCT_BY_ID:
    *         return this.setStateWithKey({ error: '' })
    *     }
    *   }
@@ -165,7 +167,7 @@ export class BaseReducer {
    *     const { type, data } = this.action
    *     switch(type) {
    *       ...
-   *       case UPDATE_PRODUCT.SUCCESS:
+   *       case UPDATE_PRODUCT_BY_ID.SUCCESS:
    *         return this.setStateWithKey({ 
    *           data: {
    *             ...this.getStateWithKey().data,

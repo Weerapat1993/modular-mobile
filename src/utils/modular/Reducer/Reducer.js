@@ -25,12 +25,64 @@ import { BaseReducer } from './BaseReducer'
 /**
  * @class Reducer
  * @extends BaseReducer
+ * @example
+ * // productReducer.js
+ * import { Reducer, classReducer } from '../utils'
+ * 
+ * export class ProductReducer extends Reducer {
+ *   // InitialState Product List & Detail
+ *   initialState = {
+ *     keys: {},
+ *     byID: [],
+ *     isFetching: false,
+ *     isReload: true,
+ *     error: '',
+ *   }
+ * 
+ *   getState() {
+ *     const { type, data } = this.action
+ *     switch(type) {
+ *       case 'FETCH_PRODUCT_LIST.REQUEST':
+ *         return this.setState({ 
+ *           isFetching: true,
+ *           isReload: false,
+ *           error: '',
+ *         })
+ *       case 'FETCH_PRODUCT_LIST.SUCCESS':
+ *         return this.setState({ 
+ *           keys: this.normailzeData(data),
+ *           byID: data.map(item => item.id),
+ *           isFetching: false,
+ *           isReload: false,
+ *           error: '',
+ *         })
+ *       case 'FETCH_PRODUCT_LIST.FAILURE':
+ *         return this.setState({ 
+ *           isFetching: false,
+ *           isReload: false,
+ *           error: this.errorMessage(),
+ *         })
+ *       default:
+ *         return this.state
+ *     }
+ *   }
+ * }
+ * 
+ * export const productReducer = classReducer(ProductReducer)
  */
 export class Reducer extends BaseReducer {
   /**
    * Fillable Normalize Data
    * @param {any} item data when you need normalize data
-   * @return {Fillable} 
+   * @return {Fillable}
+   * @example
+   * // Fillable Default Data
+   * {
+   *   isFetching: false,
+   *   isReload: true,
+   *   error: '',
+   *   data: item,
+   * }
    */
   fillable = (item) => ({
     isFetching: false,
@@ -44,6 +96,22 @@ export class Reducer extends BaseReducer {
    * @param {Array.<Object>} array array data required normalize
    * @param {string} primaryKey primaray key in array
    * @return {Fillable}
+   * @example
+   * class ProductReducer extends Reducer {
+   *   ...
+   *   getState() {
+   *     const { type, data } = this.action
+   *     switch(type) {
+   *       ...
+   *       case FETCH_PRODUCT_LIST.SUCCESS:
+   *         return this.setState({ 
+   *           keys: this.normalizeData(data),
+   *           byID: data.map(item => item.id),
+   *         })
+   *     }
+   *   }
+   * }
+   * 
    */
   normalizeData(array, primaryKey = 'id') {
     const newData = {}
@@ -64,7 +132,7 @@ export class Reducer extends BaseReducer {
    *     const { type } = this.action
    *     switch(type) {
    *       ...
-   *       case FETCH_PRODUCT.REQUEST:
+   *       case FETCH_PRODUCT_BY_ID.REQUEST:
    *         return this.setStateWithKeyRequest()
    *     }
    *   }
@@ -90,7 +158,7 @@ export class Reducer extends BaseReducer {
    *     const { type, data } = this.action
    *     switch(type) {
    *       ...
-   *       case FETCH_PRODUCT.SUCCESS:
+   *       case FETCH_PRODUCT_BY_ID.SUCCESS:
    *         return this.setStateWithKeySuccess({ data })
    *     }
    *   }
@@ -116,7 +184,7 @@ export class Reducer extends BaseReducer {
    *     const { type } = this.action
    *     switch(type) {
    *       ...
-   *       case FETCH_PRODUCT.FAILURE:
+   *       case FETCH_PRODUCT_BY_ID.FAILURE:
    *         return this.setStateWithKeyFailure()
    *     }
    *   }
