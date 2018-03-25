@@ -1,5 +1,13 @@
 import _ from 'lodash'
 
+// Currency
+const POUND = '£'
+const BAHT = '฿'
+
+// set Default Currency
+const CURRENCY = POUND
+
+
 /**
  * @class Calculator
  */
@@ -10,7 +18,7 @@ class Calculator {
    * @param {number} max max Value
    * @return {number}
    * @example
-   * Calculator.random(1, 10) // Value Between 1 - 10
+   * Calculator.random(1, 10) // random value between 1 - 10
    */
   static random(min, max) {
     return _.random(min, max)
@@ -56,14 +64,58 @@ class Calculator {
   
     return s.join(dec)
   }
+
+  /**
+   * Convert Currency to Coin
+   * @param {number} price price of currency
+   * @param {string} [currency=£] currency symbol
+   * @return {string}
+   * @example
+   * Calculator.convertToCoin(20.00, '£') // 2,000
+   * Calculator.convertToCoin(880, '฿') // 2,000
+   */
+  static convertToCoin(price, currency) {
+    switch(currency || CURRENCY) {
+      case POUND:
+        return this.numberFormat(price * 100)
+      case BAHT:
+        return this.numberFormat((price / 44) * 100)
+      default:
+        return this.numberFormat(price * 100)
+    }
+  }
+
+  /**
+   * Convert Coin to Currency
+   * @param {number} price price of currency
+   * @param {string} [currency=£] currency symbol
+   * @return {string}
+   * @example
+   * Calculator.convertToCurrency(2000, '£') // 20.00
+   * Calculator.convertToCurrency(2000, '฿') // 880.00
+   */
+  static convertToCurrency(price, currency) {
+    switch(currency || CURRENCY) {
+      case POUND:
+        return this.numberFormat(price / 100, 2)
+      case BAHT:
+        return this.numberFormat((price / 100) * 44, 2)
+      default:
+        return this.numberFormat(price / 100, 2)
+    }
+  }
 }
 
 const {
   random,
   numberFormat,
+  convertToCoin,
+  convertToCurrency,
 } = Calculator
 
 export default {
   random,
   numberFormat,
+  convertToCoin,
+  convertToCurrency,
 }

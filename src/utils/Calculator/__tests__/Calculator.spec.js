@@ -32,4 +32,28 @@ describe('Caluclator.js', () => {
     const expected = '12,345,678.901'
     expect(recieved).toEqual(expected)
   })
+
+  it ('convertToCoin £ 20.00', () => {
+    const recieved = Calculator.convertToCoin(20)
+    const expected = '2,000'
+    expect(recieved).toEqual(expected)
+  });
+
+  it ('convertToCoin ฿ 880', () => {
+    const recieved = Calculator.convertToCoin(880, '฿')
+    const expected = '2,000'
+    expect(recieved).toEqual(expected)
+  });
+
+  it ('convertToCurrency 2000 Coin', () => {
+    const recieved = Calculator.convertToCurrency(2000)
+    const expected = '20.00'
+    expect(recieved).toEqual(expected)
+  });
+
+  it ('convertToCurrency 2000 Coin', () => {
+    const recieved = Calculator.convertToCurrency(2000, '฿')
+    const expected = '880.00'
+    expect(recieved).toEqual(expected)
+  });
 })
