@@ -87,7 +87,7 @@ class Calculator {
 
   /**
    * Convert Coin to Currency
-   * @param {number} price price of currency
+   * @param {number} price price of coin
    * @param {string} [currency=£] currency symbol
    * @return {string}
    * @example

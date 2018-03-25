@@ -31,6 +31,8 @@ export class TestReducer extends Reducer {
             ...data,
           } 
         })
+      case 'NORMALIZE_DATA':
+        return this.setState({ keys: this.normalizeData(data) })
       default:
         return this.state
     }

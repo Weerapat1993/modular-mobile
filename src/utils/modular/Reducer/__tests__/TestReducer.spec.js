@@ -61,4 +61,16 @@ describe('Test', () => {
     })
     expect(recieved).toEqual(expected)
   })
+
+  it('Test Normalize Data', () => {
+    // First Data
+    const action = { type: 'NORMALIZE_DATA', data: [{ id: 'product1' }]}
+    // Second Data
+    const recieved = testReducer(undefined, action) 
+    const reducer = classReducer(action)
+    const expected = reducer.setState({ 
+      keys: reducer.normalizeData(action.data)
+    })
+    expect(recieved).toEqual(expected)
+  })
 })
