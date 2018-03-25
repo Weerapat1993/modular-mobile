@@ -7,8 +7,7 @@
       "include": [
         "README.md",
         "src/utils/Calculator",
-        "src/utils/modular/Reducer",
-        "src/styles/GlobalStyle.js"
+        "src/utils/modular/Reducer"
       ],
       "exclude": [
         "src/utils/modular/Reducer/Model.js",

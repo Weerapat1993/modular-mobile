@@ -4,36 +4,6 @@ import { Colors } from './Theme'
 /**
  * @class GlobalStyle
  * @extends BaseStyle
- * @example
- * // Size
- * styles.center
- * styles.size(20) // Square
- * styles.size(20, 30) // Rectangle
- * styles.circle(20)
- * 
- * // Text
- * styles.textColor(14, '#2cd5df')
- * styles.textColorBold(14, '#2cd5df')
- * styles.textDefault(14)
- * styles.textDefaultBold(14)
- * styles.textPrimary(14)
- * styles.textPrimaryBold(14)
- * styles.textWarning(14)
- * styles.textWarningBold(14)
- * styles.textDanger(14)
- * styles.textDangerBold(14)
- * styles.textSuccess(14)
- * styles.textSuccessBold(14)
- * styles.textMute(14)
- * styles.textMuteBold(14)
- * 
- * // Background
- * styles.bgDefault
- * styles.bgPrimary
- * styles.bgWarning
- * styles.bgDanger
- * styles.bgSuccess
- * styles.bgMute
  */
 class GlobalStyle extends BaseStyle {
   center = {
@@ -85,7 +55,6 @@ class GlobalStyle extends BaseStyle {
   bgDanger = { backgroundColor: Colors.DANGER }
   bgWarning = { backgroundColor: Colors.WARNING }
   bgMute = { backgroundColor: Colors.DISABLE }
-
 
   // Border
   lineTop = value => ({
