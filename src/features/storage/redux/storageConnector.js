@@ -22,11 +22,11 @@ export const withLocalStorage = (WrapperComponent) => {
     }
   }
 
-  const mapStateToProps = (state, ownProps) => ({
+  const mapStateToProps = state => ({
     storage: Storage(state).get(),
   })
 
-  const mapDispatchToProps = (dispatch, ownProps) => ({
+  const mapDispatchToProps = dispatch => ({
     localStorage: bindActionCreators(localStorage, dispatch)
   })
 
