@@ -39,6 +39,16 @@ const Home = () => (
         Github 
         <Brief>Go to Github</Brief>
       </Item>
+      <Item
+        arrow="horizontal"
+        thumb="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png"
+        multipleLine
+        onClick={() => Actions.storage()}
+        platform="android"
+      >
+        Storage 
+        <Brief>Go to Local Storage</Brief>
+      </Item>
     </List>
   </View>
 )

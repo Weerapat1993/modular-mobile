@@ -1,11 +1,11 @@
 import { GlobalStyle } from '../../../styles'
-import { Theme } from '../../../config/theme'
+import { Colors } from '../../../styles/Theme'
 
 class Style extends GlobalStyle {
   textAlert = {
     fontSize: 16,
     fontWeight: 'bold',
-    color: Theme.Button.Text.danger,
+    color: Colors.DANGER,
   }
 }
 

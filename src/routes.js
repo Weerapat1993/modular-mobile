@@ -8,6 +8,7 @@ export const Routes = () => (
       <Scene key="home" component={Scenes.Home} title='Home' initial />
       <Scene key="about" component={Scenes.About} title='About' />
       <Scene key="github" component={Scenes.Github} title='Github' />
+      <Scene key="storage" component={Scenes.Storage} title='Storage' />
     </Stack>
   </Router>
 )
