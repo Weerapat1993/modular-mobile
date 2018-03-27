@@ -1,5 +1,4 @@
-export { getLocalStorage, setLocalStorage } from './storageActions'
+export { localStorages } from './storageActions'
 export { storageReducer } from './storageReducer'
 export { withLocalStorage } from './storageConnector'
 export { Storage } from './storageSelector'
-export { LOCAL_STORAGE } from './storageKey'

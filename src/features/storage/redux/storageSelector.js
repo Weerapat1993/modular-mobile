@@ -4,7 +4,7 @@ class LocalStorage {
   }
 
   get(key) {
-    return key ? this.state.storage[key] : this.state.storage
+    return key ? this.state.storage.keys[key] : this.state.storage.keys
   }
 }
 

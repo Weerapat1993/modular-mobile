@@ -4,7 +4,7 @@ import faker from 'faker'
 import { Button } from '../../components'
 import { withLocalStorage } from '../../features/storage'
 
-const StorageScene = ({ storage, setLocalStorage }) => {
+const StorageScene = ({ storage, localStorage }) => {
   const productList = () => {
     const uuid = faker.random.uuid()
     return {
@@ -17,16 +17,14 @@ const StorageScene = ({ storage, setLocalStorage }) => {
       }
     }
   }
-
-  const github = JSON.stringify(['Test'])
-  console.log(storage)
+  const github = JSON.stringify([faker.random.uuid()])
   return (
     <View>
       <Button 
         type='primary' 
         color='primary' 
         rounded 
-        onPress={() => setLocalStorage('productList', JSON.stringify(productList()))}
+        onPress={() => localStorage.setItem('productList', JSON.stringify(productList()))}
         >
         SET PRODUCT
       </Button>
@@ -34,7 +32,7 @@ const StorageScene = ({ storage, setLocalStorage }) => {
         type='primary' 
         color='success' 
         rounded 
-        onPress={() => setLocalStorage('socialList', faker.name.findName())}
+        onPress={() => localStorage.setItem('socialList', faker.name.findName())}
         >
         SET SOCIAL
       </Button>
@@ -42,7 +40,7 @@ const StorageScene = ({ storage, setLocalStorage }) => {
         type='primary' 
         color='#333' 
         rounded
-        onPress={() => setLocalStorage('github', github)}
+        onPress={() => localStorage.setItem('github', github)}
         >
         SET GITHUB
       </Button>
