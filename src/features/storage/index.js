@@ -1,7 +1,6 @@
 export {
   withLocalStorage,
-  getLocalStorage,
-  setLocalStorage,
+  localStorage,
   storageReducer,
   Storage,
 } from './redux'

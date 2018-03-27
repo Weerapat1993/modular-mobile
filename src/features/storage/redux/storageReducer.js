@@ -3,7 +3,7 @@ import { Reducer, classReducer } from '../../../utils'
 
 class StorageReducer extends Reducer {
   initialState = {
-    isFetching: true,
+    isReload: true,
     keys: {},
   }
 
@@ -34,7 +34,7 @@ class StorageReducer extends Reducer {
       store[item[0]] = this.convertJSON(item[1])
     })
     return this.setState({
-      isFetching: false,
+      isReload: false,
       keys: store
     })
   }
