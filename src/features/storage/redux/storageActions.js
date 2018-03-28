@@ -6,6 +6,9 @@ import {
   CLEAR_LOCAL_STORAGE,
 } from './storageActionTypes'
 
+// Get Error Message
+const getError = error => console.error(`Error: ${error.message}`)
+
 /**
  * @class LocalStorage
  * @classdesc
@@ -34,7 +37,7 @@ class LocalStorage {
     return (dispatch, getState) => (
       AsyncStorage.getItem(key)
         .then(value => dispatch({ type: GET_LOCAL_STORAGE, key, value }))
-        .catch(error => console.error(`Error: ${error.message}`))
+        .catch(error => getError(error))
     )
   }
   /**
@@ -49,7 +52,7 @@ class LocalStorage {
     return (dispatch, getState) => (
     AsyncStorage.setItem(key, value)
       .then(() => dispatch({ type: SET_LOCAL_STORAGE, key, value }))
-      .catch(error => console.error(`Error: ${error.message}`))
+      .catch(error => getError(error))
     )
   }
 
@@ -67,9 +70,9 @@ class LocalStorage {
           .then(keys => {
             AsyncStorage.multiGet(keys)
               .then(data => dispatch({ type: GET_ALL_KEY_LOCAL_STORAGE, data }))
-              .catch(error => console.error(`Error: ${error.message}`))
+              .catch(error => getError(error))
           })
-          .catch(error => console.error(`Error: ${error.message}`))
+          .catch(error => getError(error))
       }
     }
   }
@@ -84,7 +87,7 @@ class LocalStorage {
     return (dispatch, getState) => (
       AsyncStorage.clear()
         .then(() => dispatch({ type: CLEAR_LOCAL_STORAGE }))
-        .catch(error => console.error(`Error: ${error.message}`))
+        .catch(error => getError(error))
     )
   }
 }
