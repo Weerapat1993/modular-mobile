@@ -1,5 +1,10 @@
 import { AsyncStorage } from 'react-native'
-import { SET_LOCAL_STORAGE, GET_LOCAL_STORAGE, GET_ALL_KEY_LOCAL_STORAGE } from './storageActionTypes'
+import { 
+  SET_LOCAL_STORAGE, 
+  GET_LOCAL_STORAGE, 
+  GET_ALL_KEY_LOCAL_STORAGE,
+  CLEAR_LOCAL_STORAGE,
+} from './storageActionTypes'
 
 /**
  * @class LocalStorage
@@ -29,7 +34,7 @@ class LocalStorage {
     return (dispatch, getState) => (
       AsyncStorage.getItem(key)
         .then(value => dispatch({ type: GET_LOCAL_STORAGE, key, value }))
-        .catch(error => console.warn(`Error: ${error.message}`))
+        .catch(error => console.error(`Error: ${error.message}`))
     )
   }
   /**
@@ -44,7 +49,7 @@ class LocalStorage {
     return (dispatch, getState) => (
     AsyncStorage.setItem(key, value)
       .then(() => dispatch({ type: SET_LOCAL_STORAGE, key, value }))
-      .catch(error => console.warn(`Error: ${error.message}`))
+      .catch(error => console.error(`Error: ${error.message}`))
     )
   }
 
@@ -58,15 +63,29 @@ class LocalStorage {
     return (dispatch, getState) => {
       const { storage } = getState()
       if(storage.isReload) {
-        AsyncStorage.getAllKeys()
+        return AsyncStorage.getAllKeys()
           .then(keys => {
             AsyncStorage.multiGet(keys)
               .then(data => dispatch({ type: GET_ALL_KEY_LOCAL_STORAGE, data }))
-              .catch(error => console.warn(`Error: ${error.message}`))
+              .catch(error => console.error(`Error: ${error.message}`))
           })
-          .catch(error => console.warn(`Error: ${error.message}`))
+          .catch(error => console.error(`Error: ${error.message}`))
       }
     }
+  }
+
+  /**
+   * clear all data in storage
+   * @return {Promise}
+   * @example
+   * this.props.localStorage.clear()
+   */
+  static clear() {
+    return (dispatch, getState) => (
+      AsyncStorage.clear()
+        .then(() => dispatch({ type: CLEAR_LOCAL_STORAGE }))
+        .catch(error => console.error(`Error: ${error.message}`))
+    )
   }
 }
 
@@ -74,4 +93,5 @@ export const localStorage = {
   getItem: LocalStorage.getItem,
   setItem: LocalStorage.setItem,
   getAllKeys: LocalStorage.getAllKeys,
+  clear: LocalStorage.clear,
 }

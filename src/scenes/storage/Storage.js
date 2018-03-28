@@ -44,6 +44,14 @@ const StorageScene = ({ storage, localStorage }) => {
         >
         SET GITHUB
       </Button>
+      <Button 
+        type='primary' 
+        color='default' 
+        rounded
+        onPress={() => localStorage.clear()}
+        >
+        CLEAR STORAGE
+      </Button>
       <Text>{JSON.stringify(storage, null, '  ')}</Text>
     </View>
   )

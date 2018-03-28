@@ -1,5 +1,10 @@
-import { SET_LOCAL_STORAGE, GET_LOCAL_STORAGE, GET_ALL_KEY_LOCAL_STORAGE } from './storageActionTypes'
 import { Reducer, classReducer } from '../../../utils'
+import { 
+  SET_LOCAL_STORAGE, 
+  GET_LOCAL_STORAGE, 
+  GET_ALL_KEY_LOCAL_STORAGE, 
+  CLEAR_LOCAL_STORAGE,
+} from './storageActionTypes'
 
 class StorageReducer extends Reducer {
   initialState = {
@@ -48,6 +53,8 @@ class StorageReducer extends Reducer {
         return this.setItem()
       case GET_LOCAL_STORAGE:
         return this.setItem()
+      case CLEAR_LOCAL_STORAGE:
+        return this.setState({ keys: {} })
       default:
         return this.state
     }
