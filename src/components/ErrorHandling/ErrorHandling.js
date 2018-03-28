@@ -12,12 +12,13 @@ class ErrorHandling extends Component {
     isFetching: bool,
     error: string,
     children: any.isRequired,
-    onReload: func.isRequired,
+    onReload: func,
   }
 
   static defaultProps = {
     isFetching: false,
     error: '',
+    onReload: () => null,
   }
 
   componentWillReceiveProps(nextProps) {

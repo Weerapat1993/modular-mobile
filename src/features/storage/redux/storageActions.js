@@ -81,9 +81,11 @@ class LocalStorage {
    */
   static clear() {
     return (dispatch, getState) => (
-      AsyncStorage.clear()
-        .then(() => dispatch({ type: CLEAR_LOCAL_STORAGE }))
-        .catch(error => getError(error))
+      Object.keys(getState().storage.keys).length && (
+        AsyncStorage.clear()
+          .then(() => dispatch({ type: CLEAR_LOCAL_STORAGE }))
+          .catch(error => getError(error))
+      )
     )
   }
 }

@@ -6,8 +6,8 @@
   "source": {
       "include": [
         "README.md",
-        "src/utils/Alphabet",
-        "src/utils/Calculator",
+        "src/utils/Alphabet/Alphabet.js",
+        "src/utils/Calculator/Calculator.js",
         "src/utils/modular/Reducer",
         "src/features/storage/redux/storageActions.js"
       ],
