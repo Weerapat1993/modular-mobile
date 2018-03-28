@@ -1,5 +1,6 @@
 export {
   withLocalStorage,
+  withFetchStorage,
   localStorage,
   storageReducer,
   Storage,

@@ -13,6 +13,7 @@ const StorageScene = ({ storage, localStorage }) => {
           id: uuid,
           name: faker.commerce.productName(),
           price: faker.commerce.price(),
+          boolean: true,
         }
       }
     }
