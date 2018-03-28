@@ -3,8 +3,16 @@ class LocalStorage {
     this.state = state
   }
 
-  get(key) {
+  getItem(key) {
     return key ? this.state.storage.keys[key] : this.state.storage.keys
+  }
+
+  /**
+   * get Data in storage Reducer
+   * @return {{ isReload: boolean }}
+   */
+  data() {
+    return this.state.storage
   }
 }
 

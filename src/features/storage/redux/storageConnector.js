@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
-import { shape, func } from 'prop-types'
+import { shape, func, bool } from 'prop-types'
 import { connect } from 'react-redux'
 import { localStorage } from './storageActions'
 import { Storage } from './storageSelector'
+import { ErrorHandling } from '../../../components';
 
 export const withLocalStorage = (WrapperComponent) => {
   class HOC extends Component {
     static propTypes = {
+      isReload: bool.isRequired,
       localStorage: shape({ getAllKeys: func }).isRequired
     }
 
@@ -16,14 +18,18 @@ export const withLocalStorage = (WrapperComponent) => {
     }
 
     render() {
+      const { isReload } = this.props
       return (
-        <WrapperComponent {...this.props} />
+        <ErrorHandling isFetching={isReload} error=''>
+          <WrapperComponent {...this.props} />
+        </ErrorHandling>
       )
     }
   }
 
   const mapStateToProps = state => ({
-    storage: Storage(state).get(),
+    isReload: Storage(state).data().isReload,
+    storage: Storage(state).getItem(),
   })
 
   const mapDispatchToProps = dispatch => ({
