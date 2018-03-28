@@ -11,11 +11,6 @@ const getError = error => console.error(`Error: ${error.message}`)
 
 /**
  * @class LocalStorage
- * @classdesc
- * Test
- * ```js
- * // Test
- * ```
  * @example
  * import { withLocalStorage } from '../features/storage'
  * 
@@ -24,6 +19,7 @@ const getError = error => console.error(`Error: ${error.message}`)
  * )
  * 
  * export default withLocalStorage(Component)
+ * @classdesc import data from `AsyncStorage` to redux store
  */
 class LocalStorage {
   /**
