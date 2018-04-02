@@ -30,7 +30,7 @@ export class Model {
       if (get(data, state[key][0]) === undefined && data !== undefined && state[key].length === 3 && state[key][2]) {
         console.warn(`Warning: Model ${this.table}.${state[key][0]} is not found.`)
       }
-      newState[key] =  get(data, state[key][0], state[key][1])
+      newState[key] = get(data, state[key][0], state[key][1])
     })
     return newState
   }
