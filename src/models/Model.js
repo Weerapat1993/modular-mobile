@@ -1,4 +1,4 @@
-import _ from 'lodash'
+import { get } from 'lodash'
 
 export class Model {
   // Reducer name
@@ -13,10 +13,10 @@ export class Model {
    * @return {*}
    */
   static model(data, key, defaultProps, isRequired = true) {
-    if (_.get(data, key) === undefined && data !== undefined && isRequired) {
+    if (get(data, key) === undefined && data !== undefined && isRequired) {
       console.warn(`Warning: Model ${this.table}.${key} is not found.`)
     }
-    return _.get(data, key, defaultProps)
+    return get(data, key, defaultProps)
   }
 }
 
