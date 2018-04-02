@@ -1,5 +1,4 @@
-import { get } from 'lodash'
-import { Model } from './Model'
+import { Model } from '../utils/Model'
 
 /**
  * @class RequestDetail

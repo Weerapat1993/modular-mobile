@@ -32,4 +32,16 @@ describe('Github Model', () => {
     }
     expect(recieved).toEqual(expected)
   })
+
+  it('Github.get(data)', () => {
+    const data = {
+      id: '',
+      name: '',
+      description: '',
+      avatar: '',
+      url: ''
+    }
+    const recieved = Github.get(data)
+    expect(recieved).toEqual(data)
+  })
 })

@@ -1,9 +1,10 @@
 import { get } from 'lodash'
+import { Model } from '../utils/Model'
 
 /**
  * @class Github
  */
-export class Github {
+export class Github extends Model {
   // Table Name
   static table = 'github'
 
@@ -14,11 +15,11 @@ export class Github {
   static set(data) {
     // console.log(data)
     return {
-      id: get(data, 'id', ''),
-      name: get(data, 'name', ''),
-      description: get(data, 'description', ''),
-      avatar: get(data, 'owner.avatar_url', ''),
-      url: get(data, 'html_url', ''),
+      id: this.model(data, 'id', ''),
+      name: this.model(data, 'name', ''),
+      description: this.model(data, 'description', ''),
+      avatar: this.model(data, 'owner.avatar_url', ''),
+      url: this.model(data, 'html_url', ''),
     }
   }
 
