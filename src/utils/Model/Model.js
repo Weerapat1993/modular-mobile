@@ -20,6 +20,16 @@ export class Model {
   }
 
   /**
+   * Data Model Array
+   * @param {*} data data response from API
+   * @param {string} key data key name
+   * @return {Array.<Object>}
+   */
+  static modelArray(data, key) {
+    return get(data, key, [])
+  }
+
+  /**
    * Data Model Fillable
    * @param {*} data data response from API
    * @param {Array.<String>} state array of key

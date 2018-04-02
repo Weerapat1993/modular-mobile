@@ -1,4 +1,6 @@
+import { get } from 'lodash'
 import { Model } from '../utils/Model'
+import { Product } from './Product'
 
 /**
  * @class RequestDetail
@@ -21,7 +23,7 @@ export class RequestDetail extends Model {
       shopId: this.model(data, 'shop.id', ''),
       shopName: this.model(data, 'shop.name', ''),
       shopLogo: this.model(data, 'shop.logo', ''),
-      products: this.model(data, 'items', []),
+      products: this.modelArray(data, 'items').map(item => Product.set(item)),
       requestDescrtpion: this.model(data, 'requested_info.description', ''),
       requestImage: this.model(data, 'requested_info.images.0.url', '', false),
       rejectDescrtpion: this.model(data, 'rejected_info.description', ''),
