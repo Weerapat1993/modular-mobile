@@ -12,15 +12,13 @@ export class Github extends Model {
    * @param {*} data data response from API
    */
   static set(data) {
-    // console.log(data)
-    const state = {
-      id: ['id', ''],
-      name: ['name', ''],
-      description: ['description', ''],
-      avatar: ['owner.avatar_url', ''],
-      url: ['html_url', ''],
+    return {
+      id: this.model(data, 'id', ''),
+      name: this.model(data, 'name', ''),
+      description: this.model(data, 'description', ''),
+      avatar: this.model(data, 'owner.avatar_url', ''),
+      url: this.model(data, 'html_url', ''),
     }
-    return this.fillable(data, state)
   }
 
   /**

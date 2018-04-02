@@ -22,7 +22,7 @@ export class Model {
   /**
    * Data Model Fillable
    * @param {*} data data response from API
-   * @param {Array.<String>} state array of key 
+   * @param {Array.<String>} state array of key
    */
   static fillable(data, state) {
     const newState = {}
