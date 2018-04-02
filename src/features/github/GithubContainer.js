@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { View, FlatList, Linking, Text } from 'react-native'
 import { shape, bool, string, arrayOf, object } from 'prop-types'
-import { List, Modal } from 'antd-mobile';
+import { List, Modal } from 'antd-mobile'
 import { withGithub } from './redux'
 import styles from './components/styles'
+import { Github } from '../../models/Github'
 
 const { Item } = List;
 const { Brief } = Item
@@ -33,17 +34,18 @@ class GithubContainer extends Component {
     ]) 
   }
 
-  renderItem({ item })  {
+  renderItem({ item }) {
+    const data = Github.get(item)
     return (
       <Item
         arrow="horizontal"
-        thumb={item.owner.avatar_url}
+        thumb={data.avatar}
         multipleLine
         platform="android"
-        onClick={() => this.handleLinkUrl(item.html_url)}
+        onClick={() => this.handleLinkUrl(data.url)}
       >
-        {item.name}
-        <Brief>{item.description}</Brief>
+        {data.name}
+        <Brief>{data.description}</Brief>
       </Item>
     )
   }
