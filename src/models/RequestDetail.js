@@ -4,10 +4,11 @@ import { Product } from './Product'
 
 /**
  * @class RequestDetail
+ * @extends Model
  */
 export class RequestDetail extends Model {
   // Table Name
-  static table = 'requestDetail'
+  static table = 'request.detail'
 
   /**
    * Set Github Model
@@ -30,7 +31,9 @@ export class RequestDetail extends Model {
       rejectImage: this.model(data, 'rejected_info.images.0.url', '', false),
       rejectCoin: this.model(data, 'rejected_info.returned_amount', 0),
       deductCoin: this.model(data, 'deducted_info.returned_amount', 0),
-      userId: this.model(data, 'user_id', '')
+      userId: this.model(data, 'user_id', ''),
+      createdAt: this.model(data, 'created_at', new Date().getTime()),
+      updatedAt: this.model(data, 'updated_at', new Date().getTime()),
     }
   }
 
@@ -41,6 +44,15 @@ export class RequestDetail extends Model {
    */
   static get(data) {
     return data
+  }
+
+  /**
+   * Get State RequestDetail in Reducer
+   * @param {*} state data state in reducer
+   * @return {Object} 
+   */
+  static getState(state) {
+    return get(state, this.table, {})
   }
 }
 

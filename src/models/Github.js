@@ -2,6 +2,7 @@ import { Model } from '../utils/Model'
 
 /**
  * @class Github
+ * @extends Model
  */
 export class Github extends Model {
   // Table Name

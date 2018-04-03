@@ -9,6 +9,8 @@
         "src/utils/Alphabet/Alphabet.js",
         "src/utils/Calculator/Calculator.js",
         "src/utils/modular/Reducer",
+        "src/models",
+        "src/utils/Model",
         "src/features/storage/redux/storageActions.js"
       ],
       "exclude": [

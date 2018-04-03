@@ -2,6 +2,7 @@ import { Model } from '../utils/Model'
 
 /**
  * @class Product
+ * @extends Model
  */
 export class Product extends Model {
   // Table Name
