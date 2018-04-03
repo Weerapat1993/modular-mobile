@@ -1,3 +1,5 @@
+import faker from 'faker'
+import { random } from 'lodash'
 import { Model } from '../utils/Model'
 
 /**
@@ -19,6 +21,20 @@ export class Github extends Model {
       description: this.model(data, 'description', ''),
       avatar: this.model(data, 'owner.avatar_url', ''),
       url: this.model(data, 'html_url', ''),
+    }
+  }
+
+  /**
+   * Mock Data Github Model
+   */
+  static faker() {
+    const avatar = faker.image.avatar()
+    return {
+      id: random(10, 50000),
+      name: faker.name.title(),
+      description: faker.lorem.lines(1),
+      avatar,
+      url: avatar,
     }
   }
 
