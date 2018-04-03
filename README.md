@@ -3,6 +3,7 @@
 **How to Install**
 ```sh
 modular init mobile-example
+# Select modular-mobile
 cd mobile-example
 npm install
 react-native upgrade
@@ -20,4 +21,9 @@ npm run jsdoc
 
 # Run JS Documentation
 serve -s docs
+```
+
+**How to run Storybook**
+```sh
+npm run storybook
 ```
