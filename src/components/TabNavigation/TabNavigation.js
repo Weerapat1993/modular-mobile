@@ -33,8 +33,6 @@ class TabNavigation extends Component {
           <TabBar.Item
             title="Home"
             key="Home"
-            icon={{ uri: 'https://zos.alipayobjects.com/rmsportal/psUFoAMjkCcjqtUCNPxB.svg' }}
-            selectedIcon={{ uri: 'https://zos.alipayobjects.com/rmsportal/psUFoAMjkCcjqtUCNPxB.svg' }}
             selected={selectedTab === 'blueTab'}
             onPress={() => this.handleTab('blueTab')}
             data-seed="logId"
@@ -44,8 +42,6 @@ class TabNavigation extends Component {
           <TabBar.Item
             title="Shop"
             key="Shop"
-            icon={{ uri: 'https://zos.alipayobjects.com/rmsportal/psUFoAMjkCcjqtUCNPxB.svg' }}
-            selectedIcon={{ uri: 'https://zos.alipayobjects.com/rmsportal/psUFoAMjkCcjqtUCNPxB.svg' }}
             selected={selectedTab === 'redTab'}
             onPress={() => this.handleTab('redTab')}
             data-seed="logId1"
