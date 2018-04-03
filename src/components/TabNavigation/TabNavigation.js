@@ -8,7 +8,7 @@ class TabNavigation extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedTab: 'redTab',
+      selectedTab: 'Home',
       hidden: false,
       fullScreen: false,
     }
@@ -33,8 +33,8 @@ class TabNavigation extends Component {
           <TabBar.Item
             title="Home"
             key="Home"
-            selected={selectedTab === 'blueTab'}
-            onPress={() => this.handleTab('blueTab')}
+            selected={selectedTab === 'Home'}
+            onPress={() => this.handleTab('Home')}
             data-seed="logId"
           >
             <Scene.Home />
@@ -42,8 +42,8 @@ class TabNavigation extends Component {
           <TabBar.Item
             title="Shop"
             key="Shop"
-            selected={selectedTab === 'redTab'}
-            onPress={() => this.handleTab('redTab')}
+            selected={selectedTab === 'Shop'}
+            onPress={() => this.handleTab('Shop')}
             data-seed="logId1"
           >
             <Scene.About />
