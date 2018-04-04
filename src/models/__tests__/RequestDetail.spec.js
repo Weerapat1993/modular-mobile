@@ -18,8 +18,8 @@ const dataTable = {
   rejectImage: '',
   deductCoin: 0,
   userId: '',
-  createdAt: new Date().getTime(),
-  updatedAt: new Date().getTime(),
+  createdAt: 0,
+  updatedAt: 0,
 }
 
 describe('RequestDetail Model', () => {
