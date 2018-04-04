@@ -46,7 +46,8 @@ export class Model {
       string: (key, defaultProps = '', isRequired) => this.model(data, key, defaultProps, isRequired, 'string'),
       number: (key, defaultProps = 0, isRequired) => this.model(data, key, defaultProps, isRequired, 'number'),
       bool: (key, defaultProps = false, isRequired) => this.model(data, key, defaultProps, isRequired, 'boolean'),
-      array: (key) => this.model(data, key, []),
+      array: key => this.model(data, key, []),
+      object: key => this.model(data, key, {}, 'object'),
       timestamp: (key, isRequired) => this.model(data, key, 0, isRequired, 'number'),
     }
   }
