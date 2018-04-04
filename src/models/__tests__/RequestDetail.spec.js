@@ -17,7 +17,9 @@ const dataTable = {
   rejectDescrtpion: '',
   rejectImage: '',
   deductCoin: 0,
-  userId: ''
+  userId: '',
+  createdAt: new Date().getTime(),
+  updatedAt: new Date().getTime(),
 }
 
 describe('RequestDetail Model', () => {
@@ -46,6 +48,8 @@ describe('RequestDetail Model', () => {
       rejectImage: '',
       deductCoin: data.deducted_info.returned_amount,
       userId: data.user_id,
+      createdAt: data.created_at,
+      updatedAt: data.updated_at,
     }
     expect(recieved).toEqual(expected)
   })

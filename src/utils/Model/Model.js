@@ -31,6 +31,20 @@ export class Model {
   static modelArray(data, key) {
     return get(data, key, [])
   }
+
+  /**
+   * set PropTypes in Model
+   * @param {any} data 
+   */
+  static propTypes(data) {
+    return {
+      string: (key, defaultProps = '', isRequired) => this.model(data, key, defaultProps, isRequired),
+      number: (key, defaultProps = 0, isRequired) => this.model(data, key, defaultProps, isRequired),
+      bool: (key, defaultProps = false, isRequired) => this.model(data, key, defaultProps, isRequired),
+      array: (key) => this.model(data, key, []),
+      timestamp: (key, isRequired) => this.model(data, key, 0, isRequired),
+    }
+  }
 }
 
 export default Model

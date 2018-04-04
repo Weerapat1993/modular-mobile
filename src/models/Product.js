@@ -13,17 +13,18 @@ export class Product extends Model {
    * @param {*} data data response from API
    */
   static set(data) {
+    const { string, number, array } = this.propTypes(data)
     return {
-      productId: this.model(data, 'product_id', ''),
-      title: this.model(data, 'title', ''),
-      description: this.model(data, 'description', ''),
-      shopId: this.model(data, 'shop_id', 0),
-      quantity: this.model(data, 'quantity', 0),
-      pointBack: this.model(data, 'point_back', 0),
-      rewardPointPercent: this.model(data, 'point', 0),
-      deliveryMethod: this.model(data, 'delivery_method', 'meetup'),
-      deliveryMethods: this.model(data, 'delivery_methods', []),
-      productImage: this.model(data, 'images.0.url', '')
+      productId: string('product_id'),
+      title: string('title'),
+      description: string('description'),
+      shopId: number('shop_id', 0),
+      quantity: number('quantity', 0),
+      pointBack: number('point_back', 0),
+      rewardPointPercent: number('point', 0),
+      deliveryMethod: string('delivery_method', 'meetup'),
+      deliveryMethods: array('delivery_methods'),
+      productImage: string('images.0.url')
     }
   }
 
