@@ -1,5 +1,6 @@
 import { RequestDetail } from '../RequestDetail'
 import dataJson from '../mockData/refund.json'
+import { Product } from '../Product';
 
 const dataTable = {
   id: '',
@@ -40,7 +41,7 @@ describe('RequestDetail Model', () => {
       shopId: data.shop.id,
       shopName: data.shop.name,
       shopLogo: data.shop.logo,
-      products: [],
+      products: data.items.map(item => Product.set(item)),
       requestDescrtpion: 'request refund',
       requestImage: 'http://d2tism8vvtnwnw.cloudfront.net/product/87577402-2009-485b-91ce-624154728e71/CCB6F3DC-36D0-48E4-BC47-8057812F7D8D.jpg',
       rejectCoin: 0,

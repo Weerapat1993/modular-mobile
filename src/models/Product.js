@@ -11,9 +11,10 @@ export class Product extends Model {
   /**
    * Set Product Model
    * @param {*} data data response from API
+   * @param {boolean} isRequired check required
    */
-  static set(data) {
-    const { string, number, array } = this.propTypes(data)
+  static set(data, isRequired = true) {
+    const { string, number, array } = this.propTypes(data, isRequired)
     return {
       productId: string('product_id'),
       title: string('title'),
