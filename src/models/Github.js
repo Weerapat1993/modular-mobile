@@ -15,9 +15,9 @@ export class Github extends Model {
    * @param {*} data data response from API
    */
   static set(data) {
-    const { string } = this.propTypes(data)
+    const { string, number } = this.propTypes(data)
     return { 
-      id: string('id'),
+      id: number('id'),
       name: string('name'),
       description: string('description'),
       avatar: string('owner.avatar_url'),

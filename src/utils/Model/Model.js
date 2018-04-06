@@ -1,4 +1,5 @@
 import { get } from 'lodash'
+import PropTypes from 'prop-types'
 
 /**
  * @class Model
@@ -50,6 +51,31 @@ export class Model {
       object: key => this.model(data, key, {}, 'object'),
       timestamp: (key, isRequired) => this.model(data, key, 0, isRequired, 'number'),
     }
+  }
+
+  /**
+   * Set PropTypes in Model
+   * @return {Function}
+   */
+  static setPropTypes() {
+    const data = this.set()
+    const propTypes = {}
+    Object.keys(data).forEach(key => {
+      const dataType = typeof data[key]
+      let name
+      switch(dataType) {
+        case 'function':
+          name = 'func'
+          break
+        case 'boolean':
+          name = 'bool'
+          break
+        default:
+          name = dataType
+      }
+      propTypes[key] = PropTypes[name].isRequired
+    })
+    return PropTypes.shape(propTypes)
   }
 }
 

@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { View, FlatList, Linking, Text } from 'react-native'
-import { shape, bool, string, arrayOf, object } from 'prop-types'
+import { shape, bool, string, arrayOf } from 'prop-types'
 import { List, Modal } from 'antd-mobile'
 import { withGithub } from './redux'
 import styles from './components/styles'
-import { Github } from '../../models/Github'
+import { Github as Model } from '../../models/Github'
 
 const { Item } = List;
 const { Brief } = Item
@@ -15,7 +15,7 @@ class GithubContainer extends Component {
       isFetching: bool,
       isReload: bool,
       error: string,
-      data: arrayOf(object),
+      data: arrayOf(Model.setPropTypes()),
     }).isRequired,
   }
 
@@ -35,7 +35,7 @@ class GithubContainer extends Component {
   }
 
   renderItem({ item }) {
-    const data = Github.get(item)
+    const data = Model.get(item)
     return (
       <Item
         arrow="horizontal"
