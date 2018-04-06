@@ -45,7 +45,7 @@ export class Product extends Model {
       rewardPointPercent: Calculator.random(10),
       deliveryMethod: 'meetup',
       deliveryMethods: [],
-      productImage: faker.image.cats()
+      productImage: faker.image.avatar()
     }
   }
 
