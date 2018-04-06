@@ -4,7 +4,7 @@ describe('Github Model', () => {
   it('Github.set()', () => {
     const recieved = Github.set()
     const expected = {
-      id: '',
+      id: 0,
       name: '',
       description: '',
       avatar: '',
@@ -14,7 +14,7 @@ describe('Github Model', () => {
   })
   it('Github.set(data)', () => {
     const data = {
-      id: 'github:1',
+      id: 1234,
       name: 'Github',
       description: 'Guthub Description',
       owner: {
@@ -24,7 +24,7 @@ describe('Github Model', () => {
     }
     const recieved = Github.set(data)
     const expected = {
-      id: 'github:1',
+      id: 1234,
       name: 'Github',
       description: 'Guthub Description',
       avatar: 'avatar:12345',
@@ -35,7 +35,7 @@ describe('Github Model', () => {
 
   it('Github.get(data)', () => {
     const data = {
-      id: '',
+      id: 0,
       name: '',
       description: '',
       avatar: '',

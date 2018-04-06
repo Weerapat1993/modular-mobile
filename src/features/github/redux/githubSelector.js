@@ -1,4 +1,4 @@
-import _ from 'lodash'
+import { get } from 'lodash'
 
 export class Github {
   static defaultProps = {
@@ -15,7 +15,7 @@ export class Github {
    * @return {typeof Github.defaultProps}
    */
   static getByID(state, key) {
-    return _.get(state.github.keys, key, Github.defaultProps)
+    return get(state.github.keys, key, Github.defaultProps)
   }
 }
 

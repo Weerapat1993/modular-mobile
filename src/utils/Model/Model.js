@@ -10,12 +10,12 @@ export class Model {
 
   /**
    * Data Model
-   * @param {*} data data response from API
+   * @param {any} data data response from API
    * @param {string} key data key name
-   * @param {*} defaultProps set defaultProps
+   * @param {any} defaultProps set defaultProps
    * @param {boolean} [isRequired] check required
-   * @param {string} dataType check data type
-   * @return {*}
+   * @param {string} [dataType] check data type
+   * @return {any}
    */
   static model(data, key, defaultProps, isRequired = true, dataType) {
     if(data !== undefined && isRequired) {

@@ -41,7 +41,7 @@ export class Github extends Model {
 
   /**
    * Get Github Model
-   * @param {*} data data from reducer
+   * @param {Mock} data data from reducer
    * @return {Mock}
    */
   static get(data) {
