@@ -1,6 +1,6 @@
 import faker from 'faker/locale/en'
 import { Model } from '../utils/Model'
-import { Alphabet } from '../utils'
+import { Alphabet, Calculator } from '../utils'
 
 /**
  * @class Shop
@@ -33,7 +33,7 @@ export class Shop extends Model {
       shopId: `shop:${Alphabet.random(5)}`,
       shopName: faker.name.title(),
       shopDescription: faker.lorem.lines(1),
-      shopLogo: faker.image.avatar(),
+      shopLogo: Calculator.random(0, 3) ? faker.image.avatar() : '',
     }
   }
 

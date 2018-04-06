@@ -86,7 +86,7 @@ export class Reducer extends BaseReducer {
    */
   fillable = (item) => ({
     isFetching: false,
-    isReload: true,
+    isReload: false,
     error: '',
     data: item,
   })
