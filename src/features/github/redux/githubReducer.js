@@ -14,7 +14,7 @@ export class GithubReducer extends Reducer {
       case FETCH_GITHUB_BY_ID.REQUEST:
         return this.setStateWithKeyRequest()
       case FETCH_GITHUB_BY_ID.SUCCESS:
-        return this.setStateWithKeySuccess({ data: data.map(item => Model.faker(item)) })
+        return this.setStateWithKeySuccess({ data: data.map(item => Model.set(item)) })
       case FETCH_GITHUB_BY_ID.FAILURE:
         return this.setStateWithKeyFailure()
       default:

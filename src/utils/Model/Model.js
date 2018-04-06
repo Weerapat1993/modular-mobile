@@ -65,7 +65,7 @@ export class Model {
         default:
           name = dataType
       }
-      propTypes[key] = PropTypes[name].isRequired
+      propTypes[key] = PropTypes[name]
     })
     return PropTypes.shape(propTypes)
   }
