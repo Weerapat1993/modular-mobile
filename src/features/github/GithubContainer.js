@@ -5,6 +5,7 @@ import { List, Modal } from 'antd-mobile'
 import { withGithub } from './redux'
 import styles from './components/styles'
 import { Github as Model } from '../../models/Github'
+import { LoadImage } from '../../components';
 
 const { Item } = List;
 const { Brief } = Item
@@ -47,7 +48,7 @@ class GithubContainer extends Component {
     return (
       <Item
         arrow="horizontal"
-        thumb={data.avatar}
+        thumb={<LoadImage url={data.avatar} style={[styles.marginRight(15), styles.size(40)]} />}
         multipleLine
         platform="android"
         onClick={() => this.handleLinkUrl(data.url)}

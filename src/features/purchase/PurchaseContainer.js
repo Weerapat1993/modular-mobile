@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import { FlatList, View, Dimensions, RefreshControl, Image } from 'react-native'
+import { FlatList, View, Dimensions, RefreshControl } from 'react-native'
 import { Actions } from 'react-native-router-flux'
 import { List } from 'antd-mobile'
 import { shape, arrayOf, bool, string, func } from 'prop-types'
 import { Purchase as Model } from '../../models/Purchase'
+import { LoadImage } from '../../components'
 import { withPurchase } from './redux'
 import styles from './components/styles'
-import { IMAGE_NOT_FOUND } from '../../assets/images'
 
 const { Item } = List
 const { Brief } = Item
@@ -34,11 +34,10 @@ class PurchaseContainer extends Component {
 
   renderItem = ({ item }) => {
     const data = Model.get(item)
-    const shopLogo = data.shop.shopLogo ? { uri: data.shop.shopLogo } : IMAGE_NOT_FOUND
     return (
       <Item
         arrow="horizontal"
-        thumb={<Image source={shopLogo} style={[styles.size(40), styles.marginRight(15)]} />}
+        thumb={<LoadImage url={data.shop.shopLogo} style={[styles.size(40), styles.marginRight(15)]} />}
         multipleLine
         platform="android"
         onClick={() => Actions.purchaseDetail({ purchaseID: data.id })}
