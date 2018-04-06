@@ -46,15 +46,6 @@ export class RequestDetail extends Model {
   static get(data) {
     return data
   }
-
-  /**
-   * Get State RequestDetail in Reducer
-   * @param {*} state data state in reducer
-   * @return {Object} 
-   */
-  static getState(state) {
-    return get(state, this.table, {})
-  }
 }
 
 // Mock Response
