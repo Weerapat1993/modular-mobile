@@ -1,4 +1,6 @@
+import faker from 'faker/locale/en'
 import { Model } from '../utils/Model'
+import { Alphabet, Calculator } from '../utils'
 
 /**
  * @class Product
@@ -25,6 +27,25 @@ export class Product extends Model {
       deliveryMethod: string('delivery_method', 'meetup'),
       deliveryMethods: array('delivery_methods'),
       productImage: string('images.0.url')
+    }
+  }
+
+  /**
+   * Mock Data Customer Detail Model
+   * @return {Mock}
+   */
+  static faker() {
+    return {
+      productId: `product:${Alphabet.random(5)}`,
+      title: faker.commerce.productName(),
+      description: faker.commerce.productMaterial(),
+      shopId: `shop:${Alphabet.random(5)}`,
+      quantity: Calculator.random(10),
+      pointBack: Calculator.random(10),
+      rewardPointPercent: Calculator.random(10),
+      deliveryMethod: 'meetup',
+      deliveryMethods: [],
+      productImage: faker.image.fashion()
     }
   }
 

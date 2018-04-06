@@ -2,6 +2,7 @@ import { Model } from '../utils/Model'
 import { Product } from './Product'
 import { Customer } from './Customer'
 import { Shop } from './Shop';
+import { Alphabet } from '../utils'
 
 /**
  * @class Github
@@ -17,7 +18,6 @@ export class Purchase extends Model {
    */
   static set(data) {
     const { string, array, object } = this.propTypes(data)
-    // const middleName = string('customer.middle_name') ? ` ${string('customer.middle_name')}` : ''
     return { 
       id: string('id'),
       status: string('status'),
@@ -29,6 +29,25 @@ export class Purchase extends Model {
       customer: Customer.set(object('customer')),
       products: array('items').map(item => Product.set(item)),
       histories: array('histories')
+    }
+  }
+
+  /**
+   * Mock Data Purchase Detail Model
+   * @return {Mock}
+   */
+  static faker() {
+    return {  
+      id: `purchase:${Alphabet.random(5)}`,
+      status: 'processing',
+      deliveryType: 'meetup',
+      userId: `user:${Alphabet.random(5)}`,
+      currency: '$',
+      orderNo: Alphabet.random(10),
+      shop: Shop.faker(),
+      customer: Customer.faker(),
+      products: Product.fakerList(2),
+      histories: []
     }
   }
 

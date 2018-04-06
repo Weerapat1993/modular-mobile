@@ -69,6 +69,19 @@ export class Model {
     })
     return PropTypes.shape(propTypes)
   }
+
+  /**
+   * Mock Data List Model
+   * @param {number} count count of Array Data
+   * @return {Array.<Object>}
+   */
+  static fakerList(count) {
+    const arr = []
+    for(let i = 0; i < count; i++) {
+      arr.push(i + 1)
+    }
+    return arr.map(() => this.faker())
+  }
 }
 
 export default Model

@@ -1,4 +1,4 @@
 
 export { withGithub } from './githubConnector'
 export { githubReducer } from './githubReducer'
-export { Github } from './githubSelector'
+export { GithubSelector } from './githubSelector'

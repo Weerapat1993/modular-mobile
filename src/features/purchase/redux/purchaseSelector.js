@@ -1,54 +1,35 @@
-import { 
-  FETCH_PURCHASE_LIST,
-  FETCH_PURCHASE_DETAIL,
-} from './purchaseActionTypes'
-import { Reducer, classReducer } from '../../../utils'
+import { get } from 'lodash'
 
-export class PurchaseReducer extends Reducer {
-  initialState = {
-    keys: {},
-    byID: [],
+export class PurchaseSelector {
+  static defaultProps = {
     isFetching: false,
     isReload: true,
     error: '',
   }
 
-  getState() {
-    const { type, data } = this.action 
-    switch (type) {
-      case FETCH_PURCHASE_LIST.REQUEST:
-        return this.setState({ 
-          isFetching: true,
-          isReload: false,
-          error: '',
-        })
-      case FETCH_PURCHASE_LIST.SUCCESS:
-        return this.setState({ 
-          isFetching: false,
-          isReload: false,
-          keys: {
-            ...this.state.keys,
-            ...this.normalizeData(data)
-          },
-          byID: data.map(item => item.id),
-          error: '',
-        })
-      case FETCH_PURCHASE_LIST.FAILURE:
-        return this.setState({ 
-          isFetching: false,
-          isReload: false,
-          error: this.errorMessage(),
-        })
-      case FETCH_PURCHASE_DETAIL.REQUEST:
-        return this.setStateWithKeyRequest()
-      case FETCH_PURCHASE_DETAIL.SUCCESS:
-        return this.setStateWithKeySuccess({ data })
-      case FETCH_PURCHASE_DETAIL.FAILURE:
-        return this.setStateWithKeyFailure()
-      default:
-        return this.state
+  /**
+   * Get Purchase Lists
+   * @param {Object} state state
+   * @return {Array.<typeof PurchaseSelector.defaultProps>}
+   */
+  static getList(state) {
+    const { purchase } = state
+    const data = purchase.byID.map(key => purchase.keys[key].data)
+    return {
+      ...this.defaultProps,
+      data,
     }
+  }
+
+  /**
+   * Get Purchase by ID
+   * @param {*} state
+   * @param {string} key
+   * @return {typeof PurchaseSelector.defaultProps}
+   */
+  static getByID(state, key) {
+    return get(state.purchase.keys, key, this.defaultProps)
   }
 }
 
-export const purchaseReducer = classReducer(PurchaseReducer)
+export default PurchaseSelector

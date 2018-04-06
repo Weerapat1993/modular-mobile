@@ -1,4 +1,6 @@
+import faker from 'faker/locale/en'
 import { Model } from '../utils/Model'
+import { Alphabet } from '../utils'
 
 /**
  * @class Shop
@@ -19,6 +21,19 @@ export class Shop extends Model {
       shopName: string('name'),
       shopDescription: string('description'),
       shopLogo: string('logo'),
+    }
+  }
+
+  /**
+   * Mock Data Shop Detail Model
+   * @return {Mock}
+   */
+  static faker() {
+    return {  
+      shopId: `shop:${Alphabet.random(5)}`,
+      shopName: faker.name.title(),
+      shopDescription: faker.lorem.sentence(1),
+      shopLogo: faker.image.fashion(),
     }
   }
 

@@ -1,8 +1,7 @@
+import { GlobalStyle } from '../../../styles'
 
-const styles = {
-  container: {
+class Style extends GlobalStyle {
 
-  },
 }
 
-export default styles
+export default new Style()

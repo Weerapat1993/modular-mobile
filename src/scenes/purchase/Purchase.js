@@ -1,6 +1,6 @@
 import React from 'react'
-import { Text } from 'react-native'
 import { Actions } from 'react-native-router-flux'
+import { PurchaseContainer } from '../../features'
 import { Navbar, IconButton } from '../../components'
 import { BACK } from '../../assets/images'
 
@@ -10,7 +10,7 @@ const Purchase = (props) => (
     leftContent={<IconButton type='flat' source={BACK} size={40} iconSize={30} onPress={Actions.pop} />}
     rightContent={<IconButton type='flat' source={BACK} size={40} iconSize={30} onPress={Actions.pop} />}
   >
-    <Text>Purchase</Text>
+    <PurchaseContainer {...props} />
   </Navbar>
 )
 

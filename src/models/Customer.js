@@ -1,4 +1,6 @@
+import faker from 'faker/locale/en'
 import { Model } from '../utils/Model'
+import { Alphabet } from '../utils'
 
 /**
  * @class Customer
@@ -21,6 +23,20 @@ export class Customer extends Model {
       customerName: `${string('first_name')}${middleName} ${string('last_name')}`,
       customerAvatar: string('url_avatar'),
       customerUserId: string('user_id'),
+    }
+  }
+
+  /**
+   * Mock Data Customer Detail Model
+   * @return {Mock}
+   */
+  static faker() {
+    return {
+      customerId: `customer:${Alphabet.random(5)}`,
+      customerEmail: faker.internet.exampleEmail(),
+      customerName: faker.name.firstName(),
+      customerAvatar: faker.image.avatar(),
+      customerUserId: `user:${Alphabet.random(5)}`,
     }
   }
 

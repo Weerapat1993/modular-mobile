@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { func, shape, bool, string, object, arrayOf } from 'prop-types'
 import { connect } from 'react-redux'
 import { fetchGithubByID } from './githubActions'
-import { Github } from './githubSelector'
+import { GithubSelector as Selector } from './githubSelector'
 import { ErrorHandling } from '../../../components'
 
 export const withGithub = (WrapperComponent) => {
@@ -53,7 +53,7 @@ export const withGithub = (WrapperComponent) => {
   }
 
   const mapStateToProps = (state, ownProps) => ({
-    github: Github.getByID(state, ownProps.userID),
+    github: Selector.getByID(state, ownProps.userID),
   })
 
   const mapDispatchToProps = {

@@ -1,6 +1,6 @@
 import { get } from 'lodash'
 
-export class Github {
+export class GithubSelector {
   static defaultProps = {
     isFetching: false,
     isReload: true,
@@ -15,8 +15,8 @@ export class Github {
    * @return {typeof Github.defaultProps}
    */
   static getByID(state, key) {
-    return get(state.github.keys, key, Github.defaultProps)
+    return get(state.github.keys, key, this.defaultProps)
   }
 }
 
-export default Github
+export default GithubSelector
