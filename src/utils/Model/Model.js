@@ -29,16 +29,6 @@ export class Model {
   }
 
   /**
-   * Data Model Array
-   * @param {Array.<Object>} data data response from API
-   * @param {string} key data key name
-   * @return {Array.<Object>}
-   */
-  static modelArray(data, key) {
-    return get(data, key, [])
-  }
-
-  /**
    * set PropTypes in Model
    * @param {any} data 
    */
