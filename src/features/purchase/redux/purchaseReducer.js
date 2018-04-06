@@ -1,3 +1,4 @@
+import R from 'ramda'
 import { 
   FETCH_PURCHASE_LIST,
   FETCH_PURCHASE_DETAIL,
@@ -30,7 +31,10 @@ export class PurchaseReducer extends Reducer {
             ...this.state.keys,
             ...this.normalizeData(data)
           },
-          byID: data.map(item => item.id),
+          byID: R.uniq([
+            ...data.map(item => item.id),
+            ...this.state.byID,
+          ]),
           error: '',
         })
       case FETCH_PURCHASE_LIST.FAILURE:

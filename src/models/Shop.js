@@ -33,7 +33,7 @@ export class Shop extends Model {
       shopId: `shop:${Alphabet.random(5)}`,
       shopName: faker.name.title(),
       shopDescription: faker.lorem.lines(1),
-      shopLogo: faker.image.fashion(),
+      shopLogo: faker.image.avatar(),
     }
   }
 

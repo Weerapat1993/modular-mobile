@@ -11,6 +11,7 @@ export const Routes = () => (
       <Scene key="github" component={Scenes.Github} title='Github' />
       <Scene key="storage" component={Scenes.Storage} title='Storage' />
       <Scene key="purchase" component={Scenes.Purchase} title='Purchase' />
+      <Scene key="purchaseDetail" component={Scenes.PurchaseDetail} title='Purchase Detail' />
     </Stack>
   </Router>
 )

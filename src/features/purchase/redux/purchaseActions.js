@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { FETCH_PURCHASE_LIST } from './purchaseActionTypes'
+import { FETCH_PURCHASE_LIST, FETCH_PURCHASE_DETAIL } from './purchaseActionTypes'
 import { API_ENDPOINT_PURCHASE_LIST } from './purchaseEndpoints'
 import { Purchase as Model } from '../../../models/Purchase'
 
@@ -17,4 +17,20 @@ export const fetchPurchaseList = () => (dispatch) => {
   // })
   //   .then(res => dispatch(fetchPurchaseListSuccess(res.data.data)))
   //   .catch(error => dispatch(fetchPurchaseListFailure(error)))
+}
+
+export const fetchPurchaseDetailRequest = (key) => ({ type: FETCH_PURCHASE_DETAIL.REQUEST, key }) 
+export const fetchPurchaseDetailSuccess = (data, key) => ({ type: FETCH_PURCHASE_DETAIL.SUCCESS, data, key }) 
+export const fetchPurchaseDetailFailure = (error, key) => ({ type: FETCH_PURCHASE_DETAIL.FAILURE, error, key }) 
+export const fetchPurchaseDetail = (key) => (dispatch) => {
+  dispatch(fetchPurchaseDetailRequest(key))
+  dispatch(fetchPurchaseDetailSuccess(Model.faker(), key))
+  // dispatch(fetchPurchaseDetailRequest(key))
+  // return axios({
+  //   method: 'GET',
+  //   responseType: 'json',
+  //   url: API_ENDPOINT_PURCHASE_DETAIL(key),
+  // })
+  //   .then(res => dispatch(fetchPurchaseDetailSuccess(res.data.data, key)))
+  //   .catch(error => dispatch(fetchPurchaseDetailFailure(error, key)))
 }

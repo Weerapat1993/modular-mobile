@@ -1,22 +1,23 @@
 import React, { Component } from 'react'
-import { func, shape, bool, string, arrayOf } from 'prop-types'
+import { func, shape, bool, string } from 'prop-types'
 import { connect } from 'react-redux'
-import { fetchPurchaseList } from './purchaseActions'
-import { PurchaseSelector as Selector } from './purchaseSelector'
-import { ErrorHandling } from '../../../components'
-import { Purchase as Model } from '../../../models/Purchase';
+import { fetchPurchaseDetail } from '../purchaseActions'
+import { PurchaseSelector as Selector } from '../purchaseSelector'
+import { ErrorHandling } from '../../../../components'
+import { Purchase as Model } from '../../../../models/Purchase'
 
-export const withPurchase = (WrapperComponent) => {
+export const withPurchaseDetail = (WrapperComponent) => {
   class HOC extends Component {
     static propTypes = {
+      purchaseID: string,
       // Connect Store
       purchase: shape({
         isFetching: bool,
         isReload: bool,
         error: string,
-        data: arrayOf(Model.setPropTypes()),
+        data: Model.setPropTypes(),
       }).isRequired,
-      fetchPurchaseList: func.isRequired,
+      fetchPurchaseDetail: func.isRequired,
     }
 
     constructor() {
@@ -33,7 +34,8 @@ export const withPurchase = (WrapperComponent) => {
     }
 
     handleReload() {
-      this.props.fetchPurchaseList()
+      const { purchaseID } = this.props
+      this.props.fetchPurchaseDetail(purchaseID)
     }
 
     render() {
@@ -50,15 +52,15 @@ export const withPurchase = (WrapperComponent) => {
     }
   }
 
-  const mapStateToProps = (state) => ({
-    purchase: Selector.getList(state),
+  const mapStateToProps = (state, { purchaseID }) => ({
+    purchase: Selector.getByID(state, purchaseID),
   })
 
   const mapDispatchToProps = {
-    fetchPurchaseList,
+    fetchPurchaseDetail,
   }
 
   return connect(mapStateToProps, mapDispatchToProps)(HOC)
 }
 
-export default withPurchase
+export default withPurchaseDetail

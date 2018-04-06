@@ -1,3 +1,4 @@
 import Purchase from './Purchase'
+import PurchaseDetail from './PurchaseDetail'
 
-export { Purchase }
+export { Purchase, PurchaseDetail }

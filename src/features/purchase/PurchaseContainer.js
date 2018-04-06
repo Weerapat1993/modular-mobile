@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import { FlatList, View, Dimensions, RefreshControl } from 'react-native'
+import { Actions } from 'react-native-router-flux'
 import { List } from 'antd-mobile'
 import { shape, arrayOf, bool, string, func } from 'prop-types'
-import { Purchase as Model } from '../../../models/Purchase'
-import { withPurchase } from '../redux'
-import styles from './styles'
+import { Purchase as Model } from '../../models/Purchase'
+import { withPurchase } from './redux'
+import styles from './components/styles'
 
 const { Item } = List
 const { Brief } = Item
@@ -35,10 +36,10 @@ class PurchaseContainer extends Component {
     return (
       <Item
         arrow="horizontal"
-        thumb={data.customer.customerAvatar}
+        thumb={data.shop.shopLogo}
         multipleLine
         platform="android"
-        onClick={() => alert(data.id)}
+        onClick={() => Actions.purchaseDetail({ purchaseID: data.id })}
       >
         {data.shop.shopName}
         <Brief>{data.shop.shopDescription}</Brief>

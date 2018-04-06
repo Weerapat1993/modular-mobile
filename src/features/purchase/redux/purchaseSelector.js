@@ -1,25 +1,14 @@
 import { get } from 'lodash'
+import { Purchase as Model } from '../../../models/Purchase'
 
 export class PurchaseSelector {
+  // Default data in Key value
   static defaultKeys = {
     isFetching: false,
     isReload: true,
     error: '',
-    data: {}
+    data: Model.set(),
   }
-
-  /**
-   * select old state in purchaseReducer
-   * @param {Object} state state in purchaseReducer
-   * @param {Object} newState create new state
-   * @return {Object}
-   */
-  static setState = (state, newState) => ({
-    isFetching: state.isFetching,
-    isReload: state.isReload,
-    error: state.error,
-    ...newState,
-  })
 
   /**
    * Get Purchase Lists
@@ -29,9 +18,12 @@ export class PurchaseSelector {
   static getList(state) {
     const { purchase } = state
     const data = purchase.byID.map(key => purchase.keys[key].data)
-    return this.setState(purchase, {
+    return {
+      isFetching: purchase.isFetching,
+      isReload: purchase.isReload,
+      error: purchase.error,
       data,
-    })
+    }
   }
 
   /**
