@@ -15,15 +15,6 @@ const Home = () => (
         arrow="horizontal"
         thumb="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png"
         multipleLine
-        platform="android"
-      >
-        Home 
-        <Brief>Go to Home</Brief>
-      </Item>
-      <Item
-        arrow="horizontal"
-        thumb="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png"
-        multipleLine
         onClick={() => Actions.github()}
         platform="android"
       >

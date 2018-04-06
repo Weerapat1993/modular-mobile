@@ -42,7 +42,7 @@ export const withGithub = (WrapperComponent) => {
       const { github } = this.props
       return (
         <ErrorHandling
-          isFetching={github.isFetching}
+          isFetching={false}
           error={github.error}
           onReload={this.handleReload}
         >

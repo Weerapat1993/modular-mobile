@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { View, FlatList, Linking, Text } from 'react-native'
-import { shape, bool, string, arrayOf } from 'prop-types'
+import { View, FlatList, Linking, Text, RefreshControl, Dimensions } from 'react-native'
+import { shape, bool, string, arrayOf, func } from 'prop-types'
 import { List, Modal } from 'antd-mobile'
 import { withGithub } from './redux'
 import styles from './components/styles'
@@ -11,18 +11,21 @@ const { Brief } = Item
 
 class GithubContainer extends Component {
   static propTypes = {
+    userID: string.isRequired,
     github: shape({
       isFetching: bool,
       isReload: bool,
       error: string,
       data: arrayOf(Model.setPropTypes()),
     }).isRequired,
+    fetchGithubByID: func.isRequired
   }
 
   constructor() {
     super()
 
     this.renderItem = this.renderItem.bind(this)
+    this.handleReload = this.handleReload.bind(this)
   }
 
   handleLinkUrl = (url) => {
@@ -32,6 +35,11 @@ class GithubContainer extends Component {
       { text: 'Cancel', onPress: () => null },
       { text: 'Ok', onPress: () => Linking.openURL(url) },
     ]) 
+  }
+
+  handleReload() {
+    const { userID } = this.props
+    this.props.fetchGithubByID(userID)
   }
 
   renderItem({ item }) {
@@ -53,16 +61,22 @@ class GithubContainer extends Component {
 
   render() {
     const { github } = this.props
+    const { height } = Dimensions.get('window')
     return (
-      <View style={styles.backgroundColor('#fff')}>
+      <View style={[styles.backgroundColor('#fff'), styles.flex(1)]}>
         <List renderHeader={() => 'Github Profile'}>
-          <View style={styles.flex(1)}>
-            <FlatList
-              data={github.data}
-              keyExtractor={item => item.id}
-              renderItem={this.renderItem}
-            />
-          </View>
+          <FlatList
+            refreshControl={
+              <RefreshControl
+                refreshing={github.isFetching}
+                onRefresh={this.handleReload}
+              />
+            }
+            data={github.data}
+            keyExtractor={item => item.id}
+            renderItem={this.renderItem}
+            style={styles.height(height - 128)}
+          />
         </List>
       </View>
     )
