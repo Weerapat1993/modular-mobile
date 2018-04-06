@@ -38,7 +38,7 @@
     "items":[
       {
         "product_id":"prod:0000",
-        "quantity":"10",
+        "quantity": 10,
         "price": 1099,
         "point": 1,
         "delivery_method": "meetup",
@@ -90,7 +90,7 @@
       },
       {    
           "product_id":"prod:0001",
-          "quantity":"10",
+          "quantity": 10,
           "price":20,
           "point":1,
           "delivery_method": "meetup",

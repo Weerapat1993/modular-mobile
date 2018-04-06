@@ -11,10 +11,9 @@ export class Shop extends Model {
   /**
    * Set Shop Model
    * @param {*} data data response from API
-   * @param {boolean} isRequired check required
    */
-  static set(data, isRequired = true) {
-    const { string } = this.propTypes(data, isRequired)
+  static set(data) {
+    const { string } = this.propTypes(data)
     return { 
       shopId: string('id'),
       shopName: string('name'),

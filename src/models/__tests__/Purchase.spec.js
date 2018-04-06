@@ -59,4 +59,14 @@ describe('Purchase Model', () => {
     }
     expect(recieved).toEqual(expected)
   })
+
+  it('Purchase.get(data)', () => {
+    const recieved = Purchase.get(dataTable)
+    expect(recieved).toEqual(dataTable)
+  })
+
+  it('Purchase.get()', () => {
+    const recieved = Purchase.get()
+    expect(recieved).toEqual(undefined)
+  })
 })

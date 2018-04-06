@@ -1,7 +1,5 @@
 import { Model } from '../utils/Model'
 import { Product } from './Product'
-import { Customer } from './Customer'
-import { Shop } from './Shop'
 
 /**
  * @class Github
@@ -14,10 +12,10 @@ export class Purchase extends Model {
   /**
    * Set Purchase Model
    * @param {*} data data response from API
-   * @param {boolean} isRequired check required
    */
-  static set(data, isRequired = true) {
-    const { string, array, object } = this.propTypes(data, isRequired)
+  static set(data) {
+    const { string, array } = this.propTypes(data)
+    const middleName = string('customer.middle_name') ? ` ${string('customer.middle_name')}` : ''
     return { 
       id: string('id'),
       status: string('status'),
@@ -25,8 +23,15 @@ export class Purchase extends Model {
       userId: string('user_id'),
       currency: string('currency.symbol'),
       orderNo: string('order_no'),
-      ...Shop.set(object('shop'), false),
-      ...Customer.set(object('customer'), false),
+      shopId: string('shop.id'),
+      shopName: string('shop.name'),
+      shopDescription: string('shop.description'),
+      shopLogo: string('shop.logo'),
+      customerId: string('customer.id'),
+      customerEmail: string('customer.email'),
+      customerName: `${string('customer.first_name')}${middleName} ${string('customer.last_name')}`,
+      customerAvatar: string('customer.url_avatar'),
+      customerUserId: string('customer.user_id'),
       products: array('items').map(item => Product.set(item)),
       histories: array('histories')
     }

@@ -11,10 +11,9 @@ export class Customer extends Model {
   /**
    * Set Customer Model
    * @param {*} data data response from API
-   * @param {boolean} isRequired check required
    */
-  static set(data, isRequired = true) {
-    const { string } = this.propTypes(data, isRequired)
+  static set(data) {
+    const { string } = this.propTypes(data)
     const middleName = string('middle_name') ? ` ${string('middle_name')}` : ''
     return { 
       customerId: string('id'),

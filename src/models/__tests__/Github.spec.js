@@ -1,15 +1,17 @@
 import { Github } from '../Github'
 
+const dataTable = {
+  id: 0,
+  name: '',
+  description: '',
+  avatar: '',
+  url: ''
+}
+
 describe('Github Model', () => {
   it('Github.set()', () => {
     const recieved = Github.set()
-    const expected = {
-      id: 0,
-      name: '',
-      description: '',
-      avatar: '',
-      url: ''
-    }
+    const expected = dataTable
     expect(recieved).toEqual(expected)
   })
   it('Github.set(data)', () => {
@@ -34,13 +36,7 @@ describe('Github Model', () => {
   })
 
   it('Github.get(data)', () => {
-    const data = {
-      id: 0,
-      name: '',
-      description: '',
-      avatar: '',
-      url: ''
-    }
+    const data = dataTable
     const recieved = Github.get(data)
     expect(recieved).toEqual(data)
   })

@@ -13,10 +13,9 @@ export class Github extends Model {
   /**
    * Set Github Model
    * @param {*} data data response from API
-   * @param {boolean} isRequired check required
    */
-  static set(data, isRequired = true) {
-    const { string, number } = this.propTypes(data, isRequired)
+  static set(data) {
+    const { string, number } = this.propTypes(data)
     return { 
       id: number('id'),
       name: string('name'),

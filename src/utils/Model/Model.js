@@ -31,16 +31,15 @@ export class Model {
   /**
    * set PropTypes in Model
    * @param {any} data
-   * @param {boolean} [isRequired] check required
    */
-  static propTypes(data, isRequired) {
+  static propTypes(data) {
     return {
-      string: (key, defaultProps = '', isRequire) => this.model(data, key, defaultProps, isRequire || isRequired, 'string'),
-      number: (key, defaultProps = 0, isRequire) => this.model(data, key, defaultProps, isRequire || isRequired, 'number'),
-      bool: (key, defaultProps = false, isRequire) => this.model(data, key, defaultProps, isRequire || isRequired, 'boolean'),
+      string: (key, defaultProps = '', isRequired) => this.model(data, key, defaultProps, isRequired, 'string'),
+      number: (key, defaultProps = 0, isRequired) => this.model(data, key, defaultProps, isRequired, 'number'),
+      bool: (key, defaultProps = false, isRequired) => this.model(data, key, defaultProps, isRequired, 'boolean'),
       array: key => this.model(data, key, []),
       object: key => this.model(data, key, {}, 'object'),
-      timestamp: (key, isRequire) => this.model(data, key, 0, isRequire || isRequired, 'number'),
+      timestamp: (key, isRequired) => this.model(data, key, 0, isRequired, 'number'),
     }
   }
 
