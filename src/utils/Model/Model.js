@@ -55,15 +55,19 @@ export class Model {
     Object.keys(data).forEach(key => {
       const dataType = typeof data[key]
       let name
-      switch(dataType) {
-        case 'function':
-          name = 'func'
-          break
-        case 'boolean':
-          name = 'bool'
-          break
-        default:
-          name = dataType
+      if(Array.isArray(data[key])) {
+        name = 'array'
+      } else {
+        switch(dataType) {
+          case 'function':
+            name = 'func'
+            break
+          case 'boolean':
+            name = 'bool'
+            break
+          default:
+            name = dataType
+        }
       }
       propTypes[key] = PropTypes[name]
     })
