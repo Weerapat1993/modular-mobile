@@ -1,8 +1,11 @@
 import React from 'react'
-import { Text, View } from 'react-native'
+import { Text } from 'react-native'
 import faker from 'faker'
-import { Button } from '../../components'
+import { Actions } from 'react-native-router-flux'
+import { Button, Navbar, IconButton } from '../../components'
 import { withLocalStorage } from '../../features/storage'
+
+import { BACK } from '../../assets/images'
 
 const StorageScene = ({ storage, localStorage }) => {
   const productList = () => {
@@ -20,7 +23,11 @@ const StorageScene = ({ storage, localStorage }) => {
   }
   const github = JSON.stringify([faker.random.uuid()])
   return (
-    <View>
+    <Navbar
+      title='Purchase'
+      leftContent={<IconButton type='flat' source={BACK} size={40} iconSize={30} onPress={Actions.pop} />}
+      rightContent={<IconButton type='flat' source={BACK} size={40} iconSize={30} onPress={Actions.pop} />}
+    >
       <Button 
         type='primary' 
         color='primary' 
@@ -54,7 +61,7 @@ const StorageScene = ({ storage, localStorage }) => {
         CLEAR STORAGE
       </Button>
       <Text>{JSON.stringify(storage, null, '  ')}</Text>
-    </View>
+    </Navbar>
   )
 }
 

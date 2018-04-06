@@ -1,8 +1,12 @@
 import React, { Component } from 'react'
 import { View } from 'react-native'
+import { Actions } from 'react-native-router-flux'
 import { TabBar } from 'antd-mobile'
+import { Navbar } from '../Navbar'
+import { IconButton } from '../IconButton'
 import Scene from '../../scenes'
 import styles from './styles'
+import { BACK } from '../../assets/images'
 
 class TabNavigation extends Component {
   constructor(props) {
@@ -24,31 +28,37 @@ class TabNavigation extends Component {
     const { selectedTab } = this.state
     return (
       <View style={styles.flex(1)}>
-        <TabBar
-          unselectedTintColor="#949494"
-          tintColor="#33A3F4"
-          barTintColor="white"
-          hidden={this.state.hidden}
+        <Navbar
+          title='Initial'
+          leftContent={<IconButton type='flat' source={BACK} size={40} iconSize={30} onPress={Actions.pop} />}
+          rightContent={<IconButton type='flat' source={BACK} size={40} iconSize={30} onPress={Actions.pop} />}
         >
-          <TabBar.Item
-            title="Home"
-            key="Home"
-            selected={selectedTab === 'Home'}
-            onPress={() => this.handleTab('Home')}
-            data-seed="logId"
+          <TabBar
+            unselectedTintColor="#949494"
+            tintColor="#33A3F4"
+            barTintColor="white"
+            hidden={this.state.hidden}
           >
-            <Scene.Home />
-          </TabBar.Item>
-          <TabBar.Item
-            title="Shop"
-            key="Shop"
-            selected={selectedTab === 'Shop'}
-            onPress={() => this.handleTab('Shop')}
-            data-seed="logId1"
-          >
-            <Scene.About />
-          </TabBar.Item>
-        </TabBar>
+            <TabBar.Item
+              title="Home"
+              key="Home"
+              selected={selectedTab === 'Home'}
+              onPress={() => this.handleTab('Home')}
+              data-seed="logId"
+            >
+              <Scene.Home />
+            </TabBar.Item>
+            <TabBar.Item
+              title="Shop"
+              key="Shop"
+              selected={selectedTab === 'Shop'}
+              onPress={() => this.handleTab('Shop')}
+              data-seed="logId1"
+            >
+              <Scene.About />
+            </TabBar.Item>
+          </TabBar>
+        </Navbar>
       </View>
     )
   }

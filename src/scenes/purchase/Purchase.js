@@ -1,18 +1,17 @@
 import React from 'react'
+import { Text } from 'react-native'
 import { Actions } from 'react-native-router-flux'
 import { Navbar, IconButton } from '../../components'
 import { BACK } from '../../assets/images'
-import { GithubContainer } from '../../features'
 
-const Github = (props) => (
+const Purchase = (props) => (
   <Navbar
-    title='Github'
+    title='Purchase'
     leftContent={<IconButton type='flat' source={BACK} size={40} iconSize={30} onPress={Actions.pop} />}
     rightContent={<IconButton type='flat' source={BACK} size={40} iconSize={30} onPress={Actions.pop} />}
   >
-    <GithubContainer {...props} userID='Weerapat1993' />
+    <Text>Purchase</Text>
   </Navbar>
 )
 
-export default Github
-
+export default Purchase

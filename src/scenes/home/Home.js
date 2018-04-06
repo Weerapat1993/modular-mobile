@@ -24,16 +24,6 @@ const Home = () => (
         arrow="horizontal"
         thumb="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png"
         multipleLine
-        onClick={() => Actions.about()}
-        platform="android"
-      >
-        About 
-        <Brief>Go to About</Brief>
-      </Item>
-      <Item
-        arrow="horizontal"
-        thumb="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png"
-        multipleLine
         onClick={() => Actions.github()}
         platform="android"
       >
@@ -49,6 +39,16 @@ const Home = () => (
       >
         Storage 
         <Brief>Go to Local Storage</Brief>
+      </Item>
+      <Item
+        arrow="horizontal"
+        thumb="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png"
+        multipleLine
+        onClick={() => Actions.purchase()}
+        platform="android"
+      >
+        Purchase 
+        <Brief>Go to Purchase</Brief>
       </Item>
     </List>
   </View>

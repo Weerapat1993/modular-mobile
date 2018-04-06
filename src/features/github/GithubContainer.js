@@ -56,11 +56,13 @@ class GithubContainer extends Component {
     return (
       <View style={styles.backgroundColor('#fff')}>
         <List renderHeader={() => 'Github Profile'}>
-          <FlatList
-            data={github.data}
-            keyExtractor={item => item.id}
-            renderItem={this.renderItem}
-          />
+          <View style={styles.flex(1)}>
+            <FlatList
+              data={github.data}
+              keyExtractor={item => item.id}
+              renderItem={this.renderItem}
+            />
+          </View>
         </List>
       </View>
     )
