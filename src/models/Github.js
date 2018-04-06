@@ -1,4 +1,4 @@
-import faker from 'faker'
+import faker from 'faker/locale/en'
 import { random } from 'lodash'
 import { Model } from '../utils/Model'
 
@@ -9,7 +9,7 @@ import { Model } from '../utils/Model'
 export class Github extends Model {
   // Table Name
   static table = 'github'
-
+  
   /**
    * Set Github Model
    * @param {*} data data response from API

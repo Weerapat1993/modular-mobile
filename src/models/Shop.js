@@ -32,7 +32,7 @@ export class Shop extends Model {
     return {  
       shopId: `shop:${Alphabet.random(5)}`,
       shopName: faker.name.title(),
-      shopDescription: faker.lorem.sentence(1),
+      shopDescription: faker.lorem.lines(1),
       shopLogo: faker.image.fashion(),
     }
   }

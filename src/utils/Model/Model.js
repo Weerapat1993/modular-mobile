@@ -5,8 +5,14 @@ import PropTypes from 'prop-types'
  * @class Model
  */
 export class Model {
-  // Reducer name
-  static table = 'table'
+   /**
+   * get Class Name
+   * @private
+   * @return {string}
+   */
+  static _getName() {
+    return this.toString().split(' ')[1].split('(')[0]
+  }
 
   /**
    * Data Model
@@ -21,9 +27,9 @@ export class Model {
     if(data !== undefined && isRequired) {
       if(Object.keys(data).length) {
         if(get(data, key) === undefined) {
-          console.warn(`Warning: Model ${this.table}.${key} is not found.`)
+          console.warn(`Warning: API response to Model ${this.table || this._getName()}.${key} is not found.`)
         } else if(typeof get(data, key) !== dataType && dataType) {
-          console.warn(`Warning: Model ${this.table}.${key} is not ${dataType}.`)
+          console.warn(`Warning: API response to Model ${this.table || this._getName()}.${key} is not ${dataType}.`)
         }
       }
     }
@@ -69,7 +75,7 @@ export class Model {
             name = dataType
         }
       }
-      propTypes[key] = PropTypes[name]
+      propTypes[key] = PropTypes[name].isRequired
     })
     return PropTypes.shape(propTypes)
   }
