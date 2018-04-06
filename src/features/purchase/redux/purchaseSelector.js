@@ -46,6 +46,3 @@ export class PurchaseSelector {
 }
 
 export default PurchaseSelector
-
-
-PurchaseSelector.getList()
