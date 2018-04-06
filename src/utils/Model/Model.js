@@ -10,7 +10,7 @@ export class Model {
 
   /**
    * Data Model
-   * @param {any} data data response from API
+   * @param {Object} data data response from API
    * @param {string} key data key name
    * @param {any} defaultProps set defaultProps
    * @param {boolean} [isRequired] check required
@@ -19,10 +19,12 @@ export class Model {
    */
   static model(data, key, defaultProps, isRequired = true, dataType) {
     if(data !== undefined && isRequired) {
-      if(get(data, key) === undefined) {
-        console.warn(`Warning: Model ${this.table}.${key} is not found.`)
-      } else if(typeof get(data, key) !== dataType && dataType) {
-        console.warn(`Warning: Model ${this.table}.${key} is not ${dataType}.`)
+      if(Object.keys(data).length) {
+        if(get(data, key) === undefined) {
+          console.warn(`Warning: Model ${this.table}.${key} is not found.`)
+        } else if(typeof get(data, key) !== dataType && dataType) {
+          console.warn(`Warning: Model ${this.table}.${key} is not ${dataType}.`)
+        }
       }
     }
     return get(data, key, defaultProps)
@@ -30,7 +32,7 @@ export class Model {
 
   /**
    * set PropTypes in Model
-   * @param {any} data
+   * @param {Object} data
    */
   static propTypes(data) {
     return {
