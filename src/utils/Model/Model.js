@@ -5,8 +5,14 @@ import PropTypes from 'prop-types'
  * @class Model
  */
 export class Model {
-  /** set isRequired in PropTypes 
+  /** set isRequired in PropTypes [Default: true]
    * @type {Object}
+   * @example
+   * static isRequired = {
+   *   description: false
+   * }
+   * 
+   * // { description: PropTypes.string }
    */
   static isRequired = {}
 
@@ -21,6 +27,7 @@ export class Model {
 
   /**
    * Data Model
+   * @private
    * @param {Object} data data response from API
    * @param {string} key data key name
    * @param {any} defaultProps set defaultProps
@@ -28,7 +35,7 @@ export class Model {
    * @param {string} [dataType] check data type
    * @return {any}
    */
-  static model(data, key, defaultProps, isRequired = true, dataType) {
+  static _model(data, key, defaultProps, isRequired = true, dataType) {
     if(data !== undefined && isRequired) {
       if(Object.keys(data).length) {
         if(get(data, key) === undefined) {
@@ -44,15 +51,22 @@ export class Model {
   /**
    * set PropTypes in Model
    * @param {Object} data data response from API
+   * @example
+   * static set(data) {
+   *   const { string, number, bool, array, object, timestamp } = this.propTypes(data)
+   *   return {
+   *     ...
+   *   }
+   * }
    */
   static propTypes(data) {
     return {
-      string: (key, defaultProps = '', isRequired) => this.model(data, key, defaultProps, isRequired, 'string'),
-      number: (key, defaultProps = 0, isRequired) => this.model(data, key, defaultProps, isRequired, 'number'),
-      bool: (key, defaultProps = false, isRequired) => this.model(data, key, defaultProps, isRequired, 'boolean'),
-      array: key => this.model(data, key, []),
-      object: key => this.model(data, key, {}, 'object'),
-      timestamp: (key, isRequired) => this.model(data, key, 0, isRequired, 'number'),
+      string: (key, defaultProps = '', isRequired) => this._model(data, key, defaultProps, isRequired, 'string'),
+      number: (key, defaultProps = 0, isRequired) => this._model(data, key, defaultProps, isRequired, 'number'),
+      bool: (key, defaultProps = false, isRequired) => this._model(data, key, defaultProps, isRequired, 'boolean'),
+      array: key => this._model(data, key, []),
+      object: key => this._model(data, key, {}, 'object'),
+      timestamp: (key, isRequired) => this._model(data, key, 0, isRequired, 'number'),
     }
   }
 
@@ -129,6 +143,8 @@ export class Model {
    * Mock Data List Model
    * @param {number} count count of Array Data
    * @return {Array.<Object>}
+   * @example
+   * Model.fakerList(10)
    */
   static fakerList(count) {
     const arr = []

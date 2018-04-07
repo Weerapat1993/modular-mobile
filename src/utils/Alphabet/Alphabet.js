@@ -24,8 +24,8 @@ class Alphabet {
 
   /**
    * random data in array
-   * @param {Array.<string|number>} words array of random data
-   * @return {string|number}
+   * @param {Array.<any>} words array of random data
+   * @return {any}
    * @example
    * Alphabet.enum(['meetup', 'delivery']) // return between 'meetup' or 'delivery'
    */
