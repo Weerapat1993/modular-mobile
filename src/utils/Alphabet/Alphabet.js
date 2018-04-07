@@ -1,3 +1,5 @@
+import _ from 'lodash'
+
 /**
  * @class Alphabet
  * @classdesc Calculator data `string` in project
@@ -18,8 +20,22 @@ class Alphabet {
     }
     return text
   }
+
+
+  /**
+   * random data in array
+   * @param {Array.<string|number>} words array of random data
+   * @return {string|number}
+   * @example
+   * Alphabet.enum(['meetup', 'delivery']) // return between 'meetup' or 'delivery'
+   */
+  static enum(words) {
+    const num = _.random(0, words.length - 1) 
+    return words[num]
+  }
 }
 
 export default {
-  random: Alphabet.random
+  random: Alphabet.random,
+  enum: Alphabet.enum,
 }

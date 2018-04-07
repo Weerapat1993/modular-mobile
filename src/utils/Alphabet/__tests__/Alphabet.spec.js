@@ -5,4 +5,9 @@ describe('Alphabet.js', () => {
     const recieved = Alphabet.random(50)
     expect(recieved).toHaveLength(50)
   })
+
+  it('method enum', () => {
+    const recieved = Alphabet.enum(['meetup', 'delivery'])
+    expect(typeof recieved).toEqual('string')
+  })
 })

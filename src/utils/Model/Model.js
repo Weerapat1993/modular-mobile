@@ -5,6 +5,9 @@ import PropTypes from 'prop-types'
  * @class Model
  */
 export class Model {
+  /** set isRequired in PropTypes 
+   * @type {Object}
+   */
   static isRequired = {}
 
    /**
@@ -40,7 +43,7 @@ export class Model {
 
   /**
    * set PropTypes in Model
-   * @param {Object} data
+   * @param {Object} data data response from API
    */
   static propTypes(data) {
     return {
@@ -56,6 +59,41 @@ export class Model {
   /**
    * Set PropTypes in Model
    * @return {Function}
+   * @example
+   * // Set Data Model
+   * static isRequired = {
+   *   description: false
+   * }
+   * 
+   * static set(data) {
+   *   const { string, number, array, bool, object } = this.propTypes(data)
+   *   return {
+   *     id: string('id'),
+   *     shop: object('shop'),
+   *     descripiton: object('description'),
+   *     price: number('price'),
+   *     products: array('items'),
+   *     createdAt: timestamp('created_at'),
+   *   }
+   * }
+   * 
+   * // Usage
+   * static propTypes = {
+   *   data: Model.setPropTypes()
+   * }
+   * 
+   * // is Equal to
+   * static propTypes = {
+   *   data: PropTypes.shape({
+   *     id: PropTypes.string.isRequired,
+   *     shop: PropTypes.object.isRequired,
+   *     description: PropTypes.string,
+   *     price: PropTypes.number.isRequired,
+   *     products: PropTypes.array.isRequired,
+   *     createdAt: PropTypes.number.isRequired,
+   *   })
+   * }
+   * 
    */
   static setPropTypes() {
     const data = this.set()
