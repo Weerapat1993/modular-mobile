@@ -5,6 +5,8 @@ import PropTypes from 'prop-types'
  * @class Model
  */
 export class Model {
+  static isRequired = {}
+
    /**
    * get Class Name
    * @private
@@ -75,7 +77,12 @@ export class Model {
             name = dataType
         }
       }
-      propTypes[key] = PropTypes[name].isRequired
+      const isRequired = get(this.isRequired, key, true)
+      if(isRequired) {
+        propTypes[key] = PropTypes[name].isRequired
+      } else {
+        propTypes[key] = PropTypes[name]
+      }
     })
     return PropTypes.shape(propTypes)
   }

@@ -9,6 +9,11 @@ import { Model } from '../utils/Model'
 export class Github extends Model {
   // Table Name
   static table = 'github'
+
+  // No check isRequired in PropTypes
+  static isRequired = {
+    description: false
+  }
   
   /**
    * Set Github Model

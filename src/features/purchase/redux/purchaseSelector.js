@@ -13,7 +13,7 @@ export class PurchaseSelector {
   /**
    * Get Purchase Lists
    * @param {Object} state state in store
-   * @return {typeof PurchaseSelector.defaultProps}
+   * @return {Object}
    */
   static getList(state) {
     const { purchase } = state
