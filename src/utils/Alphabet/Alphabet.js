@@ -33,9 +33,22 @@ class Alphabet {
     const num = _.random(0, words.length - 1) 
     return words[num]
   }
+
+  /**
+   * JSON comparison 
+   * @param {Object} dataA 
+   * @param {Object} dataB
+   * @return {boolean} 
+   */
+  static jsonEqual(dataA, dataB) {
+    const a = JSON.stringify(dataA)
+    const b = JSON.stringify(dataB)
+    return a === b
+  }
 }
 
 export default {
   random: Alphabet.random,
   enum: Alphabet.enum,
+  jsonEqual: Alphabet.jsonEqual
 }

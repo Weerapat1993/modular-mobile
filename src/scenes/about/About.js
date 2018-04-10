@@ -1,29 +1,50 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { object } from 'prop-types'
 import { ScrollView } from 'react-native'
-import { Actions } from 'react-native-router-flux'
+import { bindActionCreators } from 'redux'
+import { localStorage } from '../../features/storage/redux/storageActions'
+import { PurchaseSelector as Selector } from '../../features'
+import { connect } from 'react-redux'
+import faker from 'faker/locale/en'
 import { Button } from '../../components'
-import { GlobalStyle } from '../../styles'
+import { styles } from '../../styles'
+import { Performances } from '../../utils/Performances'
 
-const styles = new GlobalStyle()
+class About extends Component {
+  static propTypes = {
+    localStorage: object.isRequired,
+  }
 
-const About = () => (
-  <ScrollView>
-    <Button type='primary' color='default' rounded style={styles.marginVertical(10)} onPress={Actions.pop}>DEFAULT</Button>
-    <Button type='primary' color='primary' rounded style={styles.marginVertical(10)} onPress={Actions.pop}>PRIMARY</Button>
-    <Button type='primary' color='warning' rounded style={styles.marginVertical(10)} onPress={Actions.pop}>WARNING</Button>
-    <Button type='primary' color='success' rounded style={styles.marginVertical(10)} onPress={Actions.pop}>SUCCESS</Button>
-    <Button type='primary' color='danger' rounded style={styles.marginVertical(10)} onPress={Actions.pop}>DANGER</Button>    
-    <Button type='outline' color='default' rounded style={styles.marginVertical(10)} onPress={Actions.pop}>DEFAULT</Button>
-    <Button type='outline' color='primary' rounded style={styles.marginVertical(10)} onPress={Actions.pop}>PRIMARY</Button>
-    <Button type='outline' color='warning' rounded style={styles.marginVertical(10)} onPress={Actions.pop}>WARNING</Button>
-    <Button type='outline' color='success' rounded style={styles.marginVertical(10)} onPress={Actions.pop}>SUCCESS</Button>
-    <Button type='outline' color='danger' rounded style={styles.marginVertical(10)} onPress={Actions.pop}>DANGER</Button>
-    <Button type='flat' color='default' rounded style={styles.marginVertical(10)} onPress={Actions.pop}>DEFAULT</Button>
-    <Button type='flat' color='primary' rounded style={styles.marginVertical(10)} onPress={Actions.pop}>PRIMARY</Button>
-    <Button type='flat' color='warning' rounded style={styles.marginVertical(10)} onPress={Actions.pop}>WARNING</Button>
-    <Button type='flat' color='success' rounded style={styles.marginVertical(10)} onPress={Actions.pop}>SUCCESS</Button>
-    <Button type='flat' color='danger' rounded style={styles.marginVertical(10)} onPress={Actions.pop}>DANGER</Button> 
-  </ScrollView>
-)
+  shouldComponentUpdate(nextProps, nextState) {
+    if(Performances.isShouldRenderProps(this.props, nextProps)) return false
+    // if(Performances.isShouldRenderState(this.props, nextState)) return false
+    return true
+  }
 
-export default About
+  render() {
+    const { localStorage } = this.props
+    alert('Render')
+    return (
+      <ScrollView>
+        <Button 
+          type='primary' 
+          color='default' 
+          rounded 
+          style={styles.marginVertical(10)} 
+          onPress={() => localStorage.setItem('socialList', faker.name.findName())}>
+          Render
+        </Button>
+      </ScrollView>
+    )
+  }
+}
+
+const mapStateToProps = (state, ownProps) => ({
+  purchase: Selector.getList(state),
+})
+
+const mapDispatchToProps = dispatch => ({
+  localStorage: bindActionCreators(localStorage, dispatch)
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(About)
