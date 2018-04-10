@@ -17,7 +17,7 @@ class About extends Component {
 
   shouldComponentUpdate(nextProps, nextState) {
     if(Performances.isShouldRenderProps(this.props, nextProps)) return false
-    // if(Performances.isShouldRenderState(this.props, nextState)) return false
+    if(Performances.isShouldRenderState(this.state, nextState)) return false
     return true
   }
 
