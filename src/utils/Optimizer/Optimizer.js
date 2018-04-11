@@ -44,6 +44,7 @@ export class Optimizer {
    * @return {Object} 
    */
   static _removeFunction(obj) {
+    if (!obj) return {}
     const newObj = {}
     Object.keys(obj).forEach((key => {
       if(typeof obj[key] !== 'function') {
