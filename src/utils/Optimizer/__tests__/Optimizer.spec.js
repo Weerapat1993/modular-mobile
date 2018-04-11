@@ -1,6 +1,6 @@
-import { Optimize } from '../Optimize'
+import { Optimizer } from '../Optimize'
 
-describe('Optimize.js', () => {
+describe('Optimizer.js', () => {
   it ('_removeFunction', () => {
     const data = {
       a: {},
@@ -8,7 +8,7 @@ describe('Optimize.js', () => {
       c: [{ id: 'Test' }],
       func: () => null,
     }
-    const recieved = Optimize._removeFunction(data)
+    const recieved = Optimizer._removeFunction(data)
     const expected = {
       a: {},
       b: { id: 'Test' },
@@ -26,7 +26,7 @@ describe('Optimize.js', () => {
         arr: [{ id: 1234 }]
       }
     }
-    const recieved = Optimize._removeFunction(data)
+    const recieved = Optimizer._removeFunction(data)
     const expected = {
       a: {},
       b: { id: 'Test' },
@@ -49,8 +49,8 @@ describe('Optimize.js', () => {
       func2: (id) => 1234,
       func3: [() => null],
     }
-    const recievedProps = Optimize.isShouldRenderProps(prevProps, nextProps)
-    const recievedState = Optimize.isShouldRenderState(prevProps, nextProps)
+    const recievedProps = Optimizer.isShouldRenderProps(prevProps, nextProps)
+    const recievedState = Optimizer.isShouldRenderState(prevProps, nextProps)
     expect(recievedProps).toEqual(false)
     expect(recievedState).toEqual(false)
   });
@@ -68,8 +68,8 @@ describe('Optimize.js', () => {
       func2: (id) => 1234,
       func3: [() => null],
     }
-    const recievedProps = Optimize.isShouldRenderProps(prevProps, nextProps)
-    const recievedState = Optimize.isShouldRenderState(prevProps, nextProps)
+    const recievedProps = Optimizer.isShouldRenderProps(prevProps, nextProps)
+    const recievedState = Optimizer.isShouldRenderState(prevProps, nextProps)
     expect(recievedProps).toEqual(false)
     expect(recievedState).toEqual(false)
   });

@@ -1,9 +1,9 @@
 import { Alphabet } from '../Alphabet'
 
 /**
- * @class Optimize
+ * @class Optimizer
  */
-export class Optimize {
+export class Optimizer {
   /**
    * check data props in shouldComponentUpdate 
    * @param {Object} prevProps 
@@ -61,4 +61,4 @@ export class Optimize {
   }
 }
 
-export default Optimize
+export default Optimizer
