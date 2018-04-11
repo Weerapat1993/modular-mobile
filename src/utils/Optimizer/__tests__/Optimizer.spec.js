@@ -1,4 +1,4 @@
-import { Optimizer } from '../Optimize'
+import { Optimizer } from '../Optimizer'
 
 describe('Optimizer.js', () => {
   it ('_removeFunction', () => {
@@ -23,6 +23,7 @@ describe('Optimizer.js', () => {
       actionCreator: {
         func: () => null,
         func2: () => null,
+        action: {},
         arr: [{ id: 1234 }]
       }
     }
@@ -31,6 +32,7 @@ describe('Optimizer.js', () => {
       a: {},
       b: { id: 'Test' },
       actionCreator: {
+        action: {},
         arr: [{ id: 1234 }]
       },
     }

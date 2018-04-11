@@ -41,17 +41,17 @@ export class Optimizer {
   /**
    * Remove Function in Object
    * @param {Object} obj
+   * @param {boolean} [notRecusive]
    * @return {Object} 
    */
-  static _removeFunction(obj) {
-    if (!obj) return {}
+  static _removeFunction(obj = {}, notRecusive = false) {
     const newObj = {}
     Object.keys(obj).forEach((key => {
       if(typeof obj[key] !== 'function') {
-        if(Array.isArray(obj[key])) {
+        if(Array.isArray(obj[key]) || notRecusive) {
           newObj[key] = obj[key]
         } else if (typeof obj[key] === 'object') {
-          newObj[key] = this._removeFunction(obj[key])
+          newObj[key] = this._removeFunction(obj[key], true)
         } else {
           newObj[key] = obj[key]
         }
