@@ -1,5 +1,3 @@
-import { Alphabet } from '../Alphabet'
-
 /**
  * @class Optimizer
  */
@@ -13,7 +11,7 @@ export class Optimizer {
   static isShouldRenderProps(prevProps, nextProps) {
     const prev = this._removeFunction(prevProps)
     const next = this._removeFunction(nextProps)
-    return Alphabet.jsonEqual(prev, next)
+    return this._jsonEqual(prev, next)
   }
 
   /**
@@ -25,9 +23,26 @@ export class Optimizer {
   static isShouldRenderState(prevState, nextState) {
     const prev = this._removeFunction(prevState)
     const next = this._removeFunction(nextState)
-    return Alphabet.jsonEqual(prev, next)
+    return this._jsonEqual(prev, next)
   }
 
+  /**
+   * JSON comparison 
+   * @param {Object} dataA 
+   * @param {Object} dataB
+   * @return {boolean} 
+   */
+  static _jsonEqual(dataA, dataB) {
+    const a = JSON.stringify(dataA)
+    const b = JSON.stringify(dataB)
+    return a === b
+  }
+
+  /**
+   * Remove Function in Object
+   * @param {Object} obj
+   * @return {Object} 
+   */
   static _removeFunction(obj) {
     const newObj = {}
     Object.keys(obj).forEach((key => {
