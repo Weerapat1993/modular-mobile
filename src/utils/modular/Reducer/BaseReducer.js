@@ -6,12 +6,6 @@ export const classReducer = (ClassReducer) => (state, action) => new ClassReduce
  * @typedef {Object} State data in initalState
  * @property {Object} [keys] data object with key
  * @property {Array.<string>} [byID] data key list 
- * @example
- * 
- * const inititalState = {
- *   keys: {},
- *   byID: []
- * }
  */
 
 /**
@@ -20,25 +14,6 @@ export const classReducer = (ClassReducer) => (state, action) => new ClassReduce
  * @property {boolean} [isReload] check data when reload again
  * @property {string} [error] error message response
  * @property {any} [data] data inforamtion
- * @example
- * 
- * const state = {
- *   keys: {
- *     product1: {
- *       isFetching: false,
- *       isReload: true,
- *       error: '',
- *       data: {}
- *     }
- *     product2: {
- *       isFetching: false,
- *       isReload: true,
- *       error: '',
- *       data: {}
- *     }
- *   },
- *   byID: ['product1', 'product2']
- * }
  */
 
  /**
@@ -47,28 +22,6 @@ export const classReducer = (ClassReducer) => (state, action) => new ClassReduce
   * @property {any} [data] data response from API
   * @property {string} [key] data key when find key object in reducer
   * @property {Error} [error] error response from API
-  * @example
-  * // Type Request
-  * const action = {
-  *   type: FETCH_PRODUCT.REQUEST,
-  *   key: 'product1',
-  * }
-  * 
-  * // Type Success
-  * const action = {
-  *   type: FETCH_PRODUCT.SUCCESS,
-  *   key: 'product1',
-  *   data: {
-  *     message: 'Data Response' 
-  *   }
-  * }
-  * 
-  * // Type FAILURE
-  * const action = {
-  *   type: FETCH_PRODUCT.FAILURE,
-  *   key: 'product1',
-  *   error: new Error('Error Response')
-  * }
   */
 
 /**
@@ -81,6 +34,15 @@ export const classReducer = (ClassReducer) => (state, action) => new ClassReduce
  * @global
  */
 export class BaseReducer {
+  /**
+   * get Class Name
+   * @private
+   * @return {string}
+   */
+  static _getName() {
+    return this.toString().split(' ')[1].split('(')[0]
+  }
+
   /**
    * Reducer Constructor
    * @constructor
@@ -104,11 +66,14 @@ export class BaseReducer {
     return this
   }
 
+  /** @private */
+  _getKeyWarning() {
+    if (!this.key) console.warn(`Reducer: action.key is 'undefined' in ${this.constructor._getName()}`)
+  }
+
   /**
    * Get Error Message
    * @return {String} response error message is string
-   * @example
-   * return _.get(error, 'response.data.message') || error.message
    */
   errorMessage() {
     const { error } = this.action
@@ -131,20 +96,9 @@ export class BaseReducer {
    * Set state withKey in Reducer
    * @param {StateWithKey} newState create new state in key object
    * @return {State} get new state in key object
-   * @example
-   * class ProductReducer extends Reducer {
-   *   ...
-   *   getState() {
-   *     const { type } = this.action
-   *     switch(type) {
-   *       ...
-   *       case CLEAR_ERROR_PRODUCT_BY_ID:
-   *         return this.setStateWithKey({ error: '' })
-   *     }
-   *   }
-   * }
    */
   setStateWithKey(newState) {
+    this._getKeyWarning()
     return {
       ...this.state,
       keys: {
@@ -160,26 +114,9 @@ export class BaseReducer {
   /** 
    * Get state withKey in Reducer
    * @return {StateWithKey} getState in key object
-   * @example
-   * class ProductReducer extends Reducer {
-   *   ...
-   *   getState() {
-   *     const { type, data } = this.action
-   *     switch(type) {
-   *       ...
-   *       case UPDATE_PRODUCT_BY_ID.SUCCESS:
-   *         return this.setStateWithKey({ 
-   *           data: {
-   *             ...this.getStateWithKey().data,
-   *             ...data,
-   *           } 
-   *         })
-   *     }
-   *   }
-   * }
-   * 
    */
   getStateWithKey() {
+    this._getKeyWarning()
     return this.state.keys[this.key]
   }
 

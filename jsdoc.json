@@ -10,6 +10,7 @@
         "src/utils/Calculator/Calculator.js",
         "src/utils/modular/Reducer",
         "src/utils/Model",
+        "src/utils/Optimizer",
         "src/features/storage/redux/storageActions.js"
       ],
       "exclude": [

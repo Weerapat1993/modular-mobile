@@ -1,11 +1,11 @@
 import { Model } from '../utils/Model'
 import { Product } from './Product'
 import { Customer } from './Customer'
-import { Shop } from './Shop';
+import { Shop } from './Shop'
 import { Alphabet } from '../utils'
 
 /**
- * @class Github
+ * @class Purchase
  * @extends Model
  */
 export class Purchase extends Model {

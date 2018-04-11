@@ -1,5 +1,6 @@
 import React from 'react'
 import { Text } from 'react-native'
+import { object } from 'prop-types'
 import faker from 'faker'
 import { Actions } from 'react-native-router-flux'
 import { Button, Navbar, IconButton } from '../../components'
@@ -63,6 +64,11 @@ const StorageScene = ({ storage, localStorage }) => {
       <Text>{JSON.stringify(storage, null, '  ')}</Text>
     </Navbar>
   )
+}
+
+StorageScene.propTypes = {
+  storage: object.isRequired,
+  localStorage: object.isRequired,
 }
 
 export default withLocalStorage(StorageScene)
