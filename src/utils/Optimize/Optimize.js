@@ -1,9 +1,9 @@
 import { Alphabet } from '../Alphabet'
 
 /**
- * @class Performance
+ * @class Optimize
  */
-export class Performances {
+export class Optimize {
   /**
    * check data props in shouldComponentUpdate 
    * @param {Object} prevProps 
@@ -43,6 +43,22 @@ export class Performances {
     }))
     return newObj
   }
+
+  /**
+   * check data state & props in shouldComponentUpdate 
+   * @param {Object} prevProps 
+   * @param {Object} nextProps
+   * @param {Object} prevState 
+   * @param {Object} nextState
+   * @param {boolean} [isWarning]
+   * @return {boolean}
+   */
+  static isShouldRender(prevProps, nextProps, prevState, nextState, isWarning) {
+    const checkProps = this.isShouldRenderProps(prevProps, nextProps)
+    const checkState = this.isShouldRenderState(prevState, nextState)
+    if(checkProps && checkState && isWarning) console.warn('Optimizer: shouldComponentUpdate does not render.')
+    return checkProps && checkState
+  }
 }
 
-export default Performances
+export default Optimize

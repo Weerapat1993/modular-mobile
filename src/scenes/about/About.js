@@ -10,7 +10,7 @@ import { connect } from 'react-redux'
 import faker from 'faker/locale/en'
 import { Button } from '../../components'
 import { styles } from '../../styles'
-import { Performances } from '../../utils/Performances'
+import { Optimize } from '../../utils'
 
 class About extends Component {
   static propTypes = {
@@ -31,9 +31,7 @@ class About extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    const checkProps = Performances.isShouldRenderProps(this.props, nextProps)
-    const checkState = Performances.isShouldRenderState(this.state, nextState)
-    if(checkProps && checkState) return false
+    if (Optimize.isShouldRender(this.props, nextProps, this.state, nextState)) return false
     return true
   }
 
