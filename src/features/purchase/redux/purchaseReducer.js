@@ -1,8 +1,5 @@
 import R from 'ramda'
-import { 
-  FETCH_PURCHASE_LIST,
-  FETCH_PURCHASE_DETAIL,
-} from './purchaseActionTypes'
+import { FETCH_PURCHASE_LIST, FETCH_PURCHASE_DETAIL } from './purchaseActionTypes'
 import { Reducer, classReducer } from '../../../utils'
 
 export class PurchaseReducer extends Reducer {
@@ -18,15 +15,9 @@ export class PurchaseReducer extends Reducer {
     const { type, data } = this.action 
     switch (type) {
       case FETCH_PURCHASE_LIST.REQUEST:
-        return this.setState({ 
-          isFetching: true,
-          isReload: false,
-          error: '',
-        })
+        return this.setStateRequest()
       case FETCH_PURCHASE_LIST.SUCCESS:
-        return this.setState({ 
-          isFetching: false,
-          isReload: false,
+        return this.setStateSuccess({ 
           keys: {
             ...this.state.keys,
             ...this.normalizeData(data)
@@ -35,14 +26,9 @@ export class PurchaseReducer extends Reducer {
             ...data.map(item => item.id),
             ...this.state.byID,
           ]),
-          error: '',
         })
       case FETCH_PURCHASE_LIST.FAILURE:
-        return this.setState({ 
-          isFetching: false,
-          isReload: false,
-          error: this.errorMessage(),
-        })
+        return this.setStateFailure()
       case FETCH_PURCHASE_DETAIL.REQUEST:
         return this.setStateWithKeyRequest()
       case FETCH_PURCHASE_DETAIL.SUCCESS:

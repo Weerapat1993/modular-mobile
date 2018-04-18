@@ -198,5 +198,32 @@ export class Reducer extends BaseReducer {
       ...newState,
     })
   }
+
+  setStateRequest(newState) {
+    return this.setState({ 
+      isFetching: true, 
+      isReload: false, 
+      error: '',
+      ...newState,
+    })
+  }
+
+  setStateSuccess(newState) {
+    return this.setState({ 
+      isFetching: false, 
+      isReload: false, 
+      error: '',
+      ...newState,
+    })
+  }
+
+  setStateFailure(newState) {
+    return this.setState({ 
+      isFetching: false, 
+      isReload: false, 
+      error: this.errorMessage(),
+      ...newState,
+    })
+  }
 }
 
