@@ -1,7 +1,7 @@
 import React from 'react'
 import { Icon } from 'antd-mobile'
 import { func, oneOf, string, objectOf, any, number } from 'prop-types'
-import { TouchableOpacity, TouchableHighlight, Image } from 'react-native'
+import { TouchableOpacity, TouchableHighlight, Image, Text, View } from 'react-native'
 import styles from './styles'
 
 const IconButton = ({ onPress, source, icon, type, color, style, size, iconSize }) => {
@@ -12,9 +12,11 @@ const IconButton = ({ onPress, source, icon, type, color, style, size, iconSize 
         onPress={onPress} 
         style={[styles.btnView(type, color, size), style]}
       >
-        { source && <Image source={source} style={styles.size(iconSize)} /> }
-        {/* <Text style={styles.btnTextIcon(color)}>A</Text> */}
-        {/* <Icon type={icon} size={iconSize} /> */}
+        <View>
+          { source && <Image source={source} style={styles.size(iconSize)} /> }
+          { !source && <Text style={styles.btnTextIcon(color)}>A</Text> }
+          {/* <Icon type={icon} size={iconSize} /> */}
+        </View>
       </TouchableHighlight>
     )
   }
@@ -24,7 +26,7 @@ const IconButton = ({ onPress, source, icon, type, color, style, size, iconSize 
       style={[styles.btnView(type, color, size), style]}
     >
       { source && <Image source={source} style={styles.size(iconSize)} /> }
-      {/* <Text style={type === 'outline' ? styles.btnTextIcon(color) : {}}>A</Text> */}
+      { !source && <Text style={type === 'outline' ? styles.btnTextIcon(color) : {}}>A</Text> }
       {/* <Icon type={icon} size={iconSize} /> */}
     </TouchableOpacity>
   )
