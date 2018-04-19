@@ -1,3 +1,4 @@
+import R from 'ramda'
 import { BaseReducer } from './BaseReducer'
 
 /**
@@ -223,6 +224,25 @@ export class Reducer extends BaseReducer {
       isReload: false, 
       error: this.errorMessage(),
       ...newState,
+    })
+  }
+
+  /**
+   * Normalizer
+   * @param {Array<Object>} data 
+   * @param {string} primaryKey
+   * @return {State}
+   */
+  normalizer(data, primaryKey = 'id') {
+    return this.setStateSuccess({ 
+      keys: {
+        ...this.state.keys,
+        ...this.normalizeData(data)
+      },
+      byID: R.uniq([
+        ...data.map(item => item[primaryKey]),
+        ...this.state.byID,
+      ]),
     })
   }
 }

@@ -17,16 +17,7 @@ export class PurchaseReducer extends Reducer {
       case FETCH_PURCHASE_LIST.REQUEST:
         return this.setStateRequest()
       case FETCH_PURCHASE_LIST.SUCCESS:
-        return this.setStateSuccess({ 
-          keys: {
-            ...this.state.keys,
-            ...this.normalizeData(data)
-          },
-          byID: R.uniq([
-            ...data.map(item => item.id),
-            ...this.state.byID,
-          ]),
-        })
+        return this.normalizer(data, 'id')
       case FETCH_PURCHASE_LIST.FAILURE:
         return this.setStateFailure()
       case FETCH_PURCHASE_DETAIL.REQUEST:
