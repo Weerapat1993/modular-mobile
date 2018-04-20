@@ -17,7 +17,7 @@ export class PurchaseReducer extends Reducer {
       case FETCH_PURCHASE_LIST.REQUEST:
         return this.setStateRequest()
       case FETCH_PURCHASE_LIST.SUCCESS:
-        return this.normalizer(data, 'id')
+        return this.normalizerList(data, 'id')
       case FETCH_PURCHASE_LIST.FAILURE:
         return this.setStateFailure()
       case FETCH_PURCHASE_DETAIL.REQUEST:

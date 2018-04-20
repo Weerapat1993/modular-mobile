@@ -228,12 +228,12 @@ export class Reducer extends BaseReducer {
   }
 
   /**
-   * Normalizer
+   * Normalizer List
    * @param {Array<Object>} data 
    * @param {string} primaryKey
    * @return {State}
    */
-  normalizer(data, primaryKey = 'id') {
+  normalizerList(data, primaryKey = 'id') {
     return this.setStateSuccess({ 
       keys: {
         ...this.state.keys,
