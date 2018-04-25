@@ -13,7 +13,6 @@ const DatabaseContainer = ({ database }) => (
         <Item
           key={key}
           arrow="horizontal"
-          thumb="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png"
           multipleLine
           onClick={() => Actions.databaseDetail({ title: key, database: database[key] })}
           platform="android"
@@ -27,7 +26,7 @@ const DatabaseContainer = ({ database }) => (
 )
 
 const mapStateToProps = (state, ownProps) => ({
-  database: state.database
+  database: state
 })
 
 export default connect(mapStateToProps)(DatabaseContainer)

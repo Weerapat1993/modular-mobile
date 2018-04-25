@@ -14,7 +14,6 @@ const DatabaseContainer = ({ title, database }) => (
           <Item
             key={key}
             arrow={isObject ? 'horizontal' : 'vertical'}
-            thumb="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png"
             multipleLine
             onClick={() => isObject ? Actions.databaseDetail({ title: `${title} > ${key}`, database: database[key] }) : null}
             platform="android"
