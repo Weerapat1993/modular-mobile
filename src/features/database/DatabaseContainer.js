@@ -1,4 +1,5 @@
 import React from 'react'
+import { object } from 'prop-types'
 import { List } from 'antd-mobile'
 import { connect } from 'react-redux'
 import { Actions } from 'react-native-router-flux'
@@ -24,6 +25,10 @@ const DatabaseContainer = ({ database }) => (
     }
   </List>
 )
+
+DatabaseContainer.propTypes = {
+  database: object.isRequired,
+}
 
 const mapStateToProps = (state, ownProps) => ({
   database: state
