@@ -4,6 +4,7 @@ import { Github } from './github'
 import { Storage } from './storage'
 import { Initial } from './initial'
 import { Purchase, PurchaseDetail } from './purchase'
+import { Database, DatabaseDetail } from './database'
 
 export default {
   Home,
@@ -13,4 +14,6 @@ export default {
   Initial,
   Purchase,
   PurchaseDetail,
+  Database,
+  DatabaseDetail,
 }

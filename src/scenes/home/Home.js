@@ -41,6 +41,16 @@ const Home = () => (
         Purchase 
         <Brief>Go to Purchase</Brief>
       </Item>
+      <Item
+        arrow="horizontal"
+        thumb="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png"
+        multipleLine
+        onClick={() => Actions.database()}
+        platform="android"
+      >
+        Database 
+        <Brief>Go to Database</Brief>
+      </Item>
     </List>
   </View>
 )

@@ -1,4 +1,3 @@
-import R from 'ramda'
 import { FETCH_PURCHASE_LIST, FETCH_PURCHASE_DETAIL } from './purchaseActionTypes'
 import { Reducer, classReducer } from '../../../utils'
 
