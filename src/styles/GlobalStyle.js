@@ -47,6 +47,8 @@ class GlobalStyle extends BaseStyle {
   textDangerBold(size) { return this.textColorBold(size, Colors.DANGER) }
   textMute(size) { return this.textColor(size, Colors.DISABLE) }
   textMuteBold(size) { return this.textColorBold(size, Colors.DISABLE) }
+  textWhite(size) { return this.textColor(size, Colors.WHITE) }
+  textWhiteBold(size) { return this.textColorBold(size, Colors.WHITE) }
 
   // BackgroundColor
   bgDefault = { backgroundColor: Colors.DEFAULT }

@@ -12,6 +12,12 @@ class Style extends GlobalStyle {
     fontWeight: 'bold',
     color: Colors.DANGER,
   }
+  connectionBar = (height, isConnected) => ({
+    height,
+    backgroundColor: isConnected ? Colors.SUCCESS : Colors.DANGER,
+    ...this.center,
+    overflow: 'hidden'
+  })
 }
 
 export default new Style()

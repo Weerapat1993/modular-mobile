@@ -28,7 +28,7 @@ const Home = () => (
         onClick={() => Actions.storage()}
         platform="android"
       >
-        Storage 
+        Redux Storage 
         <Brief>Go to Local Storage</Brief>
       </Item>
       <Item
@@ -48,7 +48,7 @@ const Home = () => (
         onClick={() => Actions.database()}
         platform="android"
       >
-        Database 
+        Redux Database 
         <Brief>Go to Database</Brief>
       </Item>
     </List>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { View, Text, Image } from 'react-native'
+import { View, Text, Image, Animated } from 'react-native'
+import { withConnection, connectionShape } from 'react-native-connection-info'
 import { Modal } from 'antd-mobile'
 import { bool, string, func, any } from 'prop-types'
 import { Loading } from '../Loading'
@@ -13,6 +14,7 @@ class ErrorHandling extends Component {
     error: string,
     children: any.isRequired,
     onReload: func,
+    connection: connectionShape,
   }
 
   static defaultProps = {
@@ -21,10 +23,50 @@ class ErrorHandling extends Component {
     onReload: () => null,
   }
 
+  constructor() {
+    super()
+
+    this.networkBar = new Animated.Value(0)
+  }
+
+  componentDidMount() {
+    this.runAnimated()
+  }
+
+  runAnimated() {
+    this.runAnimatedStart()
+    setTimeout(() => {
+      this.runAnimatedReturn()
+    }, 3000)
+  }
+
+  runAnimatedStart() {
+    Animated.timing(
+      this.networkBar,
+      {
+        toValue: 1,
+        duration: 300,
+      },
+    ).start()
+  }
+
+  runAnimatedReturn() {
+    Animated.timing(
+      this.networkBar,
+      {
+        toValue: 0,
+        duration: 300,
+      },
+    ).start()
+  }
+
   componentWillReceiveProps(nextProps) {
-    const { error } = this.props
+    const { error, connection } = this.props
     if(error !== nextProps.error && nextProps.error) {
       this.handleError(nextProps.error)
+    }
+    if(connection.isConnected !== nextProps.connection.isConnected) {
+      this.runAnimated()
     }
   }
 
@@ -32,12 +74,16 @@ class ErrorHandling extends Component {
     Modal.alert(
       <Text style={styles.textAlert}>Error</Text>,
       error, [
-      { text: 'Ok', onPress: () => null },
+      { text: 'OK', onPress: () => null },
     ]) 
   }
 
   render() {
-    const { isFetching, children, error, onReload } = this.props
+    const { isFetching, children, error, onReload, connection } = this.props
+    const height = this.networkBar.interpolate({
+      inputRange: [0, 1],
+      outputRange: [0, 20]
+    })
     return (
       <View style={styles.flex(1)}>
         {
@@ -70,9 +116,12 @@ class ErrorHandling extends Component {
             </View>
           )
         }
+        <Animated.View style={styles.connectionBar(height, connection.isConnected)}>
+          <Text style={styles.textWhite(12)}>{connection.isConnected ? 'Connected' : 'Offline'}</Text>
+        </Animated.View>
       </View>
     )
   }
 }
 
-export default ErrorHandling
+export default withConnection(ErrorHandling)
