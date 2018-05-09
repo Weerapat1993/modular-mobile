@@ -5,7 +5,7 @@ import { List, Modal } from 'antd-mobile'
 import { withGithub } from './redux'
 import styles from './components/styles'
 import { Github as Model } from '../../models/Github'
-import { LoadImage } from '../../components';
+import { LoadImage } from '../../components'
 
 const { Item } = List;
 const { Brief } = Item
@@ -58,7 +58,6 @@ class GithubContainer extends Component {
       </Item>
     )
   }
-   
 
   render() {
     const { github } = this.props

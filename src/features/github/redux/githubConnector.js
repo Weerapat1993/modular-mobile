@@ -23,6 +23,10 @@ export const withGithub = (WrapperComponent) => {
     constructor() {
       super()
 
+      this.state = {
+        loadInside: false
+      }
+
       this.handleReload = this.handleReload.bind(this)
     }
 
@@ -33,6 +37,16 @@ export const withGithub = (WrapperComponent) => {
       }
     }
 
+    componentWillReceiveProps(nextProps) {
+      const { github } = this.props
+      if(github.isFetching !== nextProps.github.isFetching && !nextProps.github.isFetching && !this.state.loadInside && !nextProps.github.error) {
+        this.setState({ loadInside: true })
+      }
+      if(github.error !== nextProps.github.error && nextProps.github.error && this.state.loadInside) {
+        this.setState({ loadInside: false })
+      }
+    }
+
     handleReload() {
       const { userID } = this.props
       this.props.fetchGithubByID(userID)
@@ -40,9 +54,10 @@ export const withGithub = (WrapperComponent) => {
 
     render() {
       const { github } = this.props
+      const { loadInside } = this.state
       return (
         <ErrorHandling
-          isFetching={false}
+          isFetching={github.isFetching && !loadInside}
           error={github.error}
           onReload={this.handleReload}
         >
