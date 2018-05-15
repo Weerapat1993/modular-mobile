@@ -1,20 +1,18 @@
 import React, { Component } from 'react'
-import { object } from 'prop-types'
+import { func } from 'prop-types'
 import { ScrollView, Text } from 'react-native'
 import { List, InputItem, Toast } from 'antd-mobile'
-import { createForm } from 'rc-form';
-import { bindActionCreators } from 'redux'
-import { localStorage } from '../../features/storage/redux/storageActions'
-import { PurchaseSelector as Selector } from '../../features'
 import { connect } from 'react-redux'
-import faker from 'faker/locale/en'
+import { createForm } from 'rc-form'
+import { fetchGithubByID } from '../../features/github/redux/githubActions'
+import { PurchaseSelector as Selector } from '../../features'
 import { Button } from '../../components'
 import { styles } from '../../styles'
 import { Optimizer } from '../../utils'
 
 class About extends Component {
   static propTypes = {
-    localStorage: object.isRequired,
+    fetchGithubByID: func.isRequired,
   }
 
   constructor() {
@@ -56,7 +54,6 @@ class About extends Component {
   }
 
   render() {
-    const { localStorage } = this.props
     const { boxSwitch } = this.state
     alert('Render')
     return (
@@ -66,8 +63,8 @@ class About extends Component {
           color='default' 
           rounded 
           style={styles.marginVertical(10)} 
-          onPress={() => localStorage.setItem('socialList', faker.name.findName())}>
-          Render Props
+          onPress={() => this.props.fetchGithubByID('Weerapat1993')}>
+          Fetch Github By ID
         </Button>
         <Button 
           type='primary' 
@@ -105,8 +102,8 @@ const mapStateToProps = (state, ownProps) => ({
   purchase: Selector.getList(state),
 })
 
-const mapDispatchToProps = dispatch => ({
-  localStorage: bindActionCreators(localStorage, dispatch)
-})
+const mapDispatchToProps = {
+  fetchGithubByID
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(createForm()(About))

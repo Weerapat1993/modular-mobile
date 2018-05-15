@@ -49,10 +49,10 @@ class TabNavigation extends Component {
               <Scene.Home />
             </TabBar.Item>
             <TabBar.Item
-              title="Shop"
-              key="Shop"
-              selected={selectedTab === 'Shop'}
-              onPress={() => this.handleTab('Shop')}
+              title="Optimizer"
+              key="Optimizer"
+              selected={selectedTab === 'Optimizer'}
+              onPress={() => this.handleTab('Optimizer')}
               data-seed="logId1"
             >
               <Scene.About />
