@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { fetchPurchaseDetail } from '../purchaseActions'
 import { PurchaseSelector as Selector } from '../purchaseSelector'
 import { ErrorHandling } from '../../../../components'
-import { Purchase as Model } from '../../../../models/Purchase'
+import { Purchase as Model } from '../../models/Purchase'
 
 export const withPurchaseDetail = (WrapperComponent) => {
   class HOC extends Component {

@@ -4,7 +4,7 @@ import { shape, bool, string, arrayOf, func } from 'prop-types'
 import { List, Modal } from 'antd-mobile'
 import { withGithub } from './redux'
 import styles from './components/styles'
-import { Github as Model } from '../../models/Github'
+import { Github as Model } from './models/Github'
 import { LoadImage } from '../../components'
 
 const { Item } = List;

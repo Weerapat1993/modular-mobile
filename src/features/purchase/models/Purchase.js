@@ -1,8 +1,8 @@
-import { Model } from '../utils/Model'
+import { Model } from '../../../utils/Model'
 import { Product } from './Product'
 import { Customer } from './Customer'
 import { Shop } from './Shop'
-import { Alphabet } from '../utils'
+import { Alphabet } from '../../../utils'
 
 /**
  * @class Purchase

@@ -1,6 +1,6 @@
 import faker from 'faker/locale/en'
 import { random } from 'lodash'
-import { Model } from '../utils/Model'
+import { Model } from '../../../utils/Model'
 
 /**
  * @class Github

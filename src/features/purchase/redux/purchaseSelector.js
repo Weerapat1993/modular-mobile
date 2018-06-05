@@ -1,5 +1,5 @@
 import { get } from 'lodash'
-import { Purchase as Model } from '../../../models/Purchase'
+import { Purchase as Model } from '../models/Purchase'
 
 export class PurchaseSelector {
   // Default data in Key value

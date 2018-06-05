@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { View, Text, ScrollView } from 'react-native'
 import { shape, bool, string, func } from 'prop-types'
-import { Purchase as Model } from '../../models/Purchase'
+import { Purchase as Model } from './models/Purchase'
 import { withPurchaseDetail } from './redux'
 import styles from './components/styles'
 import { LoadImage } from '../../components'

@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { FETCH_PURCHASE_LIST, FETCH_PURCHASE_DETAIL } from './purchaseActionTypes'
 import { API_ENDPOINT_PURCHASE_LIST } from './purchaseEndpoints'
-import { Purchase as Model } from '../../../models/Purchase'
+import { Purchase as Model } from '../models/Purchase'
 
 export const fetchPurchaseListRequest = () => ({ type: FETCH_PURCHASE_LIST.REQUEST }) 
 export const fetchPurchaseListSuccess = (data) => ({ type: FETCH_PURCHASE_LIST.SUCCESS, data }) 

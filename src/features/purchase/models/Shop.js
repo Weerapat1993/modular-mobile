@@ -1,6 +1,6 @@
 import faker from 'faker/locale/en'
-import { Model } from '../utils/Model'
-import { Alphabet, Calculator } from '../utils'
+import { Model } from '../../../utils/Model'
+import { Alphabet, Calculator } from '../../../utils'
 
 /**
  * @class Shop
