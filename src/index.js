@@ -9,4 +9,6 @@ const App = () => (
   </Provider>
 )
 
+console.disableYellowBox = true
+
 export default App

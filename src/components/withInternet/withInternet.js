@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { Text, Animated } from 'react-native'
-import { withConnection, connectionShape } from 'react-native-connection-info'
+import { withConnection, connectionShape } from './withConnection'
 import styles from './styles'
 
 export const withInternet = (WrapperComponent) => {
@@ -13,10 +13,6 @@ export const withInternet = (WrapperComponent) => {
       super()
   
       this.networkBar = new Animated.Value(0)
-    }
-
-    componentDidMount() {
-      this.runAnimated()
     }
 
     runAnimated() {
