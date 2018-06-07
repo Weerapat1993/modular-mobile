@@ -17,6 +17,7 @@
     "case": "^1.5.4",
     "faker": "^4.1.0",
     "lodash": "^4.17.5",
+    "modern-redux": "https://github.com/Weerapat1993/modern-redux.git",
     "moment": "^2.21.0",
     "prop-types": "^15.6.1",
     "ramda": "^0.25.0",
@@ -30,7 +31,8 @@
     "react-redux": "^5.0.7",
     "redux": "^3.7.2",
     "redux-form": "^7.3.0",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "tcomb-form-native": "^0.6.13"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^3.3.15",

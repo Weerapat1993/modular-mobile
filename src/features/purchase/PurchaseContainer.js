@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { FlatList, View, Dimensions, RefreshControl } from 'react-native'
 import { Actions } from 'react-native-router-flux'
-import { List } from 'antd-mobile'
+import { List, Button } from 'antd-mobile'
 import { shape, arrayOf, bool, string, func } from 'prop-types'
 import { Purchase as Model } from './models/Purchase'
 import { LoadImage } from '../../components'
@@ -67,6 +67,16 @@ class PurchaseContainer extends Component {
             style={styles.height(height - 128)}
           />
         </List>
+        <View style={styles.styleFloatingBtn}>
+          <Button 
+            onClick={() => Actions.purchaseCreate()} 
+            type="primary" 
+            shape="circle" 
+            size='large' 
+          >
+           +
+          </Button>
+        </View>
       </View>
     )
   }
