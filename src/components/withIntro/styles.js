@@ -1,32 +1,31 @@
 
 import { GlobalStyle } from '../../styles'
 
+const BG_COLOR = '#97CAE5'
+
 class Style extends GlobalStyle {
-  wrapper = {
-  }
-  slide1 = {
+  bgContainer = {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#9DD6EB',
+    backgroundColor: BG_COLOR,
   }
-  slide2 = {
+  flexCenter = {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#97CAE5',
+    ...this.center,
   }
-  slide3 = {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#92BBD9',
-  }
-  text = {
-    color: '#fff',
-    fontSize: 30,
-    fontWeight: 'bold',
-  }
+  animationImg1 = (value, opacity, borderTopLeftRadius, borderTopRightRadius, borderBottomLeftRadius, borderBottomRightRadius) => ({
+    ...this.size(value),
+    backgroundColor: '#fff',
+    borderTopLeftRadius,
+    borderTopRightRadius,
+    borderBottomLeftRadius,
+    borderBottomRightRadius,
+    opacity,
+    overflow: 'hidden'
+  })
+
+  bor
 }
 
 export default new Style()
