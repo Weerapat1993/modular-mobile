@@ -1,8 +1,8 @@
 import React from 'react'
-import { TabNavigation } from '../../components'
+import { TabNavigation, withIntro } from '../../components'
 
 const Initial = () => (
   <TabNavigation />
 )
 
-export default Initial
+export default withIntro(Initial)
