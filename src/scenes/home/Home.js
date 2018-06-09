@@ -14,7 +14,7 @@ const Home = () => (
         arrow="horizontal"
         thumb="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png"
         multipleLine
-        onClick={() => Actions.github()}
+        onClick={() => Actions.githubList()}
         platform="android"
       >
         Github 
@@ -34,7 +34,7 @@ const Home = () => (
         arrow="horizontal"
         thumb="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png"
         multipleLine
-        onClick={() => Actions.purchase()}
+        onClick={() => Actions.purchaseList()}
         platform="android"
       >
         Purchase 

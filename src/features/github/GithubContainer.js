@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { View, FlatList, Linking, Text, RefreshControl, Dimensions } from 'react-native'
 import { shape, bool, string, arrayOf, func } from 'prop-types'
-import { List, Modal } from 'antd-mobile'
+import { List, Modal, Button } from 'antd-mobile'
+import { Actions } from 'react-native-router-flux'
 import { withGithub } from './redux'
 import styles from './components/styles'
 import { Github as Model } from './models/Github'
@@ -78,6 +79,16 @@ class GithubContainer extends Component {
             style={styles.height(height - 128)}
           />
         </List>
+        <View style={styles.styleFloatingBtn}>
+          <Button 
+            onClick={() => Actions.githubForm()} 
+            type="primary" 
+            shape="circle" 
+            size='large' 
+          >
+           +
+          </Button>
+        </View>
       </View>
     )
   }

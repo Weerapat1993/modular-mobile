@@ -3,7 +3,7 @@ import { About } from './about'
 import { Github } from './github'
 import { Storage } from './storage'
 import { Initial } from './initial'
-import { Purchase, PurchaseDetail, PurchaseCreate } from './purchase'
+import { Purchase } from './purchase'
 import { Database, DatabaseDetail } from './database'
 
 export default {
@@ -13,8 +13,6 @@ export default {
   Storage,
   Initial,
   Purchase,
-  PurchaseDetail,
-  PurchaseCreate,
   Database,
   DatabaseDetail,
 }

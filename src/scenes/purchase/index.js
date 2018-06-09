@@ -1,5 +1,9 @@
-import Purchase from './Purchase'
+import PurchaseList from './Purchase'
 import PurchaseDetail from './PurchaseDetail'
-import PurchaseCreate from './PurchaseCreate'
+import PurchaseForm from './PurchaseCreate'
 
-export { Purchase, PurchaseDetail, PurchaseCreate }
+export const Purchase = {
+  List: PurchaseList,
+  Detail: PurchaseDetail,
+  Form: PurchaseForm,
+}

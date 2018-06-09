@@ -69,7 +69,7 @@ class PurchaseContainer extends Component {
         </List>
         <View style={styles.styleFloatingBtn}>
           <Button 
-            onClick={() => Actions.purchaseCreate()} 
+            onClick={() => Actions.purchaseForm()} 
             type="primary" 
             shape="circle" 
             size='large' 

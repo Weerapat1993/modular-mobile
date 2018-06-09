@@ -1,3 +1,7 @@
-import Github from './Github'
+import GithubList from './GithubListScene'
+import GithubForm from './GithubFormScene'
 
-export { Github }
+export const Github = {
+  List: GithubList,
+  Form: GithubForm,
+}
