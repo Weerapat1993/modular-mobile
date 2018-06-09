@@ -84,7 +84,7 @@ export const withIntro = (WrapperComponent) => {
       for(let i = 0; i < lineNum + 1; i++) {
         inputRange.push(i)
       }
-      for(let o = 2; o < lineNum; o++) {
+      for(let o = 3; o < lineNum + 1; o++) {
         outputScale.push(imgSize)
       }
       const scale = this.animated.interpolate({
@@ -93,19 +93,39 @@ export const withIntro = (WrapperComponent) => {
       })
       const borderTopLeft = this.animated.interpolate({
         inputRange,
-        outputRange: [0, 5, 5, 5, 5, 75, 100, 100, 100, 75, 5, 5, 5, 100, 75, 50, 50]
+        outputRange: [
+          0, 5, 5, 5, 5, 
+          75, 100, 100, 100, 
+          75, 5, 5, 5, 
+          100, 75, 50, 50,
+        ]
       })
       const borderTopRight = this.animated.interpolate({
         inputRange,
-        outputRange: [0, 5, 5, 5, 5, 5, 5, 5, 5, 75, 100, 100, 100, 100, 75, 50, 50]
+        outputRange: [
+          0, 5, 5, 5, 5, 
+          5, 5, 5, 5, 
+          75, 100, 100, 100, 
+          100, 75, 50, 50,
+        ]
       })
       const borderBottomLeft = this.animated.interpolate({
         inputRange,
-        outputRange: [0, 5, 5, 5, 5, 5, 5, 5, 5, 75, 100, 100, 100, 100, 75, 50, 50]
+        outputRange: [
+          0, 5, 5, 5, 5, 
+          5, 5, 5, 5, 
+          75, 100, 100, 100, 
+          100, 75, 50, 50,
+        ]
       })
       const borderBottomRight = this.animated.interpolate({
         inputRange,
-        outputRange: [0, 5, 5, 5, 5, 75, 100, 100, 100, 75, 5, 5, 5, 100, 75, 50, 50]
+        outputRange: [
+          0, 5, 5, 5, 5, 
+          75, 100, 100, 100, 
+          75, 5, 5, 5, 
+          100, 75, 50, 50,
+        ]
       })
       const opacity = this.animated.interpolate({
         inputRange: [1, 4],

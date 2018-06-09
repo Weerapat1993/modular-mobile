@@ -3,7 +3,6 @@ import { View } from 'react-native';
 import { List } from 'antd-mobile';
 import { Actions } from 'react-native-router-flux'
 import styles from './styles'
-import { withFetchStorage } from '../../features/storage'
 
 const { Item } = List;
 const { Brief } = Item;
@@ -55,5 +54,5 @@ const Home = () => (
   </View>
 )
 
-export default withFetchStorage(Home)
+export default Home
 
