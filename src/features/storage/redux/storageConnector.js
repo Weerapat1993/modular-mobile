@@ -25,9 +25,7 @@ export const withFetchStorage = (WrapperComponent) => {
     }
 
     componentDidMount() {
-      setTimeout(() => {
-        this.props.localStorage.getAllKeys()
-      }, 2000)
+      this.props.localStorage.getAllKeys()
     }
 
     render() {

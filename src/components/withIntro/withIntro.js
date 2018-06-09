@@ -1,10 +1,11 @@
-import React, { Component } from 'react'
-import { View, Text, Animated, Easing } from 'react-native'
+import React, { Component, Fragment } from 'react'
+import { View, Animated, Easing } from 'react-native'
 import { object } from 'prop-types'
 import Swiper from 'react-native-swiper'
 import { Button } from '../../components'
 import { BG_EXAMPLE, IMAGE_NOT_FOUND, LOADING_SCREEN, TEST_BG } from '../../assets/images'
-import styles from './styles'
+import styles from './components/styles'
+import { Dot, DotActive, SwiperTab } from './components'
 
 export const withIntro = (WrapperComponent) => {
   class HOC extends Component {
@@ -50,23 +51,26 @@ export const withIntro = (WrapperComponent) => {
     }
 
     handleTab(tab) {
-      console.log('Tab', tab)
       this.setState({ currentTab: tab })
       this.runAnimation(tab)
     }
 
     handleSkip() {
       this.setState({ isSkip: true })
+      this.props.localStorage.setItem('intro', JSON.stringify(true))
+    }
+
+    checkSkipIntro() {
+      const { storage } = this.props
+      return storage.intro
     }
 
     render() {
-      const { storage } = this.props
       const { isSkip } = this.state
-      const dimensionHeight = 300
-      const imgSize = 200
+      const imgSize = 250
       const lineNum = 16
       const inputRange = []
-      const outputScale = [0, 250, 215]
+      const outputScale = [0, 300, 285]
       for(let i = 0; i < lineNum + 1; i++) {
         inputRange.push(i)
       }
@@ -110,7 +114,7 @@ export const withIntro = (WrapperComponent) => {
         outputRange: [1, 0],
       })
 
-      return isSkip ? <WrapperComponent {...this.props} /> : (
+      return isSkip || this.checkSkipIntro() ? <WrapperComponent {...this.props} /> : (
         <View style={styles.bgContainer}>
           <View style={styles.floatingImage}>
             <Animated.View style={styles.animationImg1(scale, opacity, borderTopLeft, borderTopRight, borderBottomLeft, borderBottomRight)} >
@@ -125,43 +129,67 @@ export const withIntro = (WrapperComponent) => {
               showsButtons={false}
               loop={false}
               onIndexChanged={this.handleTab}
+              dot={<Dot />}
+              activeDot={<DotActive />}
+              activeDotColor={styles.bgDefault.backgroundColor}
             >
-              <View style={styles.flexTab}>
-                <View style={styles.height(dimensionHeight)} />
-                <Text style={styles.textDefaultBold(24)}>Hello Swiper</Text>
-                { storage && <Text>{JSON.stringify(storage, null, '  ')}</Text> }
-              </View>
-              <View style={styles.flexTab}>
-                <View style={styles.height(dimensionHeight)} />
-                <Text style={styles.textDefaultBold(24)}>Beautiful</Text>
-              </View>
-              <View style={styles.flexTab}>
-                <View style={styles.height(dimensionHeight)} />
-                <Text style={styles.textDefaultBold(24)}>And simple</Text>
-              </View>
-              <View style={styles.flexTab}>
-                <View style={styles.height(dimensionHeight)} />
-                <Text style={styles.textDefaultBold(24)}>Login</Text>
-                <View style={styles.marginTop(20)} />
-                <View style={styles.flexDirection('row')}>
-                  <Button 
-                    type='default' 
-                    color='default' 
-                    onPress={() => this.handleSkip()}
-                    >
-                    Sign Up
-                  </Button>
-                  <View style={styles.margin(10)} />
-                  <Button 
-                    type='primary' 
-                    color='primary' 
-                    onPress={() => this.handleSkip()}
-                    >
-                    Login
-                  </Button>
-                </View>
-              </View>
+              <Fragment>
+                <SwiperTab 
+                  title={'LQID - the social marketplaces'}
+                  description={'LQID is social - you can shere shops and products you like on your own timeline or to your other social media.'}
+                />
+              </Fragment>
+              <Fragment>
+                <SwiperTab 
+                  title={'Buy and sell on LQID'}
+                  description={`LQID gives you a secure money account right in the app. It makes paying and getting paid smoother.`}
+                />
+              </Fragment>
+              <Fragment>
+                <SwiperTab 
+                  title='Make shopping rewarding'
+                  description='LQID Coins are collected every time you buy - save your Coins to use as cash on LQID.'
+                />
+              </Fragment>
+              <Fragment>
+                <SwiperTab 
+                  title={'LQID community'}
+                  description={`We're really pleased to see you have but before we get going we need to get a few details.`}
+                >
+                  <View style={styles.flexDirection('row')}>
+                    <Button 
+                      type='outline' 
+                      color='primary' 
+                      size='large'
+                      rounded
+                      onPress={() => this.handleSkip()}
+                      >
+                      Login
+                    </Button>
+                    <View style={styles.margin(10)} />
+                    <Button 
+                      type='primary' 
+                      color='primary'
+                      size='large'
+                      rounded
+                      onPress={() => this.handleSkip()}
+                      >
+                      Sign Up
+                    </Button>
+                  </View>
+                </SwiperTab>
+              </Fragment>
             </Swiper>
+            <View style={[styles.center, styles.marginVertical(20)]}>
+              <Button 
+                type='flat' 
+                color='primary'
+                rounded
+                onPress={() => this.handleSkip()}
+              >
+                Skip
+              </Button>
+            </View>
           </Animated.View>
         </View>
       )
