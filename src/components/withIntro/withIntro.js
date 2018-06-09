@@ -56,6 +56,15 @@ export const withIntro = (WrapperComponent) => {
       this.runAnimation(tab)
     }
 
+    handleLogin() {
+      this.setState({ isSkip: true })
+      this.props.localStorage.setItem('intro', JSON.stringify(true))
+    }
+
+    handleSignUp() {
+      this.setState({ isSkip: true })
+    }
+
     handleSkip() {
       this.setState({ isSkip: true })
       this.props.localStorage.setItem('intro', JSON.stringify(true))
@@ -163,7 +172,7 @@ export const withIntro = (WrapperComponent) => {
                       color='primary' 
                       size='large'
                       rounded
-                      onPress={() => this.handleSkip()}
+                      onPress={() => this.handleLogin()}
                       >
                       Login
                     </Button>
@@ -173,7 +182,7 @@ export const withIntro = (WrapperComponent) => {
                       color='primary'
                       size='large'
                       rounded
-                      onPress={() => this.handleSkip()}
+                      onPress={() => this.handleSignUp()}
                       >
                       Sign Up
                     </Button>
