@@ -4,7 +4,7 @@ import { shape, func, bool } from 'prop-types'
 import { connect } from 'react-redux'
 import { localStorage } from './storageActions'
 import { Storage } from './storageSelector'
-import { Loading } from '../../../components'
+import { LoadingScreen } from '../components'
 
 // Get Local Storage 
 export const withLocalStorage = connect(
@@ -25,19 +25,22 @@ export const withFetchStorage = (WrapperComponent) => {
     }
 
     componentDidMount() {
-      this.props.localStorage.getAllKeys()
+      setTimeout(() => {
+        this.props.localStorage.getAllKeys()
+      }, 2000)
     }
 
     render() {
       const { isLoad } = this.props
       return (
-        isLoad ? <Loading /> : <WrapperComponent {...this.props} />
+        isLoad ? <LoadingScreen isLoad={isLoad} /> : <WrapperComponent {...this.props} />
       )
     }
   }
 
   const mapStateToProps = state => ({
     isLoad: Storage(state).data().isReload,
+    storage: Storage(state).getItem(),
   })
 
   const mapDispatchToProps = dispatch => ({

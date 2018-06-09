@@ -1,8 +1,9 @@
 import React from 'react'
 import { TabNavigation, withIntro } from '../../components'
+import { withFetchStorage } from '../../features';
 
 const Initial = () => (
   <TabNavigation />
 )
 
-export default withIntro(Initial)
+export default withFetchStorage(withIntro(Initial))
