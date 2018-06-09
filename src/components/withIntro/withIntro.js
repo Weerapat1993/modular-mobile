@@ -93,19 +93,19 @@ export const withIntro = (WrapperComponent) => {
       })
       const borderTopLeft = this.animated.interpolate({
         inputRange,
-        outputRange: [0, 5, 5, 5, 5, 100, 100, 100, 100, 5, 5, 5, 5, 100, 75, 50, 50]
+        outputRange: [0, 5, 5, 5, 5, 75, 100, 100, 100, 75, 5, 5, 5, 100, 75, 50, 50]
       })
       const borderTopRight = this.animated.interpolate({
         inputRange,
-        outputRange: [0, 5, 5, 5, 5, 5, 5, 5, 5, 100, 100, 100, 100, 100, 75, 50, 50]
+        outputRange: [0, 5, 5, 5, 5, 5, 5, 5, 5, 75, 100, 100, 100, 100, 75, 50, 50]
       })
       const borderBottomLeft = this.animated.interpolate({
         inputRange,
-        outputRange: [0, 5, 5, 5, 5, 5, 5, 5, 5, 100, 100, 100, 100, 100, 75, 50, 50]
+        outputRange: [0, 5, 5, 5, 5, 5, 5, 5, 5, 75, 100, 100, 100, 100, 75, 50, 50]
       })
       const borderBottomRight = this.animated.interpolate({
         inputRange,
-        outputRange: [0, 5, 5, 5, 5, 100, 100, 100, 100, 5, 5, 5, 5, 100, 75, 50, 50]
+        outputRange: [0, 5, 5, 5, 5, 75, 100, 100, 100, 75, 5, 5, 5, 100, 75, 50, 50]
       })
       const opacity = this.animated.interpolate({
         inputRange: [1, 4],
