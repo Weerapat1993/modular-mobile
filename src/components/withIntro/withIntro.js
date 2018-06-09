@@ -35,6 +35,7 @@ export const withIntro = (WrapperComponent) => {
     }
 
     runAnimation(tab, isFirst) {
+      Animated.timing(this.animated).stop()
       Animated.timing(
         this.animated,
         {
