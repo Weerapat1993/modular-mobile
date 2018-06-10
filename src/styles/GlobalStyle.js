@@ -53,10 +53,12 @@ class GlobalStyle extends BaseStyle {
   // BackgroundColor
   bgDefault = { backgroundColor: Colors.DEFAULT }
   bgPrimary = { backgroundColor: Colors.PRIMARY }
+  bgSecondary = { backgroundColor: Colors.SECONDARY }
   bgSuccess = { backgroundColor: Colors.SUCCESS }
   bgDanger = { backgroundColor: Colors.DANGER }
   bgWarning = { backgroundColor: Colors.WARNING }
   bgMute = { backgroundColor: Colors.DISABLE }
+  bgWhite = { backgroundColor: Colors.WHITE }
 
   // Border
   lineTop = value => ({

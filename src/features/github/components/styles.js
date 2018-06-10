@@ -7,11 +7,6 @@ class Style extends GlobalStyle {
     fontWeight: 'bold',
     color: Colors.DANGER,
   }
-  styleFloatingBtn = {
-    position: 'absolute', 
-    right: 20,
-    bottom: 20,
-  }
   container = {
     justifyContent: 'center',
     padding: 20,

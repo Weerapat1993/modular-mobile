@@ -6,7 +6,7 @@ export const Colors = {
   // Theme
   DEFAULT: '#333333',
   PRIMARY: '#247ba0',
-  SECONDARY: '#2576d4',
+  SECONDARY: '#48BBEC',
   WARNING: '#ec9b00',
   DANGER: '#ff1654',
   SUCCESS: '#00b4c0',

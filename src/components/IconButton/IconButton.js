@@ -4,7 +4,7 @@ import { func, oneOf, string, objectOf, any, number } from 'prop-types'
 import { TouchableOpacity, TouchableHighlight, Image, Text, View } from 'react-native'
 import styles from './styles'
 
-const IconButton = ({ onPress, source, icon, type, color, style, size, iconSize }) => {
+const IconButton = ({ onPress, source, icon, type, color, fontColor, style, size, iconSize, title }) => {
   if(type === 'flat') {
     return (
       <TouchableHighlight
@@ -14,7 +14,7 @@ const IconButton = ({ onPress, source, icon, type, color, style, size, iconSize 
       >
         <View>
           { source && <Image source={source} style={styles.size(iconSize)} /> }
-          { !source && <Text style={styles.btnTextIcon(color)}>A</Text> }
+          { !source && <Text style={styles.textColorBold(iconSize, fontColor)}>{title}</Text> }
           {/* <Icon type={icon} size={iconSize} /> */}
         </View>
       </TouchableHighlight>
@@ -26,7 +26,7 @@ const IconButton = ({ onPress, source, icon, type, color, style, size, iconSize 
       style={[styles.btnView(type, color, size), style]}
     >
       { source && <Image source={source} style={styles.size(iconSize)} /> }
-      { !source && <Text style={type === 'outline' ? styles.btnTextIcon(color) : {}}>A</Text> }
+      { !source && <Text style={[type === 'outline' ? styles.btnTextIcon(color) : styles.textColorBold(iconSize, fontColor), styles.margin(size / -2), styles.marginBottom((size / -2) + 2)]}>{title}</Text> }
       {/* <Icon type={icon} size={iconSize} /> */}
     </TouchableOpacity>
   )
@@ -40,6 +40,8 @@ IconButton.propTypes = {
   icon: string,
   size: number,
   iconSize: number,
+  title: string,
+  fontColor: string,
 }
 
 IconButton.defaultProps = {
@@ -49,6 +51,8 @@ IconButton.defaultProps = {
   icon: '',
   size: 60,
   iconSize: 30,
+  title: '',
+  fontColor: '#fff'
 }
 
 

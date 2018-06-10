@@ -1,11 +1,6 @@
 import { GlobalStyle } from '../../../styles'
 
 class Style extends GlobalStyle {
-  styleFloatingBtn = {
-    position: 'absolute', 
-    right: 20,
-    bottom: 20,
-  }
   container = {
     justifyContent: 'center',
     marginTop: 50,

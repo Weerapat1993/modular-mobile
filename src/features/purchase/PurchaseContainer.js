@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { FlatList, View, Dimensions, RefreshControl } from 'react-native'
 import { Actions } from 'react-native-router-flux'
-import { List, Button } from 'antd-mobile'
+import { List } from 'antd-mobile'
 import { shape, arrayOf, bool, string, func } from 'prop-types'
 import { Purchase as Model } from './models/Purchase'
-import { LoadImage } from '../../components'
+import { LoadImage, FloatingButton } from '../../components'
 import { withPurchase } from './redux'
 import styles from './components/styles'
 
@@ -67,16 +67,11 @@ class PurchaseContainer extends Component {
             style={styles.height(height - 128)}
           />
         </List>
-        <View style={styles.styleFloatingBtn}>
-          <Button 
-            onClick={() => Actions.purchaseForm()} 
-            type="primary" 
-            shape="circle" 
-            size='large' 
-          >
-           +
-          </Button>
-        </View>
+        <FloatingButton 
+          title='+'
+          type='primary'
+          onPress={() => Actions.purchaseForm()} 
+        />
       </View>
     )
   }
