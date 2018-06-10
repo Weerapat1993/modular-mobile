@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, ScrollView } from 'react-native'
+import { View, Text, StatusBar } from 'react-native'
 import { oneOfType, element, func, string } from 'prop-types'
 import styles from './styles'
 
@@ -15,8 +15,13 @@ const Navbar = ({ children, title, leftContent, rightContent }) => (
     <View style={styles.flex(1)}>
       {children}
     </View>
+    <StatusBar 
+      backgroundColor={styles.bgPrimary.backgroundColor}
+      barStyle='light-content'
+      showHideTransition='fade'
+      animated
+    />
   </View>
-  
 )
 
 Navbar.propTypes = {

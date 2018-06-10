@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { View, Animated, Easing } from 'react-native'
+import { View, Animated, Easing, StatusBar } from 'react-native'
 import { object } from 'prop-types'
 import Swiper from 'react-native-swiper'
 import { Button } from '../../components'
@@ -146,6 +146,12 @@ export const withIntro = (WrapperComponent) => {
 
       return isSkip || this.checkSkipIntro() ? <WrapperComponent {...this.props} /> : (
         <View style={styles.bgContainer}>
+          <StatusBar 
+            backgroundColor={styles.bgPrimary.backgroundColor}
+            barStyle='dark-content'
+            showHideTransition='fade'
+            animated
+          />
           <View style={styles.floatingImage}>
             <Animated.View style={styles.animationImg1(scale, opacity, borderTopLeft, borderTopRight, borderBottomLeft, borderBottomRight)} >
               <Animated.Image source={TEST_BG} style={[styles.imgStack(opactiy1, 4), styles.size(imgSize)]} />
