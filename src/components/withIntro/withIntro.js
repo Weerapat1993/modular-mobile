@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { View, Animated, Easing, StatusBar } from 'react-native'
+import { View, Animated, Easing, StatusBar, Dimensions, Platform } from 'react-native'
 import { object } from 'prop-types'
 import Swiper from 'react-native-swiper'
 import { Button } from '../../components'
@@ -81,6 +81,7 @@ export const withIntro = (WrapperComponent) => {
       const lineNum = 16
       const inputRange = []
       const outputScale = [0, 300, 285]
+      const { width } = Dimensions.get('window')
       for(let i = 0; i < lineNum + 1; i++) {
         inputRange.push(i)
       }
@@ -147,7 +148,7 @@ export const withIntro = (WrapperComponent) => {
       return isSkip || this.checkSkipIntro() ? <WrapperComponent {...this.props} /> : (
         <View style={styles.bgContainer}>
           <StatusBar 
-            backgroundColor={styles.bgPrimary.backgroundColor}
+            backgroundColor={'transparent'}
             barStyle='dark-content'
             showHideTransition='fade'
             animated
@@ -168,6 +169,7 @@ export const withIntro = (WrapperComponent) => {
               dot={<Dot />}
               activeDot={<DotActive />}
               activeDotColor={styles.bgDefault.backgroundColor}
+              style={Platform.OS === 'android' ? styles.width(width) : {}}
             >
               <Fragment>
                 <SwiperTab 

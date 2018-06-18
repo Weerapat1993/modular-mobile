@@ -5,6 +5,7 @@ import { Storage } from './storage'
 import { Initial } from './initial'
 import { Purchase } from './purchase'
 import { Database, DatabaseDetail } from './database'
+import { Web } from './web'
 
 export default {
   Home,
@@ -15,4 +16,5 @@ export default {
   Purchase,
   Database,
   DatabaseDetail,
+  Web,
 }

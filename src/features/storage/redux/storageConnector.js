@@ -9,7 +9,7 @@ import { LoadingScreen } from '../components'
 // Get Local Storage 
 export const withLocalStorage = connect(
   state => ({
-    storage: Storage(state).getItem(),
+    storage: Storage.getItem(state),
   }),
   dispatch => ({
     localStorage: bindActionCreators(localStorage, dispatch)
@@ -37,8 +37,8 @@ export const withFetchStorage = (WrapperComponent) => {
   }
 
   const mapStateToProps = state => ({
-    isLoad: Storage(state).data().isReload,
-    storage: Storage(state).getItem(),
+    isLoad: Storage.data(state).isReload,
+    storage: Storage.getItem(state),
   })
 
   const mapDispatchToProps = dispatch => ({

@@ -1,20 +1,25 @@
-class LocalStorage {
-  constructor(state) {
-    this.state = state
-  }
-
-  getItem(key) {
-    return key ? this.state.storage.keys[key] : this.state.storage.keys
+/**
+ * @class Storage
+ */
+export class Storage {
+  /**
+   * Get Item in storage
+   * @param {Object} state
+   * @param {string} key
+   * @return {Object}
+   */
+  static getItem(state, key) {
+    return key ? state.storage.keys[key] : state.storage.keys
   }
 
   /**
    * get Data in storage Reducer
+   * @static
+   * @param {Object} state
    * @return {{ isReload: boolean }}
    */
-  data() {
-    return this.state.storage
+  static data(state) {
+    return state.storage
   }
 }
-
-export const Storage = state => new LocalStorage(state)
 

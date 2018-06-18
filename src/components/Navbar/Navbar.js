@@ -1,14 +1,15 @@
 import React from 'react'
 import { View, Text, StatusBar } from 'react-native'
-import { oneOfType, element, func, string } from 'prop-types'
+import { oneOfType, element, func, string, bool } from 'prop-types'
 import styles from './styles'
 
-const Navbar = ({ children, title, leftContent, rightContent }) => (
+const Navbar = ({ children, title, leftContent, rightContent, flat, description }) => (
   <View style={styles.flex(1)}>
-    <View style={styles.navbarView()}>
+    <View style={styles.navbarView(flat)}>
       {leftContent}
-      <View style={styles.navbarTitle()}>
-        <Text style={styles.textColorBold(16, 'white')}>{title}</Text>
+      <View style={styles.navbarTitle(flat)}>
+        <Text numberOfLines={1} style={!flat ? styles.textWhiteBold(16) : styles.textDefaultBold(16)}>{title}</Text>
+        { description ? <Text numberOfLines={1} style={!flat ? styles.textWhite(12) : styles.textMute(12)}>{description}</Text> : null }
       </View>
       {rightContent}
     </View>
@@ -17,7 +18,7 @@ const Navbar = ({ children, title, leftContent, rightContent }) => (
     </View>
     <StatusBar 
       backgroundColor={styles.bgPrimary.backgroundColor}
-      barStyle='light-content'
+      barStyle={flat ? 'dark-content' : 'light-content'}
       showHideTransition='fade'
       animated
     />
@@ -26,6 +27,7 @@ const Navbar = ({ children, title, leftContent, rightContent }) => (
 
 Navbar.propTypes = {
   title: string,
+  flat: bool,
   leftContent: oneOfType([
     element,
     func,
@@ -33,13 +35,16 @@ Navbar.propTypes = {
   rightContent: oneOfType([
     element,
     func,
-  ])
+  ]),
+  description: string,
 }
 
 Navbar.defaultProps = {
   title: '',
   leftContent: null,
   rightContent: null,
+  flat: false,
+  description: ''
 }
 
 export default Navbar
