@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { View, Animated, Easing, StatusBar, Dimensions } from 'react-native'
+import { View, Animated, Easing, StatusBar, Dimensions, Platform } from 'react-native'
 import { object } from 'prop-types'
 import Swiper from 'react-native-swiper'
 import { Button } from '../../components'
@@ -169,7 +169,7 @@ export const withIntro = (WrapperComponent) => {
               dot={<Dot />}
               activeDot={<DotActive />}
               activeDotColor={styles.bgDefault.backgroundColor}
-              style={styles.width(width)}
+              style={Platform.OS === 'android' ? styles.width(width) : {}}
             >
               <Fragment>
                 <SwiperTab 

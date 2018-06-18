@@ -16,6 +16,7 @@ export const Routes = () => (
       <Scene key="purchaseForm" component={Scenes.Purchase.Form} title='Purchase' />
       <Scene key="database" component={Scenes.Database} title='Database' />
       <Scene key="databaseDetail" component={Scenes.DatabaseDetail} title='Database' />
+      <Scene key="webView" component={Scenes.Web} />
     </Stack>
   </Router>
 )

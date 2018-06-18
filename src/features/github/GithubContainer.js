@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, FlatList, Linking, Text, RefreshControl, Dimensions } from 'react-native'
+import { View, FlatList, Text, RefreshControl, Dimensions } from 'react-native'
 import { shape, bool, string, arrayOf, func } from 'prop-types'
 import { List, Modal } from 'antd-mobile'
 import { Actions } from 'react-native-router-flux'
@@ -35,7 +35,7 @@ class GithubContainer extends Component {
       <Text style={styles.textAlert}>Open Url</Text>,
       `Do you want to open url\n\n${url}`, [
       { text: 'Cancel', onPress: () => null },
-      { text: 'Ok', onPress: () => Linking.openURL(url) },
+      { text: 'OK', onPress: () => Actions.webView({ url }) },
     ]) 
   }
 
