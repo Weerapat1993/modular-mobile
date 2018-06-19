@@ -7,6 +7,7 @@ import { Purchase as Model } from './models/Purchase'
 import { LoadImage, FloatingButton } from '../../components'
 import { withPurchase } from './redux'
 import styles from './components/styles'
+import { t } from '../../language'
 
 const { Item } = List
 const { Brief } = Item
@@ -53,7 +54,7 @@ class PurchaseContainer extends Component {
     const { height } = Dimensions.get('window')
     return (
       <View style={[styles.backgroundColor('#fff'), styles.flex(1)]}>
-        <List renderHeader={() => 'Purchase List'}>
+        <List renderHeader={() => t('purchase-list')}>
           <FlatList
             refreshControl={
               <RefreshControl

@@ -7,6 +7,7 @@ import { IconButton } from '../IconButton'
 import Scene from '../../scenes'
 import styles from './styles'
 import { BACK } from '../../assets/images'
+import { t } from '../../language'
 
 class TabNavigation extends Component {
   constructor(props) {
@@ -29,7 +30,7 @@ class TabNavigation extends Component {
     return (
       <View style={styles.flex(1)}>
         <Navbar
-          title='Initial'
+          title={t('initial')}
           leftContent={<IconButton type='flat' source={BACK} size={40} iconSize={30} onPress={Actions.pop} />}
           rightContent={<IconButton type='flat' source={BACK} size={40} iconSize={30} onPress={Actions.pop} />}
         >
@@ -38,9 +39,10 @@ class TabNavigation extends Component {
             tintColor="#33A3F4"
             barTintColor="white"
             hidden={this.state.hidden}
+            style={styles.lineTop(1)}
           >
             <TabBar.Item
-              title="Home"
+              title={t('home')}
               key="Home"
               selected={selectedTab === 'Home'}
               onPress={() => this.handleTab('Home')}
@@ -49,7 +51,7 @@ class TabNavigation extends Component {
               <Scene.Home />
             </TabBar.Item>
             <TabBar.Item
-              title="Optimizer"
+              title={t('optimizer')}
               key="Optimizer"
               selected={selectedTab === 'Optimizer'}
               onPress={() => this.handleTab('Optimizer')}

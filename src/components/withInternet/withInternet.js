@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { Text, Animated } from 'react-native'
 import { withConnection, connectionShape } from './withConnection'
 import styles from './styles'
+import { t } from '../../language'
 
 export const withInternet = (WrapperComponent) => {
   class Connection extends Component {
@@ -63,7 +64,7 @@ export const withInternet = (WrapperComponent) => {
         <Fragment>
           <WrapperComponent {...this.props} />
           <Animated.View style={styles.connectionBar(height, connection.isConnected)}>
-            <Text style={styles.textWhite(12)}>{connection.isConnected ? 'Connected' : 'Offline'}</Text>
+            <Text style={styles.textWhite(12)}>{connection.isConnected ? t('connected') : t('offline')}</Text>
           </Animated.View>
         </Fragment>
       )

@@ -3,6 +3,7 @@ import { View } from 'react-native';
 import { List } from 'antd-mobile';
 import { Actions } from 'react-native-router-flux'
 import styles from './styles'
+import { t } from '../../language'
 
 const { Item } = List;
 const { Brief } = Item;
@@ -37,7 +38,7 @@ const Home = () => (
         onClick={() => Actions.purchaseList()}
         platform="android"
       >
-        Purchase 
+        {t('purchase')} 
         <Brief>Go to Purchase</Brief>
       </Item>
       <Item
