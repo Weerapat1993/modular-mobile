@@ -1,6 +1,6 @@
 import React from 'react'
-import { Text, ActivityIndicator, ImageBackground } from 'react-native'
-import { LOADING_SCREEN } from '../assets/images'
+import { Text, ActivityIndicator, View } from 'react-native'
+import { t } from '../../../language';
 
 const styles = {
   container: {
@@ -17,12 +17,10 @@ const styles = {
 }
 
 const LoadingScreen = () => (
-  <ImageBackground 
-    source={LOADING_SCREEN}
-    style={styles.container}>
+  <View style={styles.container}>
     <ActivityIndicator size='large' />
-    <Text style={styles.fontLoading}>Loading ...</Text>
-  </ImageBackground>
+    <Text style={styles.fontLoading}>{t('loading')}</Text>
+  </View>
 )
 
 export default LoadingScreen

@@ -5,5 +5,12 @@
   "purchase": "Purchase",
   "purchase-list": "Purchase List",
   "connected": "Connected",
-  "offline": "Offline"
+  "offline": "Offline",
+  "loading": "Loading ...",
+  "github": {
+    "repository-name": "Repository name",
+    "description": "Description",
+    "public": "Public",
+    "create-repository": "Create repository"
+  }
 }

@@ -3,36 +3,35 @@ import { Text, TouchableHighlight, KeyboardAvoidingView, ScrollView, RefreshCont
 import { func, string, shape, bool, arrayOf, object } from 'prop-types'
 import { connect } from 'react-redux'
 import { Actions } from 'react-native-router-flux'
-import t from 'tcomb-form-native'
+import tcomb from 'tcomb-form-native'
 import Case from 'case'
 import _ from 'lodash'
 import { createGithubRepository } from './redux/githubActions'
 import { GithubSelector as Selector } from './redux'
-import { Optimizer } from '../../utils'
 import styles from './components/styles'
-import { Loading } from '../../components'
+import { t } from '../../language';
 
-const Form = t.form.Form;
+const Form = tcomb.form.Form;
 
 // here we are: define your domain model
-const Person = t.struct({
-  name: t.String,              // a required string
-  description: t.maybe(t.String),  // an optional string
-  public: t.Boolean        // a boolean
+const Person = tcomb.struct({
+  name: tcomb.String,              // a required string
+  description: tcomb.maybe(tcomb.String),  // an optional string
+  public: tcomb.Boolean        // a boolean
 })
 
 const options = {
   fields: {
     name: {
-      label: `Repository name`,
+      label: t('github.repository-name'),
       help: 'Great repository names are short and memorable. Need inspiration? How about special-barnacle.',
       error: 'Insert a valid name',
     },
     description: {
-      label: `Description`,
+      label: t('github.description'),
     },
     public: {
-      label: 'Public',
+      label: t('github.public'),
     },
   }
 };
@@ -101,7 +100,7 @@ class GithubForm extends Component {
         refreshControl={
           <RefreshControl
             enabled={false}
-            title='Loading ...'
+            title={t('loading')}
             refreshing={github.isFetching}
           />
         }
@@ -115,7 +114,7 @@ class GithubForm extends Component {
             // onChange={this.handleChange}
           />
           <TouchableHighlight style={styles.button} onPress={this.handleSumbit} underlayColor='#99d9f4'>
-            <Text style={styles.buttonText}>Create repository</Text>
+            <Text style={styles.buttonText}>{t('github.create-repository')}</Text>
           </TouchableHighlight>
         </KeyboardAvoidingView>
       </ScrollView>
