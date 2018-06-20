@@ -1,1 +1,0 @@
-export { databaseReducer } from './databaseReducer'

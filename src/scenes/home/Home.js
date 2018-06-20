@@ -1,56 +1,50 @@
 import React from 'react';
 import { View } from 'react-native';
-import { List } from 'antd-mobile';
+import { List, ListItem, Text, Body, Right, Icon, Left } from 'native-base';
 import { Actions } from 'react-native-router-flux'
 import styles from './styles'
 import { t } from '../../language'
 
-const { Item } = List;
-const { Brief } = Item;
+const data = [
+  {
+    id: 1,
+    icon: 'logo-github',
+    title: 'Github',
+    onPress: () => Actions.githubList()
+  },
+  {
+    id: 2,
+    icon: 'archive',
+    title: 'Storage',
+    onPress: () => Actions.storage()
+  },
+  {
+    id: 3,
+    icon: 'cart',
+    title: t('purchase'),
+    onPress: () => Actions.purchaseList()
+  },
+]
 
 const Home = () => (
   <View style={styles.container}>
-    <List renderHeader={() => 'All Scenes'}>
-      <Item
-        arrow="horizontal"
-        thumb="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png"
-        multipleLine
-        onClick={() => Actions.githubList()}
-        platform="android"
-      >
-        Github 
-        <Brief>Go to Github</Brief>
-      </Item>
-      <Item
-        arrow="horizontal"
-        thumb="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png"
-        multipleLine
-        onClick={() => Actions.storage()}
-        platform="android"
-      >
-        Redux Storage 
-        <Brief>Go to Local Storage</Brief>
-      </Item>
-      <Item
-        arrow="horizontal"
-        thumb="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png"
-        multipleLine
-        onClick={() => Actions.purchaseList()}
-        platform="android"
-      >
-        {t('purchase')} 
-        <Brief>Go to Purchase</Brief>
-      </Item>
-      <Item
-        arrow="horizontal"
-        thumb="https://zos.alipayobjects.com/rmsportal/dNuvNrtqUztHCwM.png"
-        multipleLine
-        onClick={() => Actions.database()}
-        platform="android"
-      >
-        Redux Database 
-        <Brief>Go to Database</Brief>
-      </Item>
+    <List>
+      {
+        data.map((item) => (
+          <ListItem onPress={item.onPress} icon key={item.id} >
+            <Left>
+              <Icon name={item.icon} />
+            </Left>
+            <Body>
+              <Text>{item.title}</Text>
+            </Body>
+            <Right>
+                <Text>On</Text>
+                <Icon name="arrow-forward" />
+              </Right>
+          </ListItem>
+        ))
+      }
     </List>
   </View>
 )

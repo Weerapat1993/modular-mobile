@@ -1,8 +1,10 @@
 {
   "ok": "OK",
   "cancel": "Cancel",
+  "search": "Search",
   "home": "Home",
   "optimizer": "Optimizer",
+  "setting": "Settings",
   "initial": "Initial",
   "purchase": "Purchase",
   "purchase-list": "Purchase List",

@@ -19,6 +19,7 @@
     "lodash": "^4.17.5",
     "modern-redux": "https://github.com/Weerapat1993/modern-redux.git",
     "moment": "^2.21.0",
+    "native-base": "^2.5.2",
     "prop-types": "^15.6.1",
     "ramda": "^0.25.0",
     "rc-form": "^2.2.0",
