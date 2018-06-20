@@ -1,5 +1,5 @@
 import React from 'react'
-import { Icon } from 'antd-mobile'
+// import { Icon } from 'antd-mobile'
 import { func, oneOf, string, objectOf, any, number } from 'prop-types'
 import { TouchableOpacity, TouchableHighlight, Image, Text, View } from 'react-native'
 import styles from './styles'
