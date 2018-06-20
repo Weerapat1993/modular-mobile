@@ -6,7 +6,8 @@ import { Loading } from '../Loading'
 import { Button } from '../Button'
 import styles from './styles'
 import { ErrorFlat } from '../../assets/images'
-import { withInternet } from '../withInternet';
+import { withInternet } from '../withInternet'
+import { t } from '../../language'
 
 class ErrorHandling extends Component {
   static propTypes = {
@@ -34,7 +35,7 @@ class ErrorHandling extends Component {
     Modal.alert(
       <Text style={styles.textAlert}>Error</Text>,
       error, [
-      { text: 'OK', onPress: () => null },
+      { text: t('ok'), onPress: () => null },
     ]) 
   }
 
@@ -51,10 +52,10 @@ class ErrorHandling extends Component {
                 error && !isFetching ? (
                   <View style={styles.container}>
                     <Image source={ErrorFlat} style={styles.size(256)} />
-                    <Text style={[styles.textDangerBold(24), styles.marginVertical(20)]}>Oh Snap!</Text>
-                    <Text style={styles.textMute(16)}>Something this wrong!</Text>
+                    <Text style={[styles.textDangerBold(24), styles.marginVertical(20)]}>{t('oh-snap')}</Text>
+                    <Text style={styles.textMute(16)}>{t('something-went-wrong')}</Text>
                     <View style={styles.marginTop(5)} />
-                    <Text style={styles.textMute(16)}>Please try again!</Text>
+                    <Text style={styles.textMute(16)}>{t('please-try-again')}</Text>
                     <Button 
                       type='outline' 
                       color='primary' 
@@ -62,7 +63,7 @@ class ErrorHandling extends Component {
                       onPress={onReload} 
                       style={styles.margin(20)}
                     >
-                      TRY AGAIN
+                      {t('try-again')}
                     </Button>
                   </View>
                 ) : (

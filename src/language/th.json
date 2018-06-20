@@ -1,4 +1,6 @@
 {
+  "ok": "ตกลง",
+  "cancel": "ยกเลิก",
   "home": "หน้าหลัก",
   "optimizer": "ตัวเพิ่มประสิทธิภาพ",
   "initial": "หน้าเริ่มต้น",
@@ -7,10 +9,15 @@
   "connected": "เชื่อมต่อแล้ว",
   "offline": "ออฟไลน์",
   "loading": "กำลังโหลดข้อมูล ...",
+  "oh-snap": "โอ้ ไม่!",
+  "something-went-wrong": "มีบางอย่างผิดพลาด!",
+  "please-try-again": "กรุณาลองใหม่อีกครั้ง!",
+  "try-again": "ลองใหม่อีกครั้ง",
   "github": {
     "repository-name": "ชื่อ Repository",
     "description": "รายละเอียด",
     "public": "สาธารณะ",
-    "create-repository": "สร้าง Repository ใหม่"
+    "create-repository": "สร้าง Repository ใหม่",
+    "open-url": "คุณต้องการเปิด URL นี้หรือไม่ ?"
   }
 }

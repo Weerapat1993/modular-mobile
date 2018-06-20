@@ -1,4 +1,6 @@
 {
+  "ok": "OK",
+  "cancel": "Cancel",
   "home": "Home",
   "optimizer": "Optimizer",
   "initial": "Initial",
@@ -7,10 +9,15 @@
   "connected": "Connected",
   "offline": "Offline",
   "loading": "Loading ...",
+  "oh-snap": "Oh Snap!",
+  "something-went-wrong": "Something went wrong!",
+  "please-try-again": "Please try again!",
+  "try-again": "TRY AGAIN",
   "github": {
     "repository-name": "Repository name",
     "description": "Description",
     "public": "Public",
-    "create-repository": "Create repository"
+    "create-repository": "Create repository",
+    "open-url": "Do you want to open url"
   }
 }

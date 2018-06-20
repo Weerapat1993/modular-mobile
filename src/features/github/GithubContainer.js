@@ -7,6 +7,7 @@ import { withGithub } from './redux'
 import styles from './components/styles'
 import { Github as Model } from './models/Github'
 import { LoadImage, FloatingButton } from '../../components'
+import { t } from '../../language'
 
 const { Item } = List;
 const { Brief } = Item
@@ -33,9 +34,9 @@ class GithubContainer extends Component {
   handleLinkUrl = (url) => {
     Modal.alert(
       <Text style={styles.textAlert}>Open Url</Text>,
-      `Do you want to open url\n\n${url}`, [
-      { text: 'Cancel', onPress: () => null },
-      { text: 'OK', onPress: () => Actions.webView({ url }) },
+      `${t('github.open-url')}\n\n${url}`, [
+      { text: t('cancel'), onPress: () => null },
+      { text: t('ok'), onPress: () => Actions.webView({ url }) },
     ]) 
   }
 
