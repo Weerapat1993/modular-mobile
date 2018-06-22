@@ -27,7 +27,7 @@ const data = [
 ]
 
 const Home = () => (
-  <View style={styles.container}>
+  <View style={styles.flex(1)}>
     <List>
       {
         data.map((item) => (
