@@ -5,7 +5,8 @@ import { List, InputItem, Toast } from 'antd-mobile'
 import { connect } from 'react-redux'
 import { createForm } from 'rc-form'
 import { fetchGithubByID } from '../../features/github/redux/githubActions'
-import { PurchaseSelector as Selector } from '../../features'
+// import { PurchaseSelector as Selector } from '../../features'
+import { makeGetPurchaseList } from '../../features/purchase/redux/purchaseSelector2'
 import { Button } from '../../components'
 import { styles } from '../../styles'
 import { Optimizer } from '../../utils'
@@ -55,7 +56,7 @@ class About extends Component {
 
   render() {
     const { boxSwitch } = this.state
-    alert('Render')
+    console.warn('render')
     return (
       <ScrollView>
         <Button 
@@ -98,12 +99,19 @@ class About extends Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => ({
-  purchase: Selector.getList(state),
-})
+const makeMapStateToProps = () => {
+  const getPurchaseList = makeGetPurchaseList()
+  return (state) => ({
+    purchase: getPurchaseList(state),
+  })
+}
+
+// const mapStateToProps = (state, ownProps) => ({
+//   purchase: Selector.getList(state),
+// })
 
 const mapDispatchToProps = {
   fetchGithubByID
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(createForm()(About))
+export default connect(makeMapStateToProps, mapDispatchToProps)(createForm()(About))

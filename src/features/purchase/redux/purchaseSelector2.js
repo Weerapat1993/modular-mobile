@@ -1,5 +1,5 @@
-import { get } from 'lodash'
-import { createSelector } from 'reselect'
+import { get, isEqual } from 'lodash'
+import { createSelectorCreator, defaultMemoize } from 'reselect'
 import { Purchase as Model } from '../models/Purchase'
 
 // Defailt State
@@ -14,13 +14,19 @@ const defaultKeys = {
 const findPurchase = (state) => state.purchase
 const findPurchaseByID = (state, key) => get(state.purchase.keys, key, defaultKeys)
 
-// Selectors
-export const makeGetPurchaseByID = () => createSelector(
-  [findPurchaseByID], (purchase) => purchase
+// create a "selector creator" that uses lodash.isEqual instead of ===
+const createDeepEqualSelector = createSelectorCreator(
+  defaultMemoize,
+  isEqual
 )
 
-export const makeGetPurchaseList = () => createSelector(
-  [findPurchase],
+// Selectors
+export const makeGetPurchaseByID = () => createDeepEqualSelector(
+  findPurchaseByID, (purchase) => purchase
+)
+
+export const makeGetPurchaseList = () => createDeepEqualSelector(
+  findPurchase,
   (purchase) => {
     const data = purchase.byID.map(key => purchase.keys[key].data)
     return {
