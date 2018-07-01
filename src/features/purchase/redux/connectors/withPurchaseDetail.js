@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { func, shape, bool, string } from 'prop-types'
 import { connect } from 'react-redux'
 import { fetchPurchaseDetail } from '../purchaseActions'
-import { PurchaseSelector as Selector } from '../purchaseSelector'
+import { makeGetPurchaseByID } from '../purchaseSelector2'
+// import { PurchaseSelector as Selector } from '../purchaseSelector'
 import { ErrorHandling } from '../../../../components'
 import { Purchase as Model } from '../../models/Purchase'
 
@@ -40,6 +41,7 @@ export const withPurchaseDetail = (WrapperComponent) => {
 
     render() {
       const { purchase } = this.props
+      // console.warn('render detail')
       return (
         <ErrorHandling
           isFetching={purchase.isFetching}
@@ -52,15 +54,22 @@ export const withPurchaseDetail = (WrapperComponent) => {
     }
   }
 
-  const mapStateToProps = (state, { purchaseID }) => ({
-    purchase: Selector.getByID(state, purchaseID),
-  })
+  const makeMapStateToProps = () => {
+    const getPurchaseByID = makeGetPurchaseByID()
+    return (state, { purchaseID }) => ({
+      purchase: getPurchaseByID(state, purchaseID),
+    })
+  }
+
+  // const mapStateToProps = (state, { purchaseID }) => ({
+  //   purchase: Selector.getByID(state, purchaseID),
+  // })
 
   const mapDispatchToProps = {
     fetchPurchaseDetail,
   }
 
-  return connect(mapStateToProps, mapDispatchToProps)(HOC)
+  return connect(makeMapStateToProps, mapDispatchToProps)(HOC)
 }
 
 export default withPurchaseDetail

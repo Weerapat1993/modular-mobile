@@ -3,8 +3,8 @@ import { GlobalStyle } from '../../../styles'
 class Style extends GlobalStyle {
   container = {
     justifyContent: 'center',
-    marginTop: 50,
     padding: 20,
+    flex: 1,
     backgroundColor: '#ffffff',
   }
   title = {
