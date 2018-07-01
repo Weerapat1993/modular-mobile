@@ -1,5 +1,5 @@
-import { get, isEqual } from 'lodash'
-import { createSelectorCreator, defaultMemoize } from 'reselect'
+import { get } from 'lodash'
+import { createDeepEqualSelector } from '../../../utils/selector'
 
 // Defailt State
 export const defaultKeys = {
@@ -8,12 +8,6 @@ export const defaultKeys = {
   data: [],
   error: '',
 }
-
-// create a "selector creator" that uses lodash.isEqual instead of ===
-const createDeepEqualSelector = createSelectorCreator(
-  defaultMemoize,
-  isEqual
-)
 
 // Find State in Redux
 const findGithubByID = (state, key) => get(state.github.keys, key, defaultKeys)

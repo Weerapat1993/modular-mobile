@@ -1,4 +1,6 @@
-import { Reducer, classReducer } from '../../../utils'
+import { Reducer, classReducer, reducerCreator } from '../../../utils'
+import { convertJSON } from './storageUtils'
+import {  } from '.'
 import { 
   SET_LOCAL_STORAGE, 
   GET_LOCAL_STORAGE, 
@@ -6,59 +8,46 @@ import {
   CLEAR_LOCAL_STORAGE,
 } from './storageActionTypes'
 
-class StorageReducer extends Reducer {
-  initialState = {
-    isReload: true,
-    keys: {},
-  }
-
-  // convert To Json
-  convertJSON = data => {
-    let value = data
-    if(value && (value.includes('{') || value.includes('['))) {
-      value = JSON.parse(value)
-    }
-    return value
-  }
-
-  setItem() {
-    const { keys } = this.state
-    const { key, value } = this.action
-    return this.setState({
-      keys: {
-        ...keys,
-        [key]: this.convertJSON(value)
-      }
-    })
-  }
-
-  getAllItem() {
-    const store = {}
-    const { data } = this.action
-    data.forEach(item => {
-      store[item[0]] = this.convertJSON(item[1])
-    })
-    return this.setState({
-      isReload: false,
-      keys: store
-    })
-  }
-
-  getState() {
-    const { type } = this.action
-    switch (type) {
-      case GET_ALL_KEY_LOCAL_STORAGE:
-        return this.getAllItem()
-      case SET_LOCAL_STORAGE:
-        return this.setItem()
-      case GET_LOCAL_STORAGE:
-        return this.setItem()
-      case CLEAR_LOCAL_STORAGE:
-        return this.setState({ keys: {} })
-      default:
-        return this.state
-    }
-  }
+export const initialState = {
+  isReload: true,
+  keys: {},
 }
 
-export const storageReducer = classReducer(StorageReducer)
+export const storageReducer = (state = initialState, action) => {
+  // Action Value
+  const { keys } = state
+  const { type, key, value } = action
+  // Reducer Creator
+  const { setState } = reducerCreator(state, action)
+  const setItem = () => setState({
+    keys: {
+      ...keys,
+      [key]: convertJSON(value)
+    }
+  })
+  const getAllItem = () => {
+    const store = {}
+    const { data } = action
+    data.forEach(item => {
+      store[item[0]] = convertJSON(item[1])
+    })
+    return {
+      isReload: false,
+      keys: store
+    }
+  }
+  
+  // Switch Case
+  switch (type) {
+    case GET_ALL_KEY_LOCAL_STORAGE:
+      return getAllItem()
+    case SET_LOCAL_STORAGE:
+      return setItem()
+    case GET_LOCAL_STORAGE:
+      return setItem()
+    case CLEAR_LOCAL_STORAGE:
+      return setState({ keys: {} })
+    default:
+      return state
+  }
+}

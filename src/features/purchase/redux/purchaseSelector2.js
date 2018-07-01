@@ -1,5 +1,5 @@
-import { get, isEqual } from 'lodash'
-import { createSelectorCreator, defaultMemoize } from 'reselect'
+import { get } from 'lodash'
+import { createDeepEqualSelector } from '../../../utils/selector'
 import { Purchase as Model } from '../models/Purchase'
 
 // Defailt State
@@ -13,12 +13,6 @@ const defaultKeys = {
 // Find State in Redux
 const findPurchase = (state) => state.purchase
 const findPurchaseByID = (state, key) => get(state.purchase.keys, key, defaultKeys)
-
-// create a "selector creator" that uses lodash.isEqual instead of ===
-const createDeepEqualSelector = createSelectorCreator(
-  defaultMemoize,
-  isEqual
-)
 
 // Selectors
 export const makeGetPurchaseByID = () => createDeepEqualSelector(

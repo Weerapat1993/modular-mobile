@@ -93,7 +93,7 @@ export const reducerCreator = (state, action, keyID) => {
    */
   const setState = newState => ({
     ...state,
-    newState,
+    ...newState,
   })
 
   /**

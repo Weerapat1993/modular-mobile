@@ -4,6 +4,7 @@ import { shape, func, bool } from 'prop-types'
 import { connect } from 'react-redux'
 import { localStorage } from './storageActions'
 import { Storage } from './storageSelector'
+import { makeGetItem, makeGetStorage } from './storageSelector2'
 import { LoadingScreen } from '../components'
 
 // Get Local Storage 
@@ -36,14 +37,23 @@ export const withFetchStorage = (WrapperComponent) => {
     }
   }
 
-  const mapStateToProps = state => ({
-    isLoad: Storage.data(state).isReload,
-    storage: Storage.getItem(state),
-  })
+  const makeMapStateToProps = () => {
+    const getStorageKeyItem = makeGetItem()
+    const getStorage = makeGetStorage()
+    return (state) => ({
+      isLoad: getStorage(state).isReload,
+      storage: getStorageKeyItem(state),
+    })
+  }
+
+  // const mapStateToProps = state => ({
+  //   isLoad: Storage.data(state).isReload,
+  //   storage: Storage.getItem(state),
+  // })
 
   const mapDispatchToProps = dispatch => ({
     localStorage: bindActionCreators(localStorage, dispatch)
   })
 
-  return connect(mapStateToProps, mapDispatchToProps)(HOC)
+  return connect(makeMapStateToProps, mapDispatchToProps)(HOC)
 }
