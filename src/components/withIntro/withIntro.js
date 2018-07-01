@@ -173,26 +173,26 @@ export const withIntro = (WrapperComponent) => {
             >
               <Fragment>
                 <SwiperTab 
-                  title={'LQID - the social marketplaces'}
-                  description={'LQID is social - you can shere shops and products you like on your own timeline or to your other social media.'}
+                  title={'Title 1'}
+                  description={'Description 1'}
                 />
               </Fragment>
               <Fragment>
                 <SwiperTab 
-                  title={'Buy and sell on LQID'}
-                  description={`LQID gives you a secure money account right in the app. It makes paying and getting paid smoother.`}
+                  title={'Title 2'}
+                  description={'Description 2'}
                 />
               </Fragment>
               <Fragment>
                 <SwiperTab 
-                  title='Make shopping rewarding'
-                  description='LQID Coins are collected every time you buy - save your Coins to use as cash on LQID.'
+                  title={'Title 3'}
+                  description={'Description 3'}
                 />
               </Fragment>
               <Fragment>
                 <SwiperTab 
-                  title={'LQID community'}
-                  description={`We're really pleased to see you have but before we get going we need to get a few details.`}
+                  title={'Title 4'}
+                  description={'Description 4'}
                 >
                   <View style={styles.flexDirection('row')}>
                     <Button 
