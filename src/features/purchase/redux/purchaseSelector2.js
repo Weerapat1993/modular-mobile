@@ -2,6 +2,7 @@ import { get } from 'lodash'
 import { createSelector } from 'reselect'
 import { Purchase as Model } from '../models/Purchase'
 
+// Defailt State
 const defaultKeys = {
   isFetching: false,
   isReload: true,

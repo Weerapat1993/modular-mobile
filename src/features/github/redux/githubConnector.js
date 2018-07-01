@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { func, shape, bool, string, object, arrayOf } from 'prop-types'
 import { connect } from 'react-redux'
 import { fetchGithubByID } from './githubActions'
+import { makeGetGithubByID } from './githubSelector2'
 import { GithubSelector as Selector } from './githubSelector'
 import { ErrorHandling } from '../../../components'
 
@@ -55,6 +56,7 @@ export const withGithub = (WrapperComponent) => {
     render() {
       const { github } = this.props
       const { loadInside } = this.state
+      // console.warn('render github')
       return (
         <ErrorHandling
           isFetching={github.isFetching && !loadInside}
@@ -67,15 +69,22 @@ export const withGithub = (WrapperComponent) => {
     }
   }
 
-  const mapStateToProps = (state, ownProps) => ({
-    github: Selector.getByID(state, ownProps.userID),
-  })
+  const makeMapStateToProps = () => {
+    const getGithubByID = makeGetGithubByID()
+    return (state, { userID }) => ({
+      github: getGithubByID(state, userID),
+    })
+  }
+
+  // const mapStateToProps = (state, ownProps) => ({
+  //   github: Selector.getByID(state, ownProps.userID),
+  // })
 
   const mapDispatchToProps = {
     fetchGithubByID
   }
 
-  return connect(mapStateToProps, mapDispatchToProps)(HOC)
+  return connect(makeMapStateToProps, mapDispatchToProps)(HOC)
 }
 
 export default withGithub
