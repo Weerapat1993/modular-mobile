@@ -1,17 +1,17 @@
-import React, { Component } from 'react'
+import React, { Component, PureComponent } from 'react'
 import { func } from 'prop-types'
 import { ScrollView, Text } from 'react-native'
 import { List, InputItem, Toast } from 'antd-mobile'
 import { connect } from 'react-redux'
 import { createForm } from 'rc-form'
+import shallowCompare from 'react-addons-shallow-compare'; 
 import { fetchGithubByID } from '../../features/github/redux/githubActions'
 // import { PurchaseSelector as Selector } from '../../features'
 import { makeGetPurchaseList } from '../../features/purchase/redux/purchaseSelector2'
 import { Button } from '../../components'
 import { styles } from '../../styles'
-import { Optimizer } from '../../utils'
 
-class About extends Component {
+class About extends PureComponent {
   static propTypes = {
     fetchGithubByID: func.isRequired,
   }
@@ -29,10 +29,9 @@ class About extends Component {
     this.handleChange = this.handleChange.bind(this)
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    if (Optimizer.isShouldRender(this.props, nextProps, this.state, nextState)) return false
-    return true
-  }
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   return shallowCompare(this, nextProps, nextState);
+  // }
 
   handleErrorClick() {
     if (this.state.hasError) {
